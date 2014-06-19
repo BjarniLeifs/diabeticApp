@@ -1,9 +1,9 @@
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+
 import jBerry.mysugar.R;
 
 /**
@@ -23,7 +23,9 @@ public class MenuActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my);
 
-        background =(LinearLayout) findViewById(R.id.background);
+
+
+      /*  background =(LinearLayout) findViewById(R.id.background);
         btn1 = (Button) findViewById(R.id.btn1);
         btn2 = (Button) findViewById(R.id.btn2);
         btn3 = (Button) findViewById(R.id.btn3);
@@ -37,7 +39,7 @@ public class MenuActivity extends ActionBarActivity {
                 //DoIt(v);
             }
         });
-
+    */
 
         Log.d(TAG, "onCreate");
     }
