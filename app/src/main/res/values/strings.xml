@@ -4,5 +4,9 @@
     <string name="app_name">MySugar</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="Fragment_A">Hello blank fragment A</string>
+    <string name="Fragment_B">Hello blank fragment B</string>
+    <string name="Fragment_C">Hello blank fragment C</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
