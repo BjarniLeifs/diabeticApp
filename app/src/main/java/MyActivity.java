@@ -4,14 +4,15 @@ import android.util.Log;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
-import jBerry.mysugar.R;
+import jBerry.MySugar.R;
+
 
 /**
  * Created by Sindri on 19/06/14.
  */
 
 
-public class MenuActivity extends ActionBarActivity {
+public class MyActivity extends ActionBarActivity {
 
     protected final String TAG = "Debug";
     LinearLayout background;
