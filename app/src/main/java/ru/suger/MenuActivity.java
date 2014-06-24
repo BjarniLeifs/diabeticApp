@@ -1,4 +1,5 @@
-package ru;
+package ru.suger;
+
 import android.annotation.TargetApi;
 import android.app.ActionBar;
 import android.app.ActionBar.TabListener;
@@ -39,6 +40,8 @@ public class MenuActivity extends FragmentActivity implements TabListener {
             @Override
             public void onPageSelected(int arg0) {
                 actionBar.setSelectedNavigationItem(arg0);
+               // Intent intent = new Intent(this, CalendarActivity.class);
+               // startActivity(intent);
                 Log.d("DpoiNT", "onPageSelected at "+" position "+ arg0);
 
             }
@@ -64,7 +67,7 @@ public class MenuActivity extends FragmentActivity implements TabListener {
 
             }
         });
-        
+
         actionBar = getActionBar();
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
@@ -108,6 +111,7 @@ public class MenuActivity extends FragmentActivity implements TabListener {
 
  class MyAdapter extends FragmentPagerAdapter {
 
+
          public MyAdapter(FragmentManager fm) {
             super(fm);
         }
@@ -116,8 +120,8 @@ public class MenuActivity extends FragmentActivity implements TabListener {
         public Fragment getItem(int arg0) {
             Fragment fragment=null;
             if(arg0 == 0) {
-                fragment = new FragmentA();
-            }
+                //fragment = new FragmentA();
+                         }
 
             if(arg0 == 1) {
                 fragment = new FragmentB();
