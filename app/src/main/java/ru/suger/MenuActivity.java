@@ -1,3 +1,4 @@
+package ru.;
 package ru.suger;
 
 import android.annotation.TargetApi;
@@ -6,14 +7,12 @@ import android.app.ActionBar.TabListener;
 import android.app.FragmentTransaction;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
+import android.widget.Button;
+import android.widget.LinearLayout;
 
-import jBerry.mysugar.R;
+import jBerry.MySugar.R;
 
 /**
  * Created by Sindri on 19/06/14.
@@ -67,7 +66,7 @@ public class MenuActivity extends FragmentActivity implements TabListener {
 
             }
         });
-
+        
         actionBar = getActionBar();
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
