@@ -1,4 +1,4 @@
-package ru;
+package ru.suger;
 
 
 
@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import jBerry.MySugar.R;
 
@@ -15,10 +16,10 @@ import jBerry.MySugar.R;
  * A simple {@link Fragment} subclass.
  *
  */
-public class FragmentA extends Fragment {
+public class FragmentC extends Fragment {
 
 
-    public FragmentA() {
+    public FragmentC() {
         // Required empty public constructor
     }
 
@@ -26,8 +27,9 @@ public class FragmentA extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_a, container, false);
+        TextView textView = new TextView(getActivity());
+        textView.setText(R.string.hello_blank_fragment);
+        return textView;
     }
 
 

@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    package="jBerry.MySugar" >
+    package="jBerry.mysugar" >
 
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme"
-        tools:ignore="HardcodedDebugMode">
+        android:theme="@style/AppTheme" >
         <activity
             android:name="ru.MenuActivity"
             android:label="@string/app_name" >
@@ -17,10 +15,6 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity android:name="ru.SignupActivity"
-            android:label="@string/app_name" >
-
         </activity>
     </application>
 

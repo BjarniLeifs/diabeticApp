@@ -1,4 +1,4 @@
-package ru;
+package ru.suger;
 
 
 
@@ -15,10 +15,10 @@ import jBerry.MySugar.R;
  * A simple {@link Fragment} subclass.
  *
  */
-public class FragmentB extends Fragment {
+public class FragmentA extends Fragment {
 
 
-    public FragmentB() {
+    public FragmentA() {
         // Required empty public constructor
     }
 
@@ -27,7 +27,7 @@ public class FragmentB extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_b, container, false);
+        return inflater.inflate(R.layout.fragment_a, container, false);
     }
 
 
