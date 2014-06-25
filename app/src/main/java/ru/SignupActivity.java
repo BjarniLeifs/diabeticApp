@@ -3,18 +3,16 @@ package ru;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.text.Editable;
-import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import jBerry.MySugar.R;
+import jBerry.mysugar.R;
 
 
-/**
+/*
  * Created by Anna on 19.6.2014.
  */
 public class SignupActivity extends ActionBarActivity {
@@ -56,7 +54,7 @@ public class SignupActivity extends ActionBarActivity {
                         email.getText().toString().length() == 0)
                     Toast.makeText(getBaseContext(), "Please fill everything out", Toast.LENGTH_SHORT).show();
 
-                if (password.getText().toString() != passwordVerify.getText().toString()) {
+                if (passwordVerify.getText().toString() != password.getText().toString()) {
                     Toast.makeText(getBaseContext(), "Passwords don't match", Toast.LENGTH_SHORT).show();
                 }
             }

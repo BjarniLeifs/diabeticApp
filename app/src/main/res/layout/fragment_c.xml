@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#AABBCC"
-    tools:context="jBerry.mysugar.FragmentBC">
+    tools:context="jBerry.mysugar.FragmentC">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView

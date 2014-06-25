@@ -1,4 +1,3 @@
-package ru.;
 package ru.suger;
 
 import android.annotation.TargetApi;
@@ -7,20 +6,25 @@ import android.app.ActionBar.TabListener;
 import android.app.FragmentTransaction;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.util.Log;
-import android.widget.Button;
-import android.widget.LinearLayout;
 
-import jBerry.MySugar.R;
 
-/**
+
+
+
+/*
  * Created by Sindri on 19/06/14.
  */
 
 
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-public class MenuActivity extends FragmentActivity implements TabListener {
+public class SwipeFunction extends FragmentActivity implements TabListener {
+
 
 
     ActionBar actionBar;
@@ -30,24 +34,24 @@ public class MenuActivity extends FragmentActivity implements TabListener {
     @Override
     protected void onCreate(Bundle arg0) {
         super.onCreate(arg0);
-        setContentView(R.layout.activity_my);
+        //setContentView(R.layout.activity_main);
 
-        viewPager=(ViewPager) findViewById(R.id.pager);
+       // viewPager=(ViewPager) findViewById(R.id.pager);
         viewPager.setAdapter(new MyAdapter(getSupportFragmentManager()));
         viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 
             @Override
             public void onPageSelected(int arg0) {
                 actionBar.setSelectedNavigationItem(arg0);
-               // Intent intent = new Intent(this, CalendarActivity.class);
-               // startActivity(intent);
+                // Intent intent = new Intent(this, CalendarActivity.class);
+                // startActivity(intent);
                 Log.d("DpoiNT", "onPageSelected at "+" position "+ arg0);
 
             }
 
             @Override
             public void onPageScrolled(int arg0, float arg1, int arg2) {
-            //    Log.d("DpoiNT", "onPageScrolled at "+" position " +arg0+" from " +arg1+" with number of pixels "+arg2);
+                //    Log.d("DpoiNT", "onPageScrolled at "+" position " +arg0+" from " +arg1+" with number of pixels "+arg2);
 
             }
 
@@ -66,7 +70,7 @@ public class MenuActivity extends FragmentActivity implements TabListener {
 
             }
         });
-        
+
         actionBar = getActionBar();
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
@@ -90,51 +94,53 @@ public class MenuActivity extends FragmentActivity implements TabListener {
 
     @Override
     public void onTabSelected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
-       // Log.d("DpoiNT", "onTabSelected at "+" position " +tab.getPosition()+" name "+tab.getText());
+        // Log.d("DpoiNT", "onTabSelected at "+" position " +tab.getPosition()+" name "+tab.getText());
         viewPager.setCurrentItem(tab.getPosition());
     }
 
     @Override
     public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
-       // Log.d("DpoiNT", "onTabUnselected at "+" position " +tab.getPosition()+" name "+tab.getText());
+        // Log.d("DpoiNT", "onTabUnselected at "+" position " +tab.getPosition()+" name "+tab.getText());
 
     }
 
     @Override
     public void onTabReselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
-       // Log.d("DpoiNT", "onTabReselected at "+" position "+tab.getPosition()+" name "+tab.getText());
+        // Log.d("DpoiNT", "onTabReselected at "+" position "+tab.getPosition()+" name "+tab.getText());
 
     }
 }
 
 
- class MyAdapter extends FragmentPagerAdapter {
+class MyAdapter extends FragmentPagerAdapter {
 
 
-         public MyAdapter(FragmentManager fm) {
-            super(fm);
-        }
-
-        @Override
-        public Fragment getItem(int arg0) {
-            Fragment fragment=null;
-            if(arg0 == 0) {
-                //fragment = new FragmentA();
-                         }
-
-            if(arg0 == 1) {
-                fragment = new FragmentB();
-            }
-
-            if(arg0 == 2) {
-                fragment = new FragmentC();
-            }
-
-            return fragment;
-        }
-
-        @Override
-        public int getCount() {
-            return 3;
-        }
+    public MyAdapter(FragmentManager fm) {
+        super(fm);
     }
+
+
+
+    @Override
+    public Fragment getItem(int arg0) {
+        Fragment fragment=null;
+        if(arg0 == 0) {
+            fragment = new FragmentA();
+        }
+
+        if(arg0 == 1) {
+            fragment = new FragmentB();
+        }
+
+        if(arg0 == 2) {
+            fragment = new FragmentC();
+        }
+
+        return fragment;
+    }
+
+    @Override
+    public int getCount() {
+        return 3;
+    }
+}
