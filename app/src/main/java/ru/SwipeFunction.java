@@ -1,4 +1,4 @@
-package ru.suger;
+package ru;
 
 import android.annotation.TargetApi;
 import android.app.ActionBar;

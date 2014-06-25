@@ -1,4 +1,4 @@
-package ru.suger;
+package ru;
 
 
 
