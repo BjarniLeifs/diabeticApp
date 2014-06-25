@@ -1,4 +1,4 @@
-package ru;
+package ru.signup;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -9,10 +9,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import jBerry.mysugar.R;
+import jBerry.MySugar.R;
 
-
-/*
+/**
  * Created by Anna on 19.6.2014.
  */
 public class SignupActivity extends ActionBarActivity {
