@@ -11,5 +11,7 @@
     <string name="title_activity_calendar">CalendarActivity</string>
     <string name="title_activity_swipe_function">SwipeFunction</string>
     <string name="title_activity_menu">MenuActivity</string>
+    <string name="title_activity_signup">SignUpActivity</string>
+    <string name="title_activity_login">LogInActivity</string>
 
 </resources>

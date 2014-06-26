@@ -6,7 +6,7 @@
     android:orientation="vertical"
     android:weightSum="1"
     android:clickable="true"
-    android:id="@+id/button"
+    android:id="@+id/container"
     android:importantForAccessibility="yes"
     android:longClickable="false">
 
