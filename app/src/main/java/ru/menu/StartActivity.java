@@ -41,6 +41,7 @@ public class StartActivity extends Activity{
 
         gridView.setAdapter(adapter);
 
+
         gridView.setOnItemClickListener(new OnItemClickListener()
         {
 

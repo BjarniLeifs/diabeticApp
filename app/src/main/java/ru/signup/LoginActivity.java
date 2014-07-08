@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -59,11 +60,40 @@ public class LoginActivity extends ActionBarActivity {
             public void afterTextChanged(Editable editable) {
             }
         });
+        //If the signup button is clicked, they will go to the signup view
+        goToSignUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ru.signup.LoginActivity.this, SignupActivity.class);
+                startActivityForResult(intent, 1);
+            }
+        });
+        logIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ru.signup.LoginActivity.this, ru.menu.StartActivity.class);
+                startActivityForResult(intent, 1);
+
+            }
+        });
     }
-    //If the signup button is clicked, they will go to the signup view
-    public void goOnClick(View view) {
-        Intent intent = new Intent(this, SignupActivity.class);
-        startActivity(intent);
+
+    //Gets the data from the signup activity and starts the main activity with it
+    //Sends the user name from the signup to the main
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(requestCode == 1) {
+            if(resultCode == RESULT_OK) {
+                String Name = data.getExtras().getString("loginName");
+                String Password = data.getExtras().getString("loginPassword");
+                if(Name != null && Password != null){
+                    Log.v("Login", Password);
+                    Intent intent = new Intent(LoginActivity.this, ru.menu.StartActivity.class);
+                    intent.putExtra("name", Name);
+                    startActivity(intent);
+                }
+            }
+        }
     }
 }
 
