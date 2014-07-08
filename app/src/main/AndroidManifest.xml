@@ -8,10 +8,10 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
         <activity
-            android:name="ru.menu.MenuActivity"
-            android:label="@string/title_activity_menu"
+            android:name="ru.menu.StartActivity"
+            android:label="@string/title_activity_start" 
             android:parentActivityName="ru.signup.LoginActivity">
-
+            
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="ru.signup.LoginActivity" />
@@ -26,11 +26,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
-        android:name="ru.signup.SignupActivity"
-        android:label="@string/title_activity_signup"
-        android:parentActivityName="ru.signup.LoginActivity" >
+            android:name="ru.signup.SignupActivity"
+            android:label="@string/title_activity_signup"
+            android:parentActivityName="ru.signup.LoginActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="ru.signup.LoginActivity" />

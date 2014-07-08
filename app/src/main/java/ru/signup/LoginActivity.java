@@ -71,7 +71,7 @@ public class LoginActivity extends ActionBarActivity {
         logIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ru.signup.LoginActivity.this, ru.menu.MenuActivity.class);
+                Intent intent = new Intent(ru.signup.LoginActivity.this, ru.menu.StartActivity.class);
                 startActivityForResult(intent, 1);
 
             }
@@ -88,7 +88,7 @@ public class LoginActivity extends ActionBarActivity {
                 String Password = data.getExtras().getString("loginPassword");
                 if(Name != null && Password != null){
                     Log.v("Login", Password);
-                    Intent intent = new Intent(LoginActivity.this, ru.menu.MenuActivity.class);
+                    Intent intent = new Intent(LoginActivity.this, ru.menu.StartActivity.class);
                     intent.putExtra("name", Name);
                     startActivity(intent);
                 }
