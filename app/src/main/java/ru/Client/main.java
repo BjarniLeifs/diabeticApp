@@ -3,7 +3,7 @@ package ru.Client;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPut;
 import org.apache.http.impl.client.DefaultHttpClient;
 
 /**
@@ -18,10 +18,10 @@ public class main {
 
         httpClient = new DefaultHttpClient();
         //senda request til að staðfesta tenginu
-        HttpGet httpget = new HttpGet("mongodb://localhost:27017/jBerry"); //ATH Þarf örugglega að vera kall í API-ið
+        HttpPut httpput = new HttpPut("localhost:3000"); //ATH Þarf örugglega að vera kall í API-ið
         HttpResponse response;
         //eh til að staðfesta tenginguna
-        response = httpClient.execute(httpget);
+        response = httpClient.execute(httpput);
         HttpEntity entity = response.getEntity();
         System.out.println("Login form get: " + response.getStatusLine());
         if (entity != null) {
