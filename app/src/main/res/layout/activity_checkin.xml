@@ -4,19 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Check In"
-        android:id="@+id/textCheckIn"
-        android:layout_gravity="center_horizontal"
-        android:textSize="30dp"
-        android:textColor="#ff65706a"
-        android:layout_marginTop="30dp" />
-
     <EditText
-        android:layout_width="match_parent"
+        android:layout_width="129dp"
         android:layout_height="wrap_content"
         android:inputType="number"
         android:ems="10"
