@@ -37,6 +37,9 @@ public class StartActivity extends Activity{
         list.add(new CustomClass(BitmapFactory.decodeResource(getResources(), R.drawable.diabetes),"Settings"));
         list.add(new CustomClass(BitmapFactory.decodeResource(getResources(), R.drawable.diabetes),"Stuff"));
 
+
+
+
         final CustomArrayAdapter adapter=new CustomArrayAdapter(getApplicationContext(), list);
 
         gridView.setAdapter(adapter);
