@@ -15,9 +15,9 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import jBerry.MySugar.R;
-import ru.CustomArrayAdapter;
-import ru.CustomClass;
-import ru.signup.LoginActivity;
+import ru.backStore.CustomArrayAdapter;
+import ru.backStore.CustomClass;
+import ru.calendar.CalendarActivity;
 import ru.signup.SignupActivity;
 
 
@@ -50,7 +50,7 @@ public class StartActivity extends Activity{
                                     long id){
                 Intent intent = null;
                 if(id == 0){
-                    intent = new Intent(StartActivity.this, LoginActivity.class);
+                    intent = new Intent(StartActivity.this, CalendarActivity.class);
 
                 }
                 else if(id == 1){

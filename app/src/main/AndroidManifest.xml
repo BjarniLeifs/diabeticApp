@@ -6,26 +6,34 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        >
+
+        <!-- StartActivity -->
         <activity
             android:name="ru.menu.StartActivity"
-            android:label="@string/title_activity_start" 
-            android:parentActivityName="ru.signup.LoginActivity">
-            
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="ru.signup.LoginActivity" />
-
-        </activity>
-        <activity
-            android:name="ru.signup.LoginActivity"
-            android:label="@string/title_activity_login" >
+            android:label="@string/title_activity_start"
+            android:parentActivityName="ru.signup.LoginActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            <!--<meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="ru.signup.LoginActivity" />-->
         </activity>
+        <!-- LoginActivity -->
+        <activity
+            android:name="ru.signup.LoginActivity"
+            android:label="@string/title_activity_login" >
+            <!--<intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>-->
+        </activity>
+        <!-- SignupActivity -->
         <activity
             android:name="ru.signup.SignupActivity"
             android:label="@string/title_activity_signup"
@@ -33,7 +41,13 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="ru.signup.LoginActivity" />
-         
         </activity>
+        <!-- CalendarActivity -->
+        <activity
+            android:name="ru.calendar.CalendarActivity"
+            android:label="@string/title_activity_calendar" >
+        </activity>
+
     </application>
+
 </manifest>

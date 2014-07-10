@@ -1,4 +1,4 @@
-package ru;
+package ru.calendar;
 
 
 import android.os.Bundle;

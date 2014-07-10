@@ -1,4 +1,4 @@
-package ru;
+package ru.backStore;
 
 /*
  * Created by Sindri on 06/07/14.
@@ -14,7 +14,6 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import jBerry.MySugar.R;
-import ru.stuff.AbstractDynamicGridAdapter;
 
 public class CustomArrayAdapter extends AbstractDynamicGridAdapter
 {
