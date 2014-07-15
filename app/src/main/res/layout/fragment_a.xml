@@ -1,26 +1,37 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ff59585d"
-    tools:context="ru.calendar.FragmentA">
+    android:clickable="true"
+    android:focusable="true">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.5"
+        android:clickable="true"
+        android:focusable="true">
 
-    <!-- http://sampleprogramz.com/android/calendarview.phphttp://sampleprogramz.com/android/calendarview.php -->
-    <CalendarView
-        android:id="@+id/calendarView1"
-        android:layout_width="fill_parent"
-        android:layout_height="230dp"
-        android:layout_below="@+id/calendarView1"
-        android:layout_marginTop="15dp"  />
+        <!-- http://sampleprogramz.com/android/calendarview.phphttp://sampleprogramz.com/android/calendarview.php -->
+        <CalendarView
+            android:id="@+id/calendarView1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:clickable="true" />
 
-    <ListView
-        android:id="@+id/dailyView1"
-        android:layout_width="fill_parent"
-        android:layout_height="150dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_gravity="center_horizontal">
-    </ListView>
-</FrameLayout>
+    </RelativeLayout>
+        <ListView
+            android:id="@+id/dailyView1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.5"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_gravity="center_horizontal|center"
+            android:clickable="true"
+            android:focusable="true" />
 
+</LinearLayout>

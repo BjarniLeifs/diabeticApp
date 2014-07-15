@@ -15,11 +15,8 @@ import jBerry.MySugar.R;
 
 public class CalendarActivity extends FragmentActivity implements TabListener {
 
-
-
     ActionBar actionBar;
     ViewPager viewPager;
-
 
     @Override
     protected void onCreate(Bundle arg0) {
@@ -44,7 +41,6 @@ public class CalendarActivity extends FragmentActivity implements TabListener {
                 //    Log.d("DpoiNT", "onPageScrolled at "+" position " +arg0+" from " +arg1+" with number of pixels "+arg2);
 
             }
-
 
             @Override
             public void onPageScrollStateChanged(int arg0) {
@@ -114,20 +110,13 @@ class MyAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int arg0) {
-        Fragment fragment=null;
-        if(arg0 == 0) {
-            fragment = new FragmentA();
-        }
 
-        if(arg0 == 1) {
-            fragment = new FragmentB();
+        switch(arg0){
+            case 0: return FragmentA.newInstance("FragmentA, Instance 1");
+            case 1: return FragmentB.newInstance("FragmentB, Instance 2");
+            case 2: return FragmentC.newInstance("FragmentC, Instance 3");
+            default: return FragmentA.newInstance("FragmentA, Default");
         }
-
-        if(arg0 == 2) {
-            fragment = new FragmentC();
-        }
-
-        return fragment;
     }
 
     @Override
@@ -135,4 +124,3 @@ class MyAdapter extends FragmentPagerAdapter {
         return 3;
     }
 }
-

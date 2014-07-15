@@ -1,14 +1,31 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#FFCC99"
-    tools:context="jBerry.suger.FragmentB">
+    android:layout_height="match_parent">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/Fragment_B" />
+        android:layout_height="0dp"
+        android:layout_weight="0.5">
 
-</FrameLayout>
+        <!-- http://sampleprogramz.com/android/calendarview.phphttp://sampleprogramz.com/android/calendarview.php -->
+        <CalendarView
+            android:id="@+id/calendarView1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            />
+
+    </RelativeLayout>
+    <ListView
+        android:id="@+id/dailyView1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.5"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_gravity="center_horizontal|center"/>
+
+</LinearLayout>
