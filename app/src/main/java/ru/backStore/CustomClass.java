@@ -1,4 +1,4 @@
-package ru;
+package ru.backStore;
 
 /*
  * Created by Sindri on 06/07/14.

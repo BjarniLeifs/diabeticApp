@@ -42,7 +42,8 @@
         android:hint="Email"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
-        android:layout_marginRight="20dp" />
+        android:layout_marginRight="20dp"
+        android:autoLink="email" />
 
     <EditText
         android:layout_width="fill_parent"

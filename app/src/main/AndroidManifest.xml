@@ -35,5 +35,9 @@
                 android:value="ru.signup.LoginActivity" />
          
         </activity>
+        <activity
+            android:name="ru.checkin.CheckinActivity"
+            android:label="CheckinActivity"
+            />
     </application>
 </manifest>
