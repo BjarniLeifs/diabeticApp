@@ -10,6 +10,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.jberry.services.user.UserService;
+import com.jberry.services.user.UserServiceFactory;
+
 import jBerry.MySugar.R;
 
 /**
@@ -19,6 +22,8 @@ public class LoginActivity extends ActionBarActivity {
 
     EditText name, password;
     Button logIn, goToSignUp;
+    UserService user = UserServiceFactory.getUserService();
+    boolean hallo = false;
 
     @Override
     protected void onCreate(Bundle savedInstancesState) {
@@ -30,49 +35,59 @@ public class LoginActivity extends ActionBarActivity {
         goToSignUp = (Button) findViewById(R.id.buttonGoToSignUp);
         logIn = (Button) findViewById(R.id.ButtonLogIn);
 
+
+        final String u = name.getText().toString();
+        final String p = password.getText().toString();
+
+        try {
+            hallo = user.login(u, p);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         //If the username is missing the log in button is not clickable
-        name.addTextChangedListener(new TextWatcher() {
+        TextWatcher tw = new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {
+
             }
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
-                logIn.setEnabled(!(name.getText().toString().length() == 0));
+                //if the username or password is missing the log in button is not clickable
+                logIn.setEnabled((name.getText().toString().length() != 0
+                        && password.getText().toString().length() != 0));
+
             }
 
             @Override
             public void afterTextChanged(Editable editable) {
-            }
-        });
-        //if the password is missing the long in button is not clickable
-        password.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {
-            }
 
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
-                logIn.setEnabled(!(password.getText().toString().length() == 0));
             }
+        };
+        name.addTextChangedListener(tw);
+        password.addTextChangedListener(tw);
+        logIn.addTextChangedListener(tw);
 
-            @Override
-            public void afterTextChanged(Editable editable) {
-            }
-        });
+
+
         //If the signup button is clicked, they will go to the signup view
         goToSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ru.signup.LoginActivity.this, SignupActivity.class);
-                startActivityForResult(intent, 1);
+                if(hallo) {
+                    Intent intent = new Intent(ru.signup.LoginActivity.this, SignupActivity.class);
+                    startActivityForResult(intent, 1);
+                }
             }
         });
         logIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 Intent intent = new Intent(ru.signup.LoginActivity.this, ru.menu.StartActivity.class);
                 startActivityForResult(intent, 1);
+
 
             }
         });
@@ -87,7 +102,6 @@ public class LoginActivity extends ActionBarActivity {
                 String Name = data.getExtras().getString("loginName");
                 String Password = data.getExtras().getString("loginPassword");
                 if(Name != null && Password != null){
-                    Log.v("Login", Password);
                     Intent intent = new Intent(LoginActivity.this, ru.menu.StartActivity.class);
                     intent.putExtra("name", Name);
                     startActivity(intent);
