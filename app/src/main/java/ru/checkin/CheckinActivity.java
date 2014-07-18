@@ -92,13 +92,10 @@ public class CheckinActivity extends ActionBarActivity {
                     foodItem5.setVisibility(View.VISIBLE);
                     gram5.setVisibility(View.VISIBLE);}
 
-                //Get bloodsugar input
-                BL = Double.parseDouble(bloodSugar.getText().toString());
-
                 //Enable checkin button
-                checkIn.setEnabled(!(bloodSugar.getText().length() > 0)
-                        && !(foodItem1.getText().toString().length() > 0)
-                        && !(bloodSugar.getText().length() > 0));
+                checkIn.setEnabled((bloodSugar.getText().length() > 0)
+                        && (foodItem1.getText().toString().length() > 0)
+                        && (bloodSugar.getText().length() > 0));
 
                 //Set carbs depending on food input
                 if(foodItem1.getText().toString().equals("epli")) {
@@ -120,6 +117,8 @@ public class CheckinActivity extends ActionBarActivity {
             public void onClick(View view) {
 
                 /*Calculation */
+                //Get bloodsugar input
+                BL = Double.parseDouble(bloodSugar.getText().toString());
                 grams = Double.parseDouble(gram1.getText().toString());
                 grams2 =  Double.parseDouble(gram2.getText().toString());
                 double K = ((carb/100) * grams); //Carbs

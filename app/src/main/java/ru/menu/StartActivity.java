@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import java.util.ArrayList;
 import jBerry.MySugar.R;
+import ru.Settings.SettingsActivity;
 import ru.backStore.CustomArrayAdapter;
 import ru.backStore.CustomClass;
 import ru.checkin.CheckinActivity;
@@ -62,7 +63,7 @@ public class StartActivity extends Activity{
 
                 }
                 else if(id == 2){
-                    intent = new Intent(StartActivity.this, SignupActivity.class);
+                    intent = new Intent(StartActivity.this, SettingsActivity.class);
 
                 }
                 else{

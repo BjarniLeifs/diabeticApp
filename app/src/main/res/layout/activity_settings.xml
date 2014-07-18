@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Height"
+            android:id="@+id/heightText"
+            android:textSize="20dp"
+            android:textColor="#ff65706a"
+            android:layout_marginTop="30dp"
+            android:layout_gravity="center_vertical|left"
+            android:layout_marginLeft="30dp" />
+        <EditText
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/height"
+            android:imeOptions="actionNext"
+            android:inputType="number"
+            android:layout_marginTop="20dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="200dp"
+            android:hint="cm" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Weight"
+            android:id="@+id/weightText"
+            android:textSize="20dp"
+            android:textColor="#ff65706a"
+            android:layout_marginTop="30dp"
+            android:layout_gravity="center_vertical|left"
+            android:layout_marginLeft="30dp" />
+        <EditText
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/weight"
+            android:imeOptions="actionNext"
+            android:inputType="number"
+            android:layout_marginTop="20dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="200dp"
+            android:hint="Kg" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Age"
+            android:id="@+id/AgeText"
+            android:textSize="20dp"
+            android:textColor="#ff65706a"
+            android:layout_marginTop="30dp"
+            android:layout_gravity="center_vertical|left"
+            android:layout_marginLeft="30dp" />
+        <EditText
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/age"
+            android:imeOptions="actionNext"
+            android:inputType="number"
+            android:layout_marginTop="20dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="200dp"
+            android:hint="Years" />
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Gender"
+        android:id="@+id/genderText"
+        android:textSize="20dp"
+        android:textColor="#ff65706a"
+        android:layout_marginTop="30dp"
+        android:layout_gravity="center_vertical|left"
+        android:layout_marginLeft="30dp" />
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="KK"
+        android:id="@+id/male"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="120dp"/>
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Kvk"
+            android:id="@+id/female"
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="200dp"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Insulin sensitivity"
+            android:id="@+id/sensitiveText"
+            android:textSize="20dp"
+            android:textColor="#ff65706a"
+            android:layout_marginTop="30dp"
+            android:layout_gravity="center_vertical|left"
+            android:layout_marginLeft="30dp" />
+        <EditText
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/sensitive"
+            android:imeOptions="actionNext"
+            android:inputType="number"
+            android:layout_marginTop="20dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="200dp"
+            android:hint="2.75" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minHeight="0dp"
+            android:minWidth="0dp"
+            android:clickable="true"
+            android:text="\?"
+            android:id="@+id/sensitiveInfoButton"
+            android:layout_alignBottom="@+id/sensitiveText"
+            android:layout_toRightOf="@+id/sensitive" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Insulin ratio"
+            android:id="@+id/ratioText"
+            android:textSize="20dp"
+            android:textColor="#ff65706a"
+            android:layout_marginTop="30dp"
+            android:layout_gravity="center_vertical|left"
+            android:layout_marginLeft="30dp" />
+        <EditText
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/ratio"
+            android:imeOptions="actionNext"
+            android:inputType="number"
+            android:layout_marginTop="20dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="170dp"
+            android:hint="1: x carbs"
+            android:layout_alignParentEnd="false" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minHeight="0dp"
+            android:minWidth="0dp"
+            android:clickable="true"
+            android:text="\?"
+            android:id="@+id/ratioInfoButton"
+            android:layout_alignBottom="@+id/ratioText"
+            android:layout_toRightOf="@+id/ratio"
+            android:layout_marginLeft="0dp" />
+    </RelativeLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save"
+        android:id="@+id/saveButton"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp" />
+
+
+</LinearLayout>
