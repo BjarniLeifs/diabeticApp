@@ -55,7 +55,7 @@ public class FragmentA extends Fragment {
 
             @Override
             public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
-                eventList.get
+
 
             }
         });
