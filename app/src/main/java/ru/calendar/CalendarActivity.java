@@ -3,7 +3,9 @@ package ru.calendar;
 import android.app.ActionBar;
 import android.app.ActionBar.TabListener;
 import android.app.FragmentTransaction;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -17,11 +19,23 @@ public class CalendarActivity extends FragmentActivity implements TabListener {
 
     ActionBar actionBar;
     ViewPager viewPager;
+    public static DatabaseInterface datasource;
+    public static SharedPreferences prefs;
 
     @Override
     protected void onCreate(Bundle arg0) {
         super.onCreate(arg0);
         setContentView(R.layout.activity_calendar);
+
+        datasource = new DatabaseInterface(this);
+        datasource.open();
+        prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        if(!prefs.getBoolean("firstTime", false)){
+            datasource.simulateExternalDatabase();
+            SharedPreferences.Editor editor = prefs.edit();
+            editor.putBoolean("firstTime", true);
+            editor.commit();
+        }
 
         viewPager = (ViewPager) findViewById(R.id.calendarContainer);
         viewPager.setAdapter(new MyAdapter(getSupportFragmentManager()));
@@ -96,6 +110,19 @@ public class CalendarActivity extends FragmentActivity implements TabListener {
         // Log.d("DpoiNT", "onTabReselected at "+" position "+tab.getPosition()+" name "+tab.getText());
 
     }
+
+    @Override
+    protected void onResume() {
+        datasource.open();
+        super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        datasource.close();
+        super.onPause();
+    }
+
 }
 
 
@@ -123,4 +150,6 @@ class MyAdapter extends FragmentPagerAdapter {
     public int getCount() {
         return 3;
     }
+
+
 }

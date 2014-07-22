@@ -14,7 +14,6 @@
         android:clickable="true"
         android:focusable="true">
 
-        <!-- http://sampleprogramz.com/android/calendarview.phphttp://sampleprogramz.com/android/calendarview.php -->
         <CalendarView
             android:id="@+id/calendarView1"
             android:layout_width="match_parent"
@@ -25,6 +24,7 @@
     </RelativeLayout>
         <ListView
             android:id="@+id/dailyView1"
+            android:textAlignment="center"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.5"
@@ -35,3 +35,4 @@
             android:focusable="true" />
 
 </LinearLayout>
+
