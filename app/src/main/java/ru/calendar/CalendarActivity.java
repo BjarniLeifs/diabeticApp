@@ -1,11 +1,11 @@
 package ru.calendar;
 
+import android.annotation.TargetApi;
 import android.app.ActionBar;
 import android.app.ActionBar.TabListener;
 import android.app.FragmentTransaction;
-import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -13,29 +13,25 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 
+import com.jberry.services.calander.CalanderService;
+import com.jberry.services.calander.CalanderServiceFactory;
+
 import jBerry.MySugar.R;
 
+@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 public class CalendarActivity extends FragmentActivity implements TabListener {
+
+    CalanderService cale = CalanderServiceFactory.getCalanderService();
+
 
     ActionBar actionBar;
     ViewPager viewPager;
-    public static DatabaseInterface datasource;
-    public static SharedPreferences prefs;
+
 
     @Override
     protected void onCreate(Bundle arg0) {
         super.onCreate(arg0);
         setContentView(R.layout.activity_calendar);
-
-        datasource = new DatabaseInterface(this);
-        datasource.open();
-        prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        if(!prefs.getBoolean("firstTime", false)){
-            datasource.simulateExternalDatabase();
-            SharedPreferences.Editor editor = prefs.edit();
-            editor.putBoolean("firstTime", true);
-            editor.commit();
-        }
 
         viewPager = (ViewPager) findViewById(R.id.calendarContainer);
         viewPager.setAdapter(new MyAdapter(getSupportFragmentManager()));
@@ -55,6 +51,7 @@ public class CalendarActivity extends FragmentActivity implements TabListener {
                 //    Log.d("DpoiNT", "onPageScrolled at "+" position " +arg0+" from " +arg1+" with number of pixels "+arg2);
 
             }
+
 
             @Override
             public void onPageScrollStateChanged(int arg0) {
@@ -110,19 +107,6 @@ public class CalendarActivity extends FragmentActivity implements TabListener {
         // Log.d("DpoiNT", "onTabReselected at "+" position "+tab.getPosition()+" name "+tab.getText());
 
     }
-
-    @Override
-    protected void onResume() {
-        datasource.open();
-        super.onResume();
-    }
-
-    @Override
-    protected void onPause() {
-        datasource.close();
-        super.onPause();
-    }
-
 }
 
 

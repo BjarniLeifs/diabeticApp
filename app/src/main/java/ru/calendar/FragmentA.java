@@ -9,15 +9,12 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CalendarView;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import java.text.SimpleDateFormat;
+import com.jberry.dto.CalanderMeal;
+
 import java.util.ArrayList;
-import java.util.GregorianCalendar;
-import java.util.Locale;
-import java.util.TimeZone;
 
 import jBerry.MySugar.R;
 import ru.calendar.databaseObjects.Event;
@@ -27,11 +24,15 @@ import ru.calendar.databaseObjects.Event;
  *
  */
 public class FragmentA extends Fragment {
-    public ArrayList<Event> eventList = new ArrayList<Event>();
+
+    private ArrayList<CalanderMeal> calMeals = new ArrayList<CalanderMeal>();
     private ListView listView;
     private CalendarView calendarView;
-    private EventListAdapter adapter;
+    private CalendarAdapter adapter;
     private View parentView;
+    private int yearSelected; //year selected by user
+    private int monthSelected; //month selected by user
+    private int dayOfMonthSelected; //day of month selected by user
 
 
 
@@ -49,13 +50,16 @@ public class FragmentA extends Fragment {
 
         parentView = inflater.inflate(R.layout.fragment_a, container, false);
         listView = (ListView) parentView.findViewById(R.id.dailyView1);
-
         calendarView = (CalendarView) parentView.findViewById(R.id.calendarView1);
+
+
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener(){
 
             @Override
             public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
-
+                yearSelected = year;
+                monthSelected = month;
+                dayOfMonthSelected = dayOfMonth;
 
             }
         });
