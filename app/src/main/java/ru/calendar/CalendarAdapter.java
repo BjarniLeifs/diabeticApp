@@ -19,7 +19,7 @@ import java.util.List;
 public class CalendarAdapter extends ArrayAdapter<CalanderMeal> {
 
 
-    private ArrayList<CalanderMeal> mCalList;
+    private ArrayList<CalendarMeal> mCalList;
 
     private CalendarService calService;
 
