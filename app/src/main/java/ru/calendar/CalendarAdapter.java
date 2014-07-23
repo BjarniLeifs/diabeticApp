@@ -1,45 +1,39 @@
 package ru.calendar;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
-import android.widget.ListView;
-import android.widget.TextView;
 
 import com.jberry.dto.CalanderMeal;
-import com.jberry.services.calander.CalanderService;
-import com.jberry.services.calander.CalanderServiceFactory;
+import com.jberry.services.calendar.CalendarService;
+import com.jberry.services.calendar.CalendarServiceFactory;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
-
-import jBerry.MySugar.R;
 
 
 /**
  * Created by Sindri on 15/07/14.
  */
-public class CalendarAdapter extends BaseAdapter {
+public class CalendarAdapter extends ArrayAdapter<CalanderMeal> {
 
 
     private ArrayList<CalanderMeal> mCalList;
 
-    private CalanderService calService;
+    private CalendarService calService;
 
 
-    public CalendarAdapter(ArrayList<CalanderMeal> calList){
+    public CalendarAdapter(Context context, int layoutResourceID, ArrayList<CalanderMeal> calList){
+       super(context, layoutResourceID, calList);
         this.mCalList = calList;
+
     }
 
     public Object getDayItems(){
 
-        ArrayList<CalanderMeal> calList;
-        calService = CalanderServiceFactory.getCalanderService();
+        List<CalanderMeal> calList;
+        calService = CalendarServiceFactory.getCalanderService();
         calList = calService.getMealsByDay();
 
         return calList;
@@ -51,10 +45,7 @@ public class CalendarAdapter extends BaseAdapter {
         return  mCalList.size();
     }
 
-    @Override
-    public Object getItem(int position) {
-        return mCalList.get(position);
-    }
+
 
     @Override
     public long getItemId(int position) {

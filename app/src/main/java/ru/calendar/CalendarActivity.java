@@ -13,15 +13,16 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 
-import com.jberry.services.calander.CalanderService;
-import com.jberry.services.calander.CalanderServiceFactory;
+
+import com.jberry.services.calendar.CalendarService;
+import com.jberry.services.calendar.CalendarServiceFactory;
 
 import jBerry.MySugar.R;
 
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
 public class CalendarActivity extends FragmentActivity implements TabListener {
 
-    CalanderService cale = CalanderServiceFactory.getCalanderService();
+    CalendarService cale = CalendarServiceFactory.getCalanderService();
 
 
     ActionBar actionBar;
