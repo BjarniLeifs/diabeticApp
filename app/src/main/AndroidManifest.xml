@@ -51,5 +51,9 @@
             android:name="ru.Settings.SensitivityInfoActivity"
             android:label="SensitivityInfoActivity"
             />
+        <activity
+            android:name="ru.checkin.NutritionActivity"
+            android:label="NutritionActivity"
+            />
     </application>
 </manifest>

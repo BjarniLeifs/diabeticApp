@@ -5,10 +5,10 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.jberry.services.user.UserService;
 import com.jberry.services.user.UserServiceFactory;
@@ -23,7 +23,7 @@ public class LoginActivity extends ActionBarActivity {
     EditText name, password;
     Button logIn, goToSignUp;
     UserService user = UserServiceFactory.getUserService();
-    boolean hallo = false;
+    boolean access, accessSignup;
 
     @Override
     protected void onCreate(Bundle savedInstancesState) {
@@ -34,16 +34,6 @@ public class LoginActivity extends ActionBarActivity {
         password = (EditText) findViewById(R.id.UserPassword);
         goToSignUp = (Button) findViewById(R.id.buttonGoToSignUp);
         logIn = (Button) findViewById(R.id.ButtonLogIn);
-
-
-        final String u = name.getText().toString();
-        final String p = password.getText().toString();
-
-        try {
-            hallo = user.login(u, p);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
 
         //If the username is missing the log in button is not clickable
         TextWatcher tw = new TextWatcher() {
@@ -75,23 +65,35 @@ public class LoginActivity extends ActionBarActivity {
         goToSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(hallo) {
-                    Intent intent = new Intent(ru.signup.LoginActivity.this, SignupActivity.class);
-                    startActivityForResult(intent, 1);
-                }
+                Intent intent = new Intent(ru.signup.LoginActivity.this, SignupActivity.class);
+                startActivityForResult(intent, 1);
+
+
             }
         });
         logIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(ru.signup.LoginActivity.this, ru.menu.StartActivity.class);
-                startActivityForResult(intent, 1);
+                final String u = name.getText().toString();
+                final String p = password.getText().toString();
+                try {
+                    access = user.login(u, p);
 
-
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                if(access) {
+                    Intent intent = new Intent(ru.signup.LoginActivity.this, ru.menu.StartActivity.class);
+                    startActivityForResult(intent, 1);
+                }
+                else{
+                    Toast.makeText(getBaseContext(), "wrong username or password", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
+
 
     //Gets the data from the signup activity and starts the main activity with it
     //Sends the user name from the signup to the main
@@ -101,7 +103,13 @@ public class LoginActivity extends ActionBarActivity {
             if(resultCode == RESULT_OK) {
                 String Name = data.getExtras().getString("loginName");
                 String Password = data.getExtras().getString("loginPassword");
-                if(Name != null && Password != null){
+                try {
+                    accessSignup = user.login(Name, Password);
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                if(accessSignup){
                     Intent intent = new Intent(LoginActivity.this, ru.menu.StartActivity.class);
                     intent.putExtra("name", Name);
                     startActivity(intent);

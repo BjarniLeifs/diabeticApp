@@ -1,5 +1,6 @@
 package ru.checkin;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.text.Editable;
@@ -14,6 +15,8 @@ import android.widget.EditText;
 import android.view.View.OnClickListener;
 import android.widget.Toast;
 
+import java.util.Date;
+
 import jBerry.MySugar.R;
 
 /**
@@ -22,15 +25,22 @@ import jBerry.MySugar.R;
 public class CheckinActivity extends ActionBarActivity {
     EditText bloodSugar, foodItem1, foodItem2, foodItem3, foodItem4, foodItem5, gram1, gram2, gram3, gram4, gram5;
     CheckBox Exercise;
-    Button checkIn;
+    Button checkIn, nutrition1, nutrition2, nutrition3, nutrition4, nutrition5;
     String[] food ={"epli", "bananabrauð", "banani", "appelsina", "mango"};
     double einingar = 0;
     double carb = 0;
     double carb2 = 0;
     double grams = 0;
     double grams2 = 0;
+    Date dt = new Date();
+    double exercise = 1.0;
+
+
     //Drasl sem kemur ur database
     double ratio = 10; //Frá settings
+    double morningRatio = 12;
+    double noonRatio = 15;
+    double eveningRatio = 17;
     double BL = 0; //Frá checkin
     double target = 5.5; //target blodsykur static
     double N = 2.75; //insulin næmni frá settings
@@ -72,7 +82,11 @@ public class CheckinActivity extends ActionBarActivity {
         gram4 = (EditText) findViewById(R.id.grams4);
         gram5 = (EditText) findViewById(R.id.grams5);
         checkIn = (Button) findViewById(R.id.checkInButton);
-
+        nutrition1 = (Button) findViewById(R.id.nutritionButton);
+        nutrition2 = (Button) findViewById(R.id.nutritionButton2);
+        nutrition3 = (Button) findViewById(R.id.nutritionButton3);
+        nutrition4 = (Button) findViewById(R.id.nutritionButton4);
+        nutrition5 = (Button) findViewById(R.id.nutritionButton5);
 
         final TextWatcher tw = new TextWatcher() {
             @Override
@@ -84,13 +98,19 @@ public class CheckinActivity extends ActionBarActivity {
 
                 if (foodItem2.getText().toString().length() > 0){
                     foodItem3.setVisibility(View.VISIBLE);
-                    gram3.setVisibility(View.VISIBLE);}
+                    gram3.setVisibility(View.VISIBLE);
+                    nutrition3.setVisibility(View.VISIBLE);
+                    }
                 if (foodItem3.getText().toString().length() > 0){
                     foodItem4.setVisibility(View.VISIBLE);
-                    gram4.setVisibility(View.VISIBLE);}
+                    gram4.setVisibility(View.VISIBLE);
+                    nutrition4.setVisibility(View.VISIBLE);
+                }
                 if (foodItem4.getText().toString().length() > 0){
                     foodItem5.setVisibility(View.VISIBLE);
-                    gram5.setVisibility(View.VISIBLE);}
+                    gram5.setVisibility(View.VISIBLE);
+                    nutrition5.setVisibility(View.VISIBLE);
+                }
 
                 //Enable checkin button
                 checkIn.setEnabled((bloodSugar.getText().length() > 0)
@@ -112,12 +132,35 @@ public class CheckinActivity extends ActionBarActivity {
             }
         };
 
+        nutrition1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(CheckinActivity.this, NutritionActivity.class);
+                startActivity(intent);
+            }
+        });
+        Exercise.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if(Exercise.isChecked())
+                    exercise = exercise/2;
+                Toast.makeText(getBaseContext(), "Yay! ", Toast.LENGTH_SHORT).show();
+            }
+        });
         checkIn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 /*Calculation */
                 //Get bloodsugar input
+                int hours = dt.getHours();
+                if(hours < 11)
+                    ratio = morningRatio;
+                else if(hours >= 11 && hours < 17)
+                    ratio = noonRatio;
+                else if(hours >= 17 && hours < 23)
+                    ratio = eveningRatio;
+
                 BL = Double.parseDouble(bloodSugar.getText().toString());
                 grams = Double.parseDouble(gram1.getText().toString());
                 grams2 =  Double.parseDouble(gram2.getText().toString());
@@ -125,20 +168,16 @@ public class CheckinActivity extends ActionBarActivity {
                 K = K + ((carb2/100) * grams2); //Total carbs
                 double U = K/ratio; //Units for meal
                 double L = (BL - target)/N; //Blood sugar adjustment
-                float V = (float) (1.0 - (timeSinceLast * 0.2)) * lastTimeUnits; //active units
+                float V = (float) (1.0 - (timeSinceLast * 0.25)) * lastTimeUnits; //active units
 
                 einingar = (U + L) - V; //Units to inject
+                einingar = einingar * exercise;
+                exercise = 1;
                 int i = (int) Math.round(einingar);
                 Toast.makeText(getBaseContext(), "You need " + i + " insulin units", Toast.LENGTH_SHORT).show();
             }
         });
-        Exercise.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if(Exercise.isChecked())
-                    Toast.makeText(getBaseContext(), "Yay! ", Toast.LENGTH_SHORT).show();
-            }
-        });
+
 
         foodItem1.addTextChangedListener(tw);
         foodItem2.addTextChangedListener(tw);

@@ -56,6 +56,17 @@
             android:inputType="number"
             android:layout_alignParentLeft="true"
             android:layout_marginLeft="200dp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minHeight="0dp"
+            android:minWidth="0dp"
+            android:clickable="true"
+            android:text="\?"
+            android:id="@+id/nutritionButton"
+            android:layout_alignBottom="@+id/grams1"
+            android:layout_toRightOf="@+id/grams1" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -80,6 +91,16 @@
             android:layout_alignParentLeft="true"
             android:visibility="visible"
             android:layout_marginLeft="200dp" />
+        <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minHeight="0dp"
+        android:minWidth="0dp"
+        android:clickable="true"
+        android:text="\?"
+        android:id="@+id/nutritionButton2"
+        android:layout_alignBottom="@+id/grams2"
+        android:layout_toRightOf="@+id/grams2" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -105,6 +126,17 @@
             android:layout_alignParentLeft="true"
             android:visibility="invisible"
             android:layout_marginLeft="200dp" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minHeight="0dp"
+            android:minWidth="0dp"
+            android:clickable="true"
+            android:text="\?"
+            android:id="@+id/nutritionButton3"
+            android:visibility="invisible"
+            android:layout_alignBottom="@+id/grams3"
+            android:layout_toRightOf="@+id/grams3" />
     </RelativeLayout>
     <RelativeLayout
         android:layout_width="fill_parent"
@@ -129,6 +161,17 @@
             android:layout_alignParentLeft="true"
             android:visibility="invisible"
             android:layout_marginLeft="200dp" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minHeight="0dp"
+            android:minWidth="0dp"
+            android:clickable="true"
+            android:text="\?"
+            android:id="@+id/nutritionButton4"
+            android:visibility="invisible"
+            android:layout_alignBottom="@+id/grams4"
+            android:layout_toRightOf="@+id/grams4" />
     </RelativeLayout>
     <RelativeLayout
         android:layout_width="fill_parent"
@@ -152,6 +195,17 @@
             android:layout_alignParentLeft="true"
             android:visibility="invisible"
             android:layout_marginLeft="200dp" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minHeight="0dp"
+            android:minWidth="0dp"
+            android:clickable="true"
+            android:text="\?"
+            android:visibility="invisible"
+            android:id="@+id/nutritionButton5"
+            android:layout_alignBottom="@+id/grams5"
+            android:layout_toRightOf="@+id/grams5" />
     </RelativeLayout>
 
 
