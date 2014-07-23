@@ -15,6 +15,9 @@ import android.widget.EditText;
 import android.view.View.OnClickListener;
 import android.widget.Toast;
 
+import com.jberry.services.checkin.CheckInService;
+import com.jberry.services.checkin.CheckInServiceFactory;
+
 import java.util.Date;
 
 import jBerry.MySugar.R;
@@ -27,25 +30,25 @@ public class CheckinActivity extends ActionBarActivity {
     CheckBox Exercise;
     Button checkIn, nutrition1, nutrition2, nutrition3, nutrition4, nutrition5;
     String[] food ={"epli", "bananabrauð", "banani", "appelsina", "mango"};
-    double einingar = 0;
+   /* double einingar = 0;
     double carb = 0;
     double carb2 = 0;
     double grams = 0;
-    double grams2 = 0;
+    double grams2 = 0;*/
     Date dt = new Date();
-    double exercise = 1.0;
+    boolean exercise;
 
-
+    CheckInService checker = CheckInServiceFactory.getCheckInService();
     //Drasl sem kemur ur database
     double ratio = 10; //Frá settings
     double morningRatio = 12;
     double noonRatio = 15;
     double eveningRatio = 17;
     double BL = 0; //Frá checkin
-    double target = 5.5; //target blodsykur static
+    /*double target = 5.5; //target blodsykur static
     double N = 2.75; //insulin næmni frá settings
     float lastTimeUnits = 5; //frá last checkin
-    float timeSinceLast = 4; //frá last checkin
+    float timeSinceLast = 4; //frá last checkin*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -118,13 +121,13 @@ public class CheckinActivity extends ActionBarActivity {
                         && (bloodSugar.getText().length() > 0));
 
                 //Set carbs depending on food input
-                if(foodItem1.getText().toString().equals("epli")) {
+                /*if(foodItem1.getText().toString().equals("epli")) {
                     carb = 10.9;
 
                 }
                 if(foodItem2.getText().toString().equals("banani")) {
                     carb2 = 20.2;
-                }
+                }*/
             }
 
             @Override
@@ -142,8 +145,8 @@ public class CheckinActivity extends ActionBarActivity {
         Exercise.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if(Exercise.isChecked())
-                    exercise = exercise/2;
+                /*if(Exercise.isChecked())
+                    exercise = exercise/2;*/
                 Toast.makeText(getBaseContext(), "Yay! ", Toast.LENGTH_SHORT).show();
             }
         });
@@ -152,7 +155,7 @@ public class CheckinActivity extends ActionBarActivity {
             public void onClick(View view) {
 
                 /*Calculation */
-                //Get bloodsugar input
+
                 int hours = dt.getHours();
                 if(hours < 11)
                     ratio = morningRatio;
@@ -161,19 +164,22 @@ public class CheckinActivity extends ActionBarActivity {
                 else if(hours >= 17 && hours < 23)
                     ratio = eveningRatio;
 
+                //Get bloodsugar input
                 BL = Double.parseDouble(bloodSugar.getText().toString());
-                grams = Double.parseDouble(gram1.getText().toString());
-                grams2 =  Double.parseDouble(gram2.getText().toString());
-                double K = ((carb/100) * grams); //Carbs
-                K = K + ((carb2/100) * grams2); //Total carbs
-                double U = K/ratio; //Units for meal
-                double L = (BL - target)/N; //Blood sugar adjustment
-                float V = (float) (1.0 - (timeSinceLast * 0.25)) * lastTimeUnits; //active units
+                //grams = Double.parseDouble(gram1.getText().toString());
+               // grams2 =  Double.parseDouble(gram2.getText().toString());
+               // double K = ((carb/100) * grams); //Carbs
+               // K = K + ((carb2/100) * grams2); //Total carbs
+                //double U = K/ratio; //Units for meal
+               // double L = (BL - target)/N; //Blood sugar adjustment
+               // float V = (float) (1.0 - (timeSinceLast * 0.25)) * lastTimeUnits; //active units
 
-                einingar = (U + L) - V; //Units to inject
-                einingar = einingar * exercise;
-                exercise = 1;
-                int i = (int) Math.round(einingar);
+               // einingar = (U + L) - V; //Units to inject
+               // einingar = einingar * exercise;
+               // exercise = 1;
+                //int i = (int) Math.round(einingar);
+
+                int i = checker.calculateInsulin(ratio, "epli", BL, exercise);
                 Toast.makeText(getBaseContext(), "You need " + i + " insulin units", Toast.LENGTH_SHORT).show();
             }
         });
