@@ -31,10 +31,10 @@ public class FragmentA extends Fragment {
     GregorianCalendar cal = new GregorianCalendar(TimeZone.getTimeZone("US/Central"));
 
     private  CalendarAdapter adapter;
-    /*private int yearSelected; //year selected by user
+    private int yearSelected; //year selected by user
     private int monthSelected; //month selected by user
     private int dayOfMonthSelected; //day of month selected by user
-*/
+
     public static FragmentA newInstance(String text){
         FragmentA f = new FragmentA();
         return f;
@@ -45,8 +45,13 @@ public class FragmentA extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+
+        yearSelected = yearSelected;
+
         final View parentView = inflater.inflate(R.layout.fragment_a, container, false);
         final CalendarView calendarView = (CalendarView) parentView.findViewById(R.id.calendarView1);
+        cal.setTimeInMillis(calendarView.getDate());
+
         eventList = (ArrayList<CalanderMeal>) CalendarAdapter.getDayItems(Long.parseLong(sdf.format(cal.getTime())));
 
 
@@ -55,15 +60,11 @@ public class FragmentA extends Fragment {
         listview.setAdapter(adapter);
 
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener(){
+
             @Override
             public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
 
-                cal.setTimeInMillis(calendarView.getDate());
-
-                /*yearSelected = year;
-                monthSelected = month;
-                dayOfMonthSelected = dayOfMonth;
-*/
+                    cal.setTimeInMillis(calendarView.getDate());
                     eventList = (ArrayList<CalanderMeal>) CalendarAdapter.getDayItems(Long.parseLong(sdf.format(cal.getTime())));
 
                     ListAdapter adapter = new CalendarAdapter(getActivity(), R.layout.notification_list_item, eventList);

@@ -17,7 +17,10 @@ import com.jberry.services.calendar.CalendarService;
 import com.jberry.services.calendar.CalendarServiceFactory;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
 
 import jBerry.MySugar.R;
 /**
@@ -25,13 +28,15 @@ import jBerry.MySugar.R;
  */public class CalendarAdapter extends ArrayAdapter<CalanderMeal> {
 
 
-    private ArrayList<CalanderMeal> mCalList = null;
+    private ArrayList<CalanderMeal> list = null;
     private static LayoutInflater inflater=null;
+
+
 
     public CalendarAdapter(Context context, int layoutResourceID,
                            ArrayList<CalanderMeal> calList){
         super(context, layoutResourceID, calList);
-        this.mCalList = calList;
+        this.list = calList;
     }
 
     public static List<CalanderMeal> getDayItems(long unixTime){
@@ -40,12 +45,14 @@ import jBerry.MySugar.R;
         CalendarService calService = CalendarServiceFactory.getCalanderService();
         calList = calService.getMealsByDay(unixTime);
 
+
+
         return calList;
     }
 
     @Override
     public int getCount() {
-        return  mCalList.size();
+        return  list.size();
     }
 
     @Override
@@ -53,11 +60,7 @@ import jBerry.MySugar.R;
         return position;
     }
 
-    private static class ViewHolder {
-        TextView mealName;
-        TextView timeOfMeal;
-        TextView userId;
-    }
+
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -70,32 +73,16 @@ import jBerry.MySugar.R;
         }
 
         TextView mealName = (TextView)row.findViewById(R.id.notificationTitle);
-        TextView timeOfMeal = (TextView)row.findViewById(R.id.notificationDescription);
+        TextView timeOfMeal = (TextView)row.findViewById(R.id.timeOfMeal);
 
-        CalanderMeal c = mCalList.get(position);
+        CalanderMeal c = list.get(position);
         mealName.setText(c.mealName);
-        timeOfMeal.setText(c.timeOfMeal);
+
+        TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
+
+
 
         return row;
-
-/*        ViewHolder viewHolder;
-        CalanderMeal calendarMeal = getItem(position);
-
-
-        if(convertView == null){
-            viewHolder = new ViewHolder();
-            LayoutInflater inflater = LayoutInflater.from(getContext());
-            convertView = inflater.inflate(R.layout.fragment_a, null);
-            viewHolder.mealName = (TextView) convertView.findViewById(R.id.eventList);
-            convertView.setTag(viewHolder);
-
-        }else{
-            viewHolder = (ViewHolder)convertView.getTag();
-        }
-        viewHolder.mealName.setText(calendarMeal.mealName);
-
-        return convertView;
-*/
     }
 
 }
