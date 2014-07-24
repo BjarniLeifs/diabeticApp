@@ -12,6 +12,9 @@ import android.widget.GridView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.jberry.services.checkin.CheckInService;
+import com.jberry.services.checkin.CheckInServiceFactory;
+
 import java.util.ArrayList;
 
 import jBerry.MySugar.R;
@@ -55,7 +58,6 @@ public class StartActivity extends Activity{
                 }
                 else if(id == 1){
                     intent = new Intent(StartActivity.this, SignupActivity.class);
-
                 }
                 /*else if(id == 2){
                     intent = new Intent(StartActivity.this, SignupActivity.class);
