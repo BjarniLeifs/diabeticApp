@@ -45,8 +45,6 @@ import jBerry.MySugar.R;
         CalendarService calService = CalendarServiceFactory.getCalanderService();
         calList = calService.getMealsByDay(unixTime);
 
-
-
         return calList;
     }
 
@@ -73,7 +71,7 @@ import jBerry.MySugar.R;
         }
 
         TextView mealName = (TextView)row.findViewById(R.id.notificationTitle);
-        TextView timeOfMeal = (TextView)row.findViewById(R.id.timeOfMeal);
+        //TextView timeOfMeal = (TextView)row.findViewById(R.id.timeOfMeal);
 
         CalanderMeal c = list.get(position);
         mealName.setText(c.mealName);
