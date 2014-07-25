@@ -11,11 +11,14 @@ import android.widget.CalendarView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import com.jberry.dto.CalanderMeal;
+import com.jberry.dto.Meal;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Locale;
+import java.util.Objects;
 import java.util.TimeZone;
 
 import jBerry.MySugar.R;
@@ -27,6 +30,7 @@ import jBerry.MySugar.R;
 public class FragmentA extends Fragment {
 
     private ArrayList<CalanderMeal> eventList = new ArrayList<CalanderMeal>();
+    private Meal nutrition = new Meal();
     SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd", Locale.US);
     GregorianCalendar cal = new GregorianCalendar(TimeZone.getTimeZone("US/Central"));
 
@@ -53,9 +57,10 @@ public class FragmentA extends Fragment {
         cal.setTimeInMillis(calendarView.getDate());
 
         eventList = (ArrayList<CalanderMeal>) CalendarAdapter.getDayItems(Long.parseLong(sdf.format(cal.getTime())));
+        nutrition = (Meal) CalendarAdapter.getNutrition();
 
 
-        ListAdapter adapter = new CalendarAdapter(getActivity(), R.layout.notification_list_item, eventList);
+        ListAdapter adapter = new CalendarAdapter(getActivity(), R.layout.notification_list_item, eventList, nutrition);
         ListView listview = (ListView) parentView.findViewById(R.id.eventList);
         listview.setAdapter(adapter);
 
@@ -66,8 +71,9 @@ public class FragmentA extends Fragment {
 
                     cal.setTimeInMillis(calendarView.getDate());
                     eventList = (ArrayList<CalanderMeal>) CalendarAdapter.getDayItems(Long.parseLong(sdf.format(cal.getTime())));
+                     nutrition = (Meal) CalendarAdapter.getNutrition();
 
-                    ListAdapter adapter = new CalendarAdapter(getActivity(), R.layout.notification_list_item, eventList);
+                    ListAdapter adapter = new CalendarAdapter(getActivity(), R.layout.notification_list_item, eventList, nutrition);
                     ListView listview = (ListView) parentView.findViewById(R.id.eventList);
                     listview.setAdapter(adapter);
                 }
