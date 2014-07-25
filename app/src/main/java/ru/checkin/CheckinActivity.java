@@ -6,11 +6,8 @@ import android.support.v7.app.ActionBarActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.Chronometer;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.view.View.OnClickListener;
@@ -19,12 +16,10 @@ import android.widget.Toast;
 import com.jberry.services.checkin.CheckInService;
 import com.jberry.services.checkin.CheckInServiceFactory;
 
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import jBerry.MySugar.R;
@@ -108,20 +103,20 @@ public class CheckinActivity extends ActionBarActivity {
                         gram1.getText().toString().length() > 0) {
                         data.put(foodItem1.getText().toString(), Integer.parseInt(gram1.getText().toString()));
                 }
-                if (!(foodItem2.getText().toString().equals(null)) && !(gram2.getText().toString().equals(null))){
+                if (foodItem2.getText().toString().length() > 0 && gram2.getText().toString().length() > 0){
                     foodItem3.setVisibility(View.VISIBLE);
                     gram3.setVisibility(View.VISIBLE);
                     nutrition3.setVisibility(View.VISIBLE);
                     data.put(foodItem2.getText().toString(), Integer.parseInt(gram2.getText().toString()));
 
                     }
-                if (!(foodItem3.getText().toString().equals(null)) && !(gram3.getText().toString().equals(null))){
+                if (foodItem3.getText().toString().length() > 0 && gram3.getText().toString().length() > 0){
                     foodItem4.setVisibility(View.VISIBLE);
                     gram4.setVisibility(View.VISIBLE);
                     nutrition4.setVisibility(View.VISIBLE);
                     data.put(foodItem3.getText().toString(), Integer.parseInt(gram3.getText().toString()));
                 }
-                if (!foodItem4.getText().toString().equals(null) && !(gram4.getText().toString().equals(null))){
+                if (foodItem4.getText().toString().length() > 0 && gram4.getText().toString().length() > 0){
                     foodItem5.setVisibility(View.VISIBLE);
                     gram5.setVisibility(View.VISIBLE);
                     nutrition5.setVisibility(View.VISIBLE);
