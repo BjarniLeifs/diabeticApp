@@ -1,30 +1,271 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:id="@+id/checkin"
+    android:orientation="vertical"
+    android:weightSum="1">
 
-    <TextView
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Meal"
+            android:id="@+id/mealText"
+            android:textSize="20dp"
+            android:textColor="#ff65706a"
+            android:layout_marginTop="30dp"
+            android:layout_gravity="center_vertical|left"
+            android:layout_marginLeft="30dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Grams"
+            android:id="@+id/gramsText"
+            android:textSize="20dp"
+            android:textColor="#ff65706a"
+            android:layout_marginTop="30dp"
+            android:layout_gravity="center_vertical|left"
+            android:layout_marginLeft="200dp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <AutoCompleteTextView
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/item1"
+            android:inputType="textAutoComplete"
+            android:imeOptions="actionNext"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="30dp" >
+            <requestFocus/>
+        </AutoCompleteTextView>
+
+        <EditText
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/grams1"
+            android:imeOptions="actionNext"
+            android:inputType="number"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="200dp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minHeight="0dp"
+            android:minWidth="0dp"
+            android:clickable="true"
+            android:text="\?"
+            android:id="@+id/nutritionButton"
+            android:layout_alignBottom="@+id/grams1"
+            android:layout_toRightOf="@+id/grams1" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <AutoCompleteTextView
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/item2"
+            android:inputType="textAutoComplete"
+            android:imeOptions="actionNext"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="30dp" >
+        </AutoCompleteTextView>
+
+        <EditText
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/grams2"
+            android:imeOptions="actionNext"
+            android:inputType="number"
+            android:layout_alignParentLeft="true"
+            android:visibility="visible"
+            android:layout_marginLeft="200dp" />
+        <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Check In"
-        android:id="@+id/textCheckIn"
-        android:layout_gravity="center_horizontal"
-        android:textSize="30dp"
-        android:textColor="#ff65706a"
-        android:layout_marginTop="30dp" />
+        android:minHeight="0dp"
+        android:minWidth="0dp"
+        android:clickable="true"
+        android:text="\?"
+        android:id="@+id/nutritionButton2"
+        android:layout_alignBottom="@+id/grams2"
+        android:layout_toRightOf="@+id/grams2" />
+    </RelativeLayout>
 
-    <EditText
-        android:layout_width="match_parent"
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <AutoCompleteTextView
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/item3"
+            android:visibility="invisible"
+            android:inputType="textAutoComplete"
+            android:imeOptions="actionNext"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="30dp" >
+        </AutoCompleteTextView>
+
+        <EditText
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/grams3"
+            android:imeOptions="actionNext"
+            android:inputType="number"
+            android:layout_alignParentLeft="true"
+            android:visibility="invisible"
+            android:layout_marginLeft="200dp" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minHeight="0dp"
+            android:minWidth="0dp"
+            android:clickable="true"
+            android:text="\?"
+            android:id="@+id/nutritionButton3"
+            android:visibility="invisible"
+            android:layout_alignBottom="@+id/grams3"
+            android:layout_toRightOf="@+id/grams3" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <AutoCompleteTextView
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/item4"
+            android:inputType="textAutoComplete"
+            android:imeOptions="actionNext"
+            android:visibility="invisible"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="30dp" >
+        </AutoCompleteTextView>
+
+        <EditText
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/grams4"
+            android:imeOptions="actionNext"
+            android:inputType="number"
+            android:layout_alignParentLeft="true"
+            android:visibility="invisible"
+            android:layout_marginLeft="200dp" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minHeight="0dp"
+            android:minWidth="0dp"
+            android:clickable="true"
+            android:text="\?"
+            android:id="@+id/nutritionButton4"
+            android:visibility="invisible"
+            android:layout_alignBottom="@+id/grams4"
+            android:layout_toRightOf="@+id/grams4" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <AutoCompleteTextView
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/item5"
+            android:visibility="invisible"
+            android:inputType="textAutoComplete"
+            android:imeOptions="actionNext"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="30dp" >
+        </AutoCompleteTextView>
+
+        <EditText
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/grams5"
+            android:inputType="number"
+            android:layout_alignParentLeft="true"
+            android:visibility="invisible"
+            android:layout_marginLeft="200dp" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minHeight="0dp"
+            android:minWidth="0dp"
+            android:clickable="true"
+            android:text="\?"
+            android:visibility="invisible"
+            android:id="@+id/nutritionButton5"
+            android:layout_alignBottom="@+id/grams5"
+            android:layout_toRightOf="@+id/grams5" />
+    </RelativeLayout>
+
+
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:inputType="number"
-        android:ems="10"
-        android:id="@+id/editText"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginLeft="80dp"
-        android:layout_marginRight="200dp"
-        android:layout_marginTop="20dp"
-        android:focusableInTouchMode="false"
-        android:clickable="false" />
+        android:layout_weight="0.23">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Bloodsugar"
+            android:id="@+id/bloodSugarText"
+            android:textSize="20dp"
+            android:textColor="#ff65706a"
+            android:layout_gravity="center_vertical|left"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="20dp" />
+        <EditText
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:ems="10"
+            android:id="@+id/bloodSugarItem"
+            android:layout_marginLeft="150dp"
+            android:textSize="20dp"
+            android:layout_alignBottom="@+id/bloodSugarText"
+            android:layout_marginTop="10dp" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Calander"
+            android:id="@+id/fromCalander"
+            android:textSize="15dp"
+            android:layout_gravity="center_vertical|left"
+            android:layout_marginLeft="230dp"
+            android:singleLine="true" />
+    </RelativeLayout>
+
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Have you exercised since the last time you measured your blood sugar?"
+        android:id="@+id/checkBoxItem"
+        android:layout_marginLeft="20dp"
+        android:singleLine="false"
+        android:layout_marginTop="10dp"
+        android:clickable="true"
+        android:checked="false"
+        android:layout_marginBottom="10dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Check in"
+        android:id="@+id/checkInButton"
+        android:layout_gravity="center_horizontal|bottom"/>
+
+
 </LinearLayout>

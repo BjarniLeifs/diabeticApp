@@ -23,6 +23,8 @@ import com.jberry.services.meal.MealServiceFactory;
 
 import org.w3c.dom.Text;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -94,14 +96,27 @@ import jBerry.MySugar.R;
         TextView mealName = (TextView)row.findViewById(R.id.notificationTitle);
         //TextView timeOfMeal = (TextView)row.findViewById(R.id.timeOfMeal);
         TextView nuteInfo = (TextView)row.findViewById(R.id.description);
+        TextView time = (TextView)row.findViewById(R.id.timeOfMeal);
 
         CalanderMeal c = list.get(position);
+
+        Date date = new Date(c.timeOfMeal*1000L);
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm"); // the format of your date
+        sdf.setTimeZone(TimeZone.getTimeZone("GMT-0"));
+
+
+
+
+        String timeOfMeal = sdf.format(date);
+
+
         String s = Float.toString(nutrition.PróteinAlls);
         float kolvetni = nutrition.KolvetniAlls;
         float fita = nutrition.FitaAlls;
 
         mealName.setText(c.mealName);
         nuteInfo.setText(s);
+        time.setText(timeOfMeal);
 
 
 

@@ -12,15 +12,14 @@ import android.widget.GridView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.jberry.services.checkin.CheckInService;
-import com.jberry.services.checkin.CheckInServiceFactory;
-
 import java.util.ArrayList;
 
 import jBerry.MySugar.R;
+import ru.Settings.SettingsActivity;
 import ru.backStore.CustomArrayAdapter;
 import ru.backStore.CustomClass;
 import ru.calendar.CalendarActivity;
+import ru.checkin.CheckinActivity;
 import ru.signup.SignupActivity;
 
 
@@ -51,22 +50,22 @@ public class StartActivity extends Activity{
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int pos,
                                     long id){
-                Intent intent = null;
+                Intent intent;
                 if(id == 0){
                     intent = new Intent(StartActivity.this, CalendarActivity.class);
 
                 }
                 else if(id == 1){
-                    intent = new Intent(StartActivity.this, SignupActivity.class);
+                    intent = new Intent(StartActivity.this, CheckinActivity.class);
                 }
-                /*else if(id == 2){
-                    intent = new Intent(StartActivity.this, SignupActivity.class);
+                else if(id == 2){
+                    intent = new Intent(StartActivity.this, SettingsActivity.class);
 
                 }
                 else{
                     intent = new Intent(StartActivity.this, SignupActivity.class);
 
-                }*/
+                }
                 startActivity(intent);
 
                 TextView view2=(TextView) ((ViewGroup) view).getChildAt(1);

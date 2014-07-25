@@ -28,6 +28,7 @@ public class SignupActivity extends LoginActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
+
         name = (EditText) findViewById(R.id.nameText);
         password = (EditText) findViewById(R.id.passwordText);
         passwordVerify = (EditText) findViewById(R.id.passwordAgainText);

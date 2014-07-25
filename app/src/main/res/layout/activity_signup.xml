@@ -42,7 +42,8 @@
         android:hint="Email"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
-        android:layout_marginRight="20dp" />
+        android:layout_marginRight="20dp"
+        android:autoLink="email" />
 
     <EditText
         android:layout_width="fill_parent"
@@ -53,6 +54,7 @@
         android:layout_marginRight="20dp"
         android:password="true"
         android:hint="Password"
+        android:imeOptions="actionNext"
         android:linksClickable="false" />
 
     <EditText
@@ -61,6 +63,7 @@
         android:ems="10"
         android:id="@+id/passwordAgainText"
         android:hint="Repeat password"
+        android:imeOptions="actionNext"
         android:password="true"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
