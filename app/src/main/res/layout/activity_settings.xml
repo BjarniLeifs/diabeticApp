@@ -113,77 +113,34 @@
 
     <RelativeLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Insulin sensitivity"
-            android:id="@+id/sensitiveText"
-            android:textSize="20dp"
-            android:textColor="#ff65706a"
-            android:layout_marginTop="30dp"
-            android:layout_gravity="center_vertical|left"
-            android:layout_marginLeft="30dp" />
-        <EditText
-            android:layout_width="70dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/sensitive"
-            android:imeOptions="actionNext"
-            android:inputType="number"
-            android:layout_marginTop="20dp"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="200dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal">
 
-            />
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:minHeight="0dp"
-            android:minWidth="0dp"
             android:clickable="true"
-            android:text="\?"
+            android:layout_marginLeft="60dp"
+            android:layout_marginTop="5dp"
+            android:text="Insulin sensitivity"
             android:id="@+id/sensitiveInfoButton"
-            android:layout_alignBottom="@+id/sensitiveText"
-            android:layout_toRightOf="@+id/sensitive" />
-    </RelativeLayout>
-    <RelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Insulin ratio"
-            android:id="@+id/ratioText"
-            android:textSize="20dp"
-            android:textColor="#ff65706a"
-            android:layout_marginTop="30dp"
-            android:layout_gravity="center_vertical|left"
-            android:layout_marginLeft="30dp" />
-        <EditText
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/ratio"
-            android:imeOptions="actionNext"
-            android:inputType="number"
-            android:layout_marginTop="20dp"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="170dp"
-            android:hint="1: x carbs"
-            android:layout_alignParentEnd="false" />
+            android:width="110dp" />
+
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:clickable="true"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="5dp"
             android:minHeight="0dp"
             android:minWidth="0dp"
-            android:clickable="true"
-            android:text="\?"
+            android:text="Insulin ratio"
+            android:layout_gravity="center_vertical|left"
             android:id="@+id/ratioInfoButton"
-            android:layout_alignBottom="@+id/ratioText"
-            android:layout_toRightOf="@+id/ratio"
-            android:layout_marginLeft="0dp" />
+            android:layout_toRightOf="@+id/sensitiveInfoButton"
+            android:width="110dp" />
     </RelativeLayout>
+
 
     <Button
         android:layout_width="wrap_content"

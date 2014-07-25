@@ -13,7 +13,12 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.jberry.services.checkin.CheckInService;
+import com.jberry.services.checkin.CheckInServiceFactory;
+
 import java.util.ArrayList;
+
 import jBerry.MySugar.R;
 import ru.Settings.SettingsActivity;
 import ru.backStore.CustomArrayAdapter;
@@ -82,19 +87,6 @@ public class StartActivity extends Activity{
             }
         });
 
-    }
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.start, menu);
-        return true;
-    }
-
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        return id == R.id.action_settings || super.onOptionsItemSelected(item);
     }
 
 }

@@ -33,4 +33,5 @@ dependencies {
     compile 'com.android.support:support-v4:19.0.+'
     compile files('libs/SweetApi.jar')
     compile files('lib/SweetApi.jar')
+    compile files('libbs/SweetApi_1.1.jar')
 }
