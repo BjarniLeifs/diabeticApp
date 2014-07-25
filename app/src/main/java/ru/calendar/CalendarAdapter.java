@@ -74,7 +74,7 @@ import jBerry.MySugar.R;
         //TextView timeOfMeal = (TextView)row.findViewById(R.id.timeOfMeal);
 
         CalanderMeal c = list.get(position);
-        //mealName.setText(c.mealName);
+        mealName.setText(c.mealName);
 
 
 
