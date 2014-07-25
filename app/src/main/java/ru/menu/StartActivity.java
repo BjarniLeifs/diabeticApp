@@ -12,17 +12,14 @@ import android.widget.GridView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.jberry.services.checkin.CheckInService;
-import com.jberry.services.checkin.CheckInServiceFactory;
-
 import java.util.ArrayList;
 
 import jBerry.MySugar.R;
 import ru.Settings.SettingsActivity;
 import ru.backStore.CustomArrayAdapter;
 import ru.backStore.CustomClass;
+import ru.calendar.CalendarActivity;
 import ru.checkin.CheckinActivity;
-import ru.signup.LoginActivity;
 import ru.signup.SignupActivity;
 
 
@@ -34,9 +31,6 @@ public class StartActivity extends Activity{
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
-        //get username
-        Intent username = getIntent();
-        username.getStringExtra("username");
 
         GridView gridView=(GridView)findViewById(R.id.gridView1);
 
@@ -45,10 +39,10 @@ public class StartActivity extends Activity{
         list.add(new CustomClass(BitmapFactory.decodeResource(getResources(), R.drawable.diabetes),"Settings"));
         list.add(new CustomClass(BitmapFactory.decodeResource(getResources(), R.drawable.diabetes),"Stuff"));
 
-        final CustomArrayAdapter adapter;
-        adapter = new CustomArrayAdapter(getApplicationContext(), list);
+        final CustomArrayAdapter adapter=new CustomArrayAdapter(getApplicationContext(), list);
 
         gridView.setAdapter(adapter);
+
 
         gridView.setOnItemClickListener(new OnItemClickListener()
         {
@@ -58,12 +52,11 @@ public class StartActivity extends Activity{
                                     long id){
                 Intent intent;
                 if(id == 0){
-                    intent = new Intent(StartActivity.this, LoginActivity.class);
+                    intent = new Intent(StartActivity.this, CalendarActivity.class);
 
                 }
                 else if(id == 1){
                     intent = new Intent(StartActivity.this, CheckinActivity.class);
-
                 }
                 else if(id == 2){
                     intent = new Intent(StartActivity.this, SettingsActivity.class);

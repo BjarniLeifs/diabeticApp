@@ -6,6 +6,8 @@ import android.support.v7.app.ActionBarActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -13,8 +15,6 @@ import android.widget.EditText;
 import android.view.View.OnClickListener;
 import android.widget.Toast;
 
-import com.jberry.services.checkin.CheckInService;
-import com.jberry.services.checkin.CheckInServiceFactory;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -29,12 +29,10 @@ import jBerry.MySugar.R;
  */
 public class CheckinActivity extends ActionBarActivity {
     EditText bloodSugar, foodItem1, foodItem2, foodItem3, foodItem4, foodItem5, gram1, gram2, gram3, gram4, gram5;
-    //List<MealAdapter> Meals = new ArrayList<MealAdapter>();
-   // final List<Map<String, Integer>> data = new ArrayList<Map<String, Integer>>();
     CheckBox Exercise;
     Button checkIn, nutrition1, nutrition2, nutrition3, nutrition4, nutrition5;
     String[] food ={"epli", "bananabrauð", "banani", "appelsina", "mango"};
-    CheckInService checker = CheckInServiceFactory.getCheckInService();
+
     //Drasl sem kemur ur database
     double ratio = 10; //Frá settings
     double morningRatio = 12;//frá settings
@@ -43,16 +41,14 @@ public class CheckinActivity extends ActionBarActivity {
     //Fra notanda
     double BL = 0; //Frá checkin
     boolean exercise = false; // Fra checkin
-    int grams = 0; // fra checkin
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_checkin);
 
         final Map<String, Integer> data = new HashMap<String, Integer>();
-        //data.put(foodItem1, gram1);
 
-        /*final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.select_dialog_item, food);
+        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.select_dialog_item, food);
         AutoCompleteTextView actv = (AutoCompleteTextView)findViewById(R.id.item1);
         actv.setThreshold(1);
         actv.setAdapter(adapter);
@@ -67,7 +63,7 @@ public class CheckinActivity extends ActionBarActivity {
         actv4.setAdapter(adapter);
         AutoCompleteTextView actv5 = (AutoCompleteTextView)findViewById(R.id.item5);
         actv5.setThreshold(1);
-        actv5.setAdapter(adapter);*/
+        actv5.setAdapter(adapter);
 
         bloodSugar = (EditText) findViewById(R.id.bloodSugarItem);
         Exercise = (CheckBox) findViewById(R.id.checkBoxItem);
@@ -128,8 +124,7 @@ public class CheckinActivity extends ActionBarActivity {
                         && (foodItem1.getText().toString().length() > 0)
                         && (bloodSugar.getText().length() > 0));
 
-                /*addMeal(foodItem1.getText().toString(), gram1.getText().toString());
-                populateList();*/
+
             }
 
             @Override
@@ -147,11 +142,7 @@ public class CheckinActivity extends ActionBarActivity {
         Exercise.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if (Exercise.isChecked()) {
-                    exercise = true;
-                } else {
-                    exercise = false;
-                }
+                exercise = Exercise.isChecked();
             }
         });
         checkIn.setOnClickListener(new OnClickListener() {
@@ -174,13 +165,13 @@ public class CheckinActivity extends ActionBarActivity {
 
                 //Get bloodsugar input
                 BL = Double.parseDouble(bloodSugar.getText().toString());
-                grams = Integer.parseInt(gram1.getText().toString());
+
                 //Send checkin info to the checkinserver
-                int i = checker.calculateInsulin(ratio, "epli", grams, BL, exercise);
+                int i = MealAdapter.setMeal(ratio, data, BL, exercise);
+
                 Toast.makeText(getBaseContext(), "You need " + i + " insulin units", Toast.LENGTH_SHORT).show();
             }
         });
-
 
         foodItem1.addTextChangedListener(tw);
         foodItem2.addTextChangedListener(tw);
@@ -191,14 +182,6 @@ public class CheckinActivity extends ActionBarActivity {
         bloodSugar.addTextChangedListener(tw);
 
     }
-    /*private void populateList() {
-        ArrayAdapter<Meal> adapter = new MealListAdapter();
-
-    }
-    private void addMeal(String foodItem, Integer grams) {
-        Meals.add(new MealAdapter(CheckinActivity.this, food,resources(), foodItem, grams));
-    }*/
-
 }
 
 

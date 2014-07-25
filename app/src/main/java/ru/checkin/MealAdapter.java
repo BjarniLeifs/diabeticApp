@@ -1,44 +1,42 @@
 package ru.checkin;
 
 import android.content.Context;
+import android.view.LayoutInflater;
 import android.widget.Adapter;
-import android.widget.SimpleAdapter;
+import android.widget.ArrayAdapter;
+import com.jberry.dto.Meal;
+import com.jberry.services.checkin.CheckInService;
+import com.jberry.services.checkin.CheckInServiceFactory;
 
-import java.util.HashMap;
-import java.util.List;
+import java.util.ArrayList;
 import java.util.Map;
 
 /**
  * Created by Anna on 24.7.2014.
  */
 
-public class MealAdapter extends SimpleAdapter {
+public class MealAdapter extends ArrayAdapter<Meal> {
+    private ArrayList<Meal> list = null;
+
+    private static LayoutInflater inflater = null;
     private String _food;
     private Integer _grams;
-    Adapter adapters;
-    private Context mContext;
 
     public void Meal (String food, Integer grams) {
         _food = food;
         _grams = grams;
     }
 
-    public String getFood() {
-        return _food;
+    public MealAdapter(Context context, int layoutResourceID, ArrayList<Meal> foodList) {
+        super(context, layoutResourceID, foodList);
+        this.list = foodList;
+    }
+    public static  int setMeal(double ratio, Map data, double bloodSugar, boolean exercise) {
+
+
+        CheckInService checker = CheckInServiceFactory.getCheckInService();
+        return checker.calculateInsulin(ratio, data, bloodSugar, exercise);
     }
 
-    public Integer getGrams() {
-        return _grams;
-    }
-
-    public MealAdapter(Context context, List<? extends Map<String, Integer>> data, int resources, String[] from, int[] to) {
-        super(context, data, resources, from, to);
-        mContext = context;
-        Map<String, Integer> addFood = new HashMap<String, Integer>();
-        addFood.put(_food, _grams);
-    }
-    //private void addMeal(String food, String grams) {
-      //  Meals.add(new Meal(food, grams));
-    //}
 
 }

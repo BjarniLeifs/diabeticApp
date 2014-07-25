@@ -17,7 +17,7 @@ import jBerry.MySugar.R;
  * Created by Anna on 16.7.2014.
  */
 public class SettingsActivity extends ActionBarActivity{
-    EditText height, weight, age, sensitivity, ratio;
+    EditText height, weight, age, ratio;
     CheckBox isMale, isFemale;
     Button sensitivityInfo, ratioInfo, save;
     double genderId, cm, kg, year, rat;
@@ -31,7 +31,6 @@ public class SettingsActivity extends ActionBarActivity{
         height = (EditText) findViewById(R.id.height);
         weight = (EditText) findViewById(R.id.weight);
         age = (EditText) findViewById(R.id.age);
-        sensitivity = (EditText) findViewById(R.id.sensitive);
         isMale = (CheckBox) findViewById(R.id.male);
         isFemale = (CheckBox) findViewById(R.id.female);
         sensitivityInfo = (Button) findViewById(R.id.sensitiveInfoButton);
@@ -106,7 +105,6 @@ public class SettingsActivity extends ActionBarActivity{
                 startActivity(intent);
             }
         });
-        sensitivity.addTextChangedListener(tw);
     }
 
 }
