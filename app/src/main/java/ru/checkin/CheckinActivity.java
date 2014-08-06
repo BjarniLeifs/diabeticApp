@@ -23,6 +23,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import jBerry.MySugar.R;
+import ru.calendar.CalendarActivity;
 
 /**
  * Created by Anna on 26.6.2014.
@@ -30,7 +31,7 @@ import jBerry.MySugar.R;
 public class CheckinActivity extends ActionBarActivity {
     EditText bloodSugar, foodItem1, foodItem2, foodItem3, foodItem4, foodItem5, gram1, gram2, gram3, gram4, gram5;
     CheckBox Exercise;
-    Button checkIn, nutrition1, nutrition2, nutrition3, nutrition4, nutrition5;
+    Button checkIn, calendar,  nutrition1, nutrition2, nutrition3, nutrition4, nutrition5;
     String[] food ={"epli", "bananabrauð", "banani", "appelsina", "mango"};
 
     //Drasl sem kemur ur database
@@ -78,6 +79,7 @@ public class CheckinActivity extends ActionBarActivity {
         gram4 = (EditText) findViewById(R.id.grams4);
         gram5 = (EditText) findViewById(R.id.grams5);
         checkIn = (Button) findViewById(R.id.checkInButton);
+        calendar = (Button) findViewById(R.id.fromCalander);
         nutrition1 = (Button) findViewById(R.id.nutritionButton);
         nutrition2 = (Button) findViewById(R.id.nutritionButton2);
         nutrition3 = (Button) findViewById(R.id.nutritionButton3);
@@ -143,6 +145,13 @@ public class CheckinActivity extends ActionBarActivity {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 exercise = Exercise.isChecked();
+            }
+        });
+        calendar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(CheckinActivity.this, CalendarActivity.class);
+                startActivity(intent);
             }
         });
         checkIn.setOnClickListener(new OnClickListener() {
