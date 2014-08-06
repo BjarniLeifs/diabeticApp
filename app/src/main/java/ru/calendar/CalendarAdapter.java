@@ -4,11 +4,13 @@ package ru.calendar;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.view.LayoutInflater;
+import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -41,10 +43,6 @@ import jBerry.MySugar.R;
     private Meal nutrition = null;
     private static LayoutInflater inflater=null;
 
-
-
-
-
     public CalendarAdapter(Context context, int layoutResourceID,
                            ArrayList<CalanderMeal> calList, Meal _nutrition){
 
@@ -58,7 +56,6 @@ import jBerry.MySugar.R;
         List<CalanderMeal> calList;
         CalendarService calService = CalendarServiceFactory.getCalanderService();
         calList = calService.getMealsByDay(unixTime);
-
 
         return calList;
     }
@@ -81,6 +78,10 @@ import jBerry.MySugar.R;
         return position;
     }
 
+    public static long setDeleteRow(long date){
+       return date;
+    }
+
 
 
     @Override
@@ -94,8 +95,7 @@ import jBerry.MySugar.R;
         }
 
         TextView mealName = (TextView)row.findViewById(R.id.notificationTitle);
-        //TextView timeOfMeal = (TextView)row.findViewById(R.id.timeOfMeal);
-        TextView nuteInfo = (TextView)row.findViewById(R.id.description);
+        TextView nuteInfo = (TextView)row.findViewById(R.id.info);
         TextView time = (TextView)row.findViewById(R.id.timeOfMeal);
 
         CalanderMeal c = list.get(position);
@@ -104,21 +104,15 @@ import jBerry.MySugar.R;
         SimpleDateFormat sdf = new SimpleDateFormat("HH:mm"); // the format of your date
         sdf.setTimeZone(TimeZone.getTimeZone("GMT-0"));
 
-
-
-
         String timeOfMeal = sdf.format(date);
 
-
-        String s = Float.toString(nutrition.PróteinAlls);
-        float kolvetni = nutrition.KolvetniAlls;
-        float fita = nutrition.FitaAlls;
+        String p = Float.toString(nutrition.PróteinAlls);
+        String k = Float.toString(nutrition.KolvetniAlls);
+        String f = Float.toString(nutrition.FitaAlls);
 
         mealName.setText(c.mealName);
-        nuteInfo.setText(s);
+        nuteInfo.setText("Protein: " + p + " Kolvetni: " + k + " Fita" + f);
         time.setText(timeOfMeal);
-
-
 
         return row;
     }

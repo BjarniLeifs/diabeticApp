@@ -57,5 +57,8 @@
             android:name="ru.checkin.NutritionActivity"
             android:label="NutritionActivity"
             />
+        <activity
+            android:name="ru.calendar.NutritionPerMealActivity"
+            android:label="NutritionPerMealActivity"/>
     </application>
 </manifest>

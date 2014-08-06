@@ -1,40 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal" >
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal" >
 
 
-    <TextView
-        android:id="@+id/timeOfMeal"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="7dp"
-        android:text="Time of Meal"
-        android:textAppearance="?android:attr/textAppearanceMedium"/>
+>
+        <TextView
+            android:id="@+id/timeOfMeal"
+            android:layout_width="0dp"
+            android:layout_weight=".30"
+            android:layout_height="wrap_content"
+            android:layout_margin="7dp"
+            android:text="Time"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            />
 
         <TextView
             android:id="@+id/notificationTitle"
-            android:layout_width="fill_parent"
+            android:layout_width="0dp"
+            android:layout_weight=".60"
             android:layout_height="wrap_content"
             android:layout_margin="7dp"
-            android:layout_weight="1"
+            android:layout_marginLeft="20dp"
             android:text="Title"
-            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textAppearance="?android:attr/textAppearanceMedium"
             android:textStyle="bold" />
 
+        <ImageView
+            android:id="@+id/imgX"
+            android:layout_width="20dp"
+            android:layout_height="20dp" />
+    </LinearLayout>
 
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
 
         <TextView
-            android:id="@+id/description"
+            android:id="@+id/info"
+            android:textStyle="italic"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_below="@+id/linearLayout1"
-            android:layout_marginLeft="18dp"
-            android:layout_marginTop="14dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="40dp"
             android:text="description"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:textAppearance="?android:attr/textAppearanceSmall" />
     </LinearLayout>
+</RelativeLayout>
 
