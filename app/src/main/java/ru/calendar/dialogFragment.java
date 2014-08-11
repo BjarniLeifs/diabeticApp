@@ -1,7 +1,5 @@
 package ru.calendar;
 
-import android.app.Dialog;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
@@ -9,14 +7,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.view.View.OnClickListener;
 import android.widget.TextView;
 
 
 import com.jberry.dto.Meal;
 
 import jBerry.MySugar.R;
-import ru.checkin.CheckinActivity;
 
 public class dialogFragment extends DialogFragment {
     private Button nutritionView, editView, deleteView;
@@ -25,8 +21,6 @@ public class dialogFragment extends DialogFragment {
     public  dialogFragment (){
 
     }
-
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -45,13 +39,13 @@ public class dialogFragment extends DialogFragment {
         String kol = Float.toString(nutrition.KolvetniAlls);
         String fit = Float.toString(nutrition.FitaAlls);
 
-        TextView protein = (TextView) rootView.findViewById(R.id.proteinDialog);
-        TextView kolvetni = (TextView) rootView.findViewById(R.id.kolvetniDialog);
-        TextView fita = (TextView) rootView.findViewById(R.id.fitaDialog);
+        TextView protein = (TextView) rootView.findViewById(R.id.meal1);
+        TextView kolvetni = (TextView) rootView.findViewById(R.id.meal2);
+        TextView fita = (TextView) rootView.findViewById(R.id.meal3);
 
-        protein.setText("Prótein: " + pro);
-        kolvetni.setText("Kolvetni: " + kol);
-        fita.setText("Fita: " + fit);
+        protein.setText("Prótein: " + pro + "gr");
+        kolvetni.setText("Kolvetni: " + kol + "gr");
+        fita.setText("Fita: " + fit + "gr");
 
 
         nutritionView.setOnClickListener(new View.OnClickListener() {
@@ -59,7 +53,6 @@ public class dialogFragment extends DialogFragment {
             public void onClick(View v) {
 
                 Intent intent = new Intent(getActivity(), NutritionPerMealActivity.class);
-
                 startActivity(intent);
             }
         });
@@ -68,8 +61,7 @@ public class dialogFragment extends DialogFragment {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(getActivity(), NutritionPerMealActivity.class);
-
+                Intent intent = new Intent(getActivity(), EditMealActivity.class);
                 startActivity(intent);
             }
         });
@@ -79,7 +71,6 @@ public class dialogFragment extends DialogFragment {
             public void onClick(View v) {
 
                 Intent intent = new Intent(getActivity(), NutritionPerMealActivity.class);
-
                 startActivity(intent);
             }
         });

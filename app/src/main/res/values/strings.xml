@@ -15,8 +15,8 @@
     <string name="title_activity_login">LogInActivity</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="title_activity_start">StartActivity</string>
-
     <string name="hello">Hello World, Pulse7DatePickerDialogActivity!</string>
-
+    <string name="title_activity_edit_meal">EditMealActivity</string>
+    <string name="title_activity_add_meal">addMealActivity</string>
 
 </resources>

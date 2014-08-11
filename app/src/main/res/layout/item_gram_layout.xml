@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
-
+    android:baselineAligned="true"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/itemlist">
 
 
     <RelativeLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:id="@+id/item11">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Máltíð"
+            android:text="Meal"
             android:id="@+id/mealText"
             android:textSize="20dp"
             android:textColor="#ff65706a"
@@ -24,7 +26,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Grömm"
+            android:text="Grams"
             android:id="@+id/gramsText"
             android:textSize="20dp"
             android:textColor="#ff65706a"
@@ -109,7 +111,7 @@
             android:layout_width="140dp"
             android:layout_height="wrap_content"
             android:id="@+id/item3"
-            android:visibility="invisible"
+            android:visibility="visible"
             android:inputType="textAutoComplete"
             android:imeOptions="actionNext"
             android:layout_alignParentLeft="true"
@@ -123,7 +125,7 @@
             android:imeOptions="actionNext"
             android:inputType="number"
             android:layout_alignParentLeft="true"
-            android:visibility="invisible"
+            android:visibility="visible"
             android:layout_marginLeft="200dp" />
         <Button
             android:layout_width="wrap_content"
@@ -133,10 +135,11 @@
             android:clickable="true"
             android:text="\?"
             android:id="@+id/nutritionButton3"
-            android:visibility="invisible"
+            android:visibility="visible"
             android:layout_alignBottom="@+id/grams3"
             android:layout_toRightOf="@+id/grams3" />
     </RelativeLayout>
+
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content">
@@ -146,7 +149,7 @@
             android:id="@+id/item4"
             android:inputType="textAutoComplete"
             android:imeOptions="actionNext"
-            android:visibility="invisible"
+            android:visibility="visible"
             android:layout_alignParentLeft="true"
             android:layout_marginLeft="30dp" >
         </AutoCompleteTextView>
@@ -158,7 +161,7 @@
             android:imeOptions="actionNext"
             android:inputType="number"
             android:layout_alignParentLeft="true"
-            android:visibility="invisible"
+            android:visibility="visible"
             android:layout_marginLeft="200dp" />
         <Button
             android:layout_width="wrap_content"
@@ -168,7 +171,7 @@
             android:clickable="true"
             android:text="\?"
             android:id="@+id/nutritionButton4"
-            android:visibility="invisible"
+            android:visibility="visible"
             android:layout_alignBottom="@+id/grams4"
             android:layout_toRightOf="@+id/grams4" />
     </RelativeLayout>
@@ -179,7 +182,7 @@
             android:layout_width="140dp"
             android:layout_height="wrap_content"
             android:id="@+id/item5"
-            android:visibility="invisible"
+            android:visibility="visible"
             android:inputType="textAutoComplete"
             android:imeOptions="actionNext"
             android:layout_alignParentLeft="true"
@@ -192,7 +195,7 @@
             android:id="@+id/grams5"
             android:inputType="number"
             android:layout_alignParentLeft="true"
-            android:visibility="invisible"
+            android:visibility="visible"
             android:layout_marginLeft="200dp" />
         <Button
             android:layout_width="wrap_content"
@@ -201,68 +204,10 @@
             android:minWidth="0dp"
             android:clickable="true"
             android:text="\?"
-            android:visibility="invisible"
+            android:visibility="visible"
             android:id="@+id/nutritionButton5"
             android:layout_alignBottom="@+id/grams5"
             android:layout_toRightOf="@+id/grams5" />
     </RelativeLayout>
 
-    <TextView android:textColor="#fff"
-        android:textSize="20dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView1"
-        android:text="Pulse 7 Demo"
-        android:layout_width="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"/>
-    <TextView android:textColor="#fff"
-        android:textSize="20dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView2"
-        android:text="Date and Time Picker Dialog"
-        android:layout_width="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:paddingTop="5dp"
-        android:paddingBottom="25dp"/>
-    <LinearLayout android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/linearLayout1">
-        <EditText android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:id="@+id/txtDate"
-            android:inputType="date">
-            <requestFocus/>
-        </EditText>
-        <Button android:layout_height="wrap_content"
-            android:layout_weight="0"
-            android:id="@+id/btnCalendar"
-            android:text="Calendar"
-            android:layout_width="100dp"/>
-    </LinearLayout>
-    <LinearLayout android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/linearLayout1">
-        <EditText android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:id="@+id/txtTime"
-            android:inputType="datetime">
-            <requestFocus/>
-        </EditText>
-        <Button android:layout_height="wrap_content"
-            android:layout_weight="0"
-            android:id="@+id/btnTimePicker"
-            android:text="Time Picker"
-            android:layout_width="100dp"/>
-    </LinearLayout>
-
-
-    <Button
-        android:id="@+id/btnSave"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:text="Vista"
-        />
 </LinearLayout>

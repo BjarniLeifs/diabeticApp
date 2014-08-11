@@ -6,7 +6,7 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme" >
         <activity
             android:name="ru.menu.StartActivity"
             android:label="@string/title_activity_start"
@@ -16,49 +16,64 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            <!--<meta-data
+            <!--
+                <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="ru.signup.LoginActivity" />-->
+                android:value="ru.signup.LoginActivity" />
+            -->
         </activity>
         <!-- LoginActivity -->
         <activity
             android:name="ru.signup.LoginActivity"
             android:label="@string/title_activity_login" >
-
         </activity>
-            <!--<intent-filter>
+        <!--
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>-->
+            </intent-filter>
+        -->
 
-        <!-- CalendarActivity -->
+        <activity
+            android:name="ru.checkin.CheckinActivity"
+            android:label="CheckinActivity" />
+        <activity
+            android:name="ru.Settings.SettingsActivity"
+            android:label="SettingsActivity" />
+        <activity
+            android:name="ru.Settings.RatioInfoActivity"
+            android:label="RatioInfoActivity" />
+        <activity
+            android:name="ru.Settings.SensitivityInfoActivity"
+            android:label="SensitivityInfoActivity" />
+        <activity
+            android:name="ru.checkin.NutritionActivity"
+            android:label="NutritionActivity" />
+        <activity
+            android:name="ru.calendar.NutritionPerMealActivity"
+            android:label="NutritionPerMealActivity" />
+
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value="ru.signup.CalendarActivity" />
+        />
+        <activity
+            android:name="ru.calendar.EditMealActivity"
+            android:label="@string/title_activity_edit_meal" />
+
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value="ru.signup.CalendarActivity" />
+        />
+        <activity
+            android:name="ru.calendar.AddMealActivity"
+            android:label="@string/title_activity_add_meal" >
+        </activity>
         <activity
             android:name="ru.calendar.CalendarActivity"
             android:label="@string/title_activity_calendar" >
         </activity>
-        <activity
-            android:name="ru.checkin.CheckinActivity"
-            android:label="CheckinActivity"
-            />
-        <activity
-            android:name="ru.Settings.SettingsActivity"
-            android:label="SettingsActivity"
-            />
-        <activity
-            android:name="ru.Settings.RatioInfoActivity"
-            android:label="RatioInfoActivity"
-            />
-        <activity
-            android:name="ru.Settings.SensitivityInfoActivity"
-            android:label="SensitivityInfoActivity"
-            />
-        <activity
-            android:name="ru.checkin.NutritionActivity"
-            android:label="NutritionActivity"
-            />
-        <activity
-            android:name="ru.calendar.NutritionPerMealActivity"
-            android:label="NutritionPerMealActivity"/>
     </application>
+
 </manifest>

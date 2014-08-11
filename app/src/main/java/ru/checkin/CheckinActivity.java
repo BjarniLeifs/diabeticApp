@@ -24,7 +24,7 @@ import java.util.Map;
 
 import jBerry.MySugar.R;
 
-/**
+/*
  * Created by Anna on 26.6.2014.
  */
 public class CheckinActivity extends ActionBarActivity {
@@ -49,9 +49,11 @@ public class CheckinActivity extends ActionBarActivity {
         final Map<String, Integer> data = new HashMap<String, Integer>();
 
         final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.select_dialog_item, food);
+
         AutoCompleteTextView actv = (AutoCompleteTextView)findViewById(R.id.item1);
         actv.setThreshold(1);
         actv.setAdapter(adapter);
+
         AutoCompleteTextView actv2 = (AutoCompleteTextView)findViewById(R.id.item2);
         actv2.setThreshold(1);
         actv2.setAdapter(adapter);
