@@ -67,7 +67,7 @@
             android:value="ru.signup.CalendarActivity" />
         />
         <activity
-            android:name="ru.calendar.AddMealActivity"
+            android:name="ru.calendar.AddMealToActivity"
             android:label="@string/title_activity_add_meal" >
         </activity>
         <activity
