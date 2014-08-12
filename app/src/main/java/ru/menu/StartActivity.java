@@ -21,7 +21,6 @@ import ru.backStore.CustomClass;
 import ru.calendar.CalendarActivity;
 import ru.checkin.CheckinActivity;
 import ru.reminder.ReminderActivity;
-import ru.signup.SignupActivity;
 
 
 public class StartActivity extends Activity{

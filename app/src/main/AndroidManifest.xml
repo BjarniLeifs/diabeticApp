@@ -50,14 +50,6 @@
             android:name="ru.Settings.SettingsActivity"
             android:label="SettingsActivity"
             />
-        <activity
-            android:name="ru.Settings.RatioInfoActivity"
-            android:label="RatioInfoActivity"
-            />
-        <activity
-            android:name="ru.Settings.SensitivityInfoActivity"
-            android:label="SensitivityInfoActivity"
-            />
 
         <activity
             android:name="ru.calendar.NutritionPerMealActivity"

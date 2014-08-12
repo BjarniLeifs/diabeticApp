@@ -1,7 +1,5 @@
 package ru.calendar;
 
-import android.app.Dialog;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
@@ -9,14 +7,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.view.View.OnClickListener;
 import android.widget.TextView;
-
 
 import com.jberry.dto.Meal;
 
 import jBerry.MySugar.R;
-import ru.checkin.CheckinActivity;
 
 public class dialogFragment extends DialogFragment {
     private Button nutritionView, editView, deleteView;
@@ -48,6 +43,7 @@ public class dialogFragment extends DialogFragment {
         TextView protein = (TextView) rootView.findViewById(R.id.proteinDialog);
         TextView kolvetni = (TextView) rootView.findViewById(R.id.kolvetniDialog);
         TextView fita = (TextView) rootView.findViewById(R.id.fitaDialog);
+
 
         protein.setText("Prótein: " + pro);
         kolvetni.setText("Kolvetni: " + kol);

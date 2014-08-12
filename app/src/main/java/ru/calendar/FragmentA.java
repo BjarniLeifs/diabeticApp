@@ -2,8 +2,6 @@ package ru.calendar;
 
 import android.annotation.TargetApi;
 
-
-import android.app.Dialog;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

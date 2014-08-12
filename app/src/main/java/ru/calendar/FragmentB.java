@@ -2,21 +2,11 @@ package ru.calendar;
 
 
 import android.app.DialogFragment;
-import android.app.TimePickerDialog;
 import android.os.Bundle;
 //import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TimePicker;
-import android.text.format.DateFormat;
-
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Locale;
-
 import jBerry.MySugar.R;
 
 

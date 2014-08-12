@@ -1,21 +1,12 @@
 package ru.calendar;
 
 
-
-import android.annotation.SuppressLint;
 import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.view.LayoutInflater;
-import android.widget.ImageView;
-import android.widget.ListAdapter;
-import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.ToggleButton;
-
 import com.jberry.dto.CalanderMeal;
 import com.jberry.dto.Meal;
 import com.jberry.services.calendar.CalendarService;
@@ -23,12 +14,8 @@ import com.jberry.services.calendar.CalendarServiceFactory;
 import com.jberry.services.meal.MealService;
 import com.jberry.services.meal.MealServiceFactory;
 
-import org.w3c.dom.Text;
-
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.TimeZone;
