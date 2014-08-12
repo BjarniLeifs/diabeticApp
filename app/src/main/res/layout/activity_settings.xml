@@ -100,7 +100,8 @@
         android:text="KK"
         android:id="@+id/male"
         android:layout_marginTop="25dp"
-        android:layout_marginLeft="120dp"/>
+        android:layout_marginLeft="120dp"
+        android:checked="false" />
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -111,36 +112,43 @@
 
     </RelativeLayout>
 
-    <RelativeLayout
-        android:layout_width="fill_parent"
+
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal">
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Carb Ratio"
+        android:id="@+id/textView"
+        android:layout_gravity="center_horizontal"
+        android:textSize="20dp"
+        android:layout_marginTop="10dp" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:clickable="true"
-            android:layout_marginLeft="60dp"
-            android:layout_marginTop="5dp"
-            android:text="Insulin sensitivity"
-            android:id="@+id/sensitiveInfoButton"
-            android:width="110dp" />
+    <EditText
+        android:layout_width="146dp"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/morningRatio"
+        android:layout_gravity="center_horizontal"
+        android:hint="Morning Ratio" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:clickable="true"
-            android:layout_marginLeft="40dp"
-            android:layout_marginTop="5dp"
-            android:minHeight="0dp"
-            android:minWidth="0dp"
-            android:text="Insulin ratio"
-            android:layout_gravity="center_vertical|left"
-            android:id="@+id/ratioInfoButton"
-            android:layout_toRightOf="@+id/sensitiveInfoButton"
-            android:width="110dp" />
-    </RelativeLayout>
+    <EditText
+        android:layout_width="147dp"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/noonRatio"
+        android:layout_gravity="center_horizontal"
+        android:hint="Noon Ratio" />
 
+    <EditText
+        android:layout_width="149dp"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/eveningRatio"
+        android:layout_gravity="center_horizontal"
+        android:hint="Evening Ratio" />
 
     <Button
         android:layout_width="wrap_content"
@@ -148,7 +156,7 @@
         android:text="Save"
         android:id="@+id/saveButton"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="10dp" />
+        android:layout_marginTop="2dp" />
 
 
 </LinearLayout>

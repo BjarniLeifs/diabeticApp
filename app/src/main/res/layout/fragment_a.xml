@@ -18,6 +18,11 @@
         android:text="Events"
         android:textStyle="bold"
         android:textAppearance="?android:attr/textAppearanceLarge" />
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="click"/>
 
     <ListView
         android:id="@+id/eventList"

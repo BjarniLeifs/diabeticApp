@@ -125,7 +125,7 @@ class MyAdapter extends FragmentPagerAdapter {
 
         switch(arg0){
             case 0: return FragmentA.newInstance("FragmentA, Instance 1");
-            case 1: return FragmentB.newInstance("FragmentB, Instance 2");
+            //case 1: return FragmentB.newInstance("FragmentB, Instance 2");
             case 2: return FragmentC.newInstance("FragmentC, Instance 3");
             default: return FragmentA.newInstance("FragmentA, Default");
         }

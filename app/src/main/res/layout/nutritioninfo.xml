@@ -1,0 +1,204 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/nutrition_fact"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="22dp"
+            android:layout_marginTop="10dp"
+            android:text="Ýtarlegar næringarupplysingar"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textStyle="bold"
+            android:typeface="sans" />
+
+        <TextView
+            android:id="@+id/amount_per_meal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:text="Heildarupplýsingar yfir máltíðina"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textStyle="bold"
+            android:typeface="sans" />
+
+        <TextView
+            android:id="@+id/protein"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="10dp"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textStyle="bold"
+
+            android:typeface="sans" />
+
+        <TextView
+            android:id="@+id/kolvetni"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="10dp"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textStyle="bold"
+            android:typeface="sans" />
+
+
+        <TextView
+            android:id="@+id/fita"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="10dp"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textStyle="bold"
+
+            android:typeface="sans" />
+        <TextView
+            android:id="@+id/mettadarfitusyrur"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="10dp"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:typeface="sans" />
+        <TextView
+            android:id="@+id/kolesterol"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="10dp"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:typeface="sans" />
+
+        <TextView
+            android:id="@+id/kalk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="10dp"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:typeface="sans" />
+        <TextView
+            android:id="@+id/vidbaettursykur"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="10dp"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:typeface="sans" />
+        <TextView
+            android:id="@+id/trefjaefni"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="10dp"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:typeface="sans" />
+        <TextView
+            android:id="@+id/alkahol"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="10dp"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:typeface="sans" />
+        <TextView
+            android:id="@+id/steinefni"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="10dp"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:typeface="sans" />
+        <TextView
+            android:id="@+id/avitamin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="10dp"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:typeface="sans" />
+        <TextView
+            android:id="@+id/cvitamin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="10dp"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:typeface="sans" />
+
+        <TextView
+            android:id="@+id/dvitiamin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="10dp"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:typeface="sans" />
+
+        <TextView
+            android:id="@+id/evitamin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="10dp"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:typeface="sans" />
+
+        <TextView
+            android:id="@+id/b1vitamin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="10dp"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:typeface="sans" />
+
+        <TextView
+            android:id="@+id/b2vitamin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="10dp"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:typeface="sans" />
+
+        <TextView
+            android:id="@+id/b12vitamin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="10dp"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:typeface="sans" />
+
+
+    </LinearLayout>
+</ScrollView>

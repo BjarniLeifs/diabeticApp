@@ -2,6 +2,7 @@ package ru.checkin;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.ActionBarActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -14,7 +15,7 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.view.View.OnClickListener;
 import android.widget.Toast;
-
+import com.jberry.dto.Food;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -34,6 +35,8 @@ public class CheckinActivity extends ActionBarActivity {
     Button checkIn, calendar,  nutrition1, nutrition2, nutrition3, nutrition4, nutrition5;
     String[] food ={"epli", "bananabrauð", "banani", "appelsina", "mango"};
 
+    private Food nutrition = new Food();
+    private FragmentManager fManager;
     //Drasl sem kemur ur database
     double ratio = 10; //Frá settings
     double morningRatio = 12;//frá settings
@@ -86,6 +89,9 @@ public class CheckinActivity extends ActionBarActivity {
         nutrition4 = (Button) findViewById(R.id.nutritionButton4);
         nutrition5 = (Button) findViewById(R.id.nutritionButton5);
 
+        nutrition = (Food) MealAdapter.getFoodNutrition();
+
+
 
 
         final TextWatcher tw = new TextWatcher() {
@@ -96,7 +102,6 @@ public class CheckinActivity extends ActionBarActivity {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
 
-               // adapter = new MealAdapter(getApplicationContext(), food, R.layout.activity_checkin, new String[])
                 if(foodItem1.getText().toString().length() > 0 &&
                         gram1.getText().toString().length() > 0) {
                         data.put(foodItem1.getText().toString(), Integer.parseInt(gram1.getText().toString()));
@@ -134,13 +139,44 @@ public class CheckinActivity extends ActionBarActivity {
             }
         };
 
-        nutrition1.setOnClickListener(new View.OnClickListener() {
+
+        OnClickListener nutrClk = new OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(CheckinActivity.this, NutritionActivity.class);
-                startActivity(intent);
+                if(view == nutrition1){
+                    fManager = getSupportFragmentManager();
+                    foodDialogFragment dialog = new foodDialogFragment();
+                    dialog.show(fManager, "stuff");
+                }
+                if(view == nutrition2){
+                    fManager = getSupportFragmentManager();
+                    foodDialogFragment dialog = new foodDialogFragment();
+                    dialog.show(fManager, "stuff");
+
+                }
+                if(view == nutrition3){
+                    fManager = getSupportFragmentManager();
+                    foodDialogFragment dialog = new foodDialogFragment();
+                    dialog.show(fManager, "stuff");
+
+                }
+                if(view == nutrition4){
+                    fManager = getSupportFragmentManager();
+                    foodDialogFragment dialog = new foodDialogFragment();
+                    dialog.show(fManager, "stuff");
+
+                }
+                if(view == nutrition5){
+                    fManager = getSupportFragmentManager();
+                    foodDialogFragment dialog = new foodDialogFragment();
+                    dialog.show(fManager, "stuff");
+
+                }
+
             }
-        });
+        };
+
+
         Exercise.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
@@ -157,8 +193,6 @@ public class CheckinActivity extends ActionBarActivity {
         checkIn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                /*Calculation */
 
                 //Get the hour of the day to set the ratio
                 Calendar calendar = new GregorianCalendar();
@@ -189,7 +223,11 @@ public class CheckinActivity extends ActionBarActivity {
         foodItem5.addTextChangedListener(tw);
         checkIn.addTextChangedListener(tw);
         bloodSugar.addTextChangedListener(tw);
-
+        nutrition1.setOnClickListener(nutrClk);
+        nutrition2.setOnClickListener(nutrClk);
+        nutrition3.setOnClickListener(nutrClk);
+        nutrition4.setOnClickListener(nutrClk);
+        nutrition5.setOnClickListener(nutrClk);
     }
 }
 

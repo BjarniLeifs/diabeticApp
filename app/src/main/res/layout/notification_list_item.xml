@@ -1,48 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="wrap_content"
+    android:orientation="horizontal" >
+
 
     <LinearLayout
-        android:id="@+id/linearLayout1"
         android:layout_width="fill_parent"
-        android:layout_height="2dp"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/notificationTitle"
-        android:background="#33ccff"
-        android:orientation="vertical" >
+        android:layout_height="wrap_content"
+>
+        <TextView
+            android:id="@+id/timeOfMeal"
+            android:layout_width="0dp"
+            android:layout_weight=".30"
+            android:layout_height="wrap_content"
+            android:layout_margin="7dp"
+            android:text="Time"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            />
+
+        <TextView
+            android:id="@+id/notificationTitle"
+            android:layout_width="0dp"
+            android:layout_weight=".60"
+            android:layout_height="wrap_content"
+            android:layout_margin="7dp"
+            android:layout_marginLeft="20dp"
+            android:text="Title"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/imgX"
+            android:layout_width="20dp"
+            android:layout_height="20dp" />
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/notificationTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/timeOfMeal"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="14dp"
-        android:textStyle="bold"
-        android:text="Title"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    <TextView
-        android:id="@+id/timeOfMeal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/linearLayout1"
-        android:layout_marginLeft="18dp"
-        android:layout_marginTop="14dp"
-        android:text="Time of Meal"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <LinearLayout
-        android:id="@+id/LinearLayout02"
         android:layout_width="fill_parent"
-        android:layout_height="2dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignTop="@+id/notificationTitle"
-        android:background="#33ccff"
-        android:orientation="vertical" >
-    </LinearLayout>
+        android:layout_height="fill_parent">
 
+        <TextView
+            android:id="@+id/info"
+            android:textStyle="italic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="40dp"
+            android:text="description"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+    </LinearLayout>
 </RelativeLayout>
+

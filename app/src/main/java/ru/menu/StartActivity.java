@@ -20,6 +20,7 @@ import ru.backStore.CustomArrayAdapter;
 import ru.backStore.CustomClass;
 import ru.calendar.CalendarActivity;
 import ru.checkin.CheckinActivity;
+import ru.reminder.ReminderActivity;
 import ru.signup.SignupActivity;
 
 
@@ -63,7 +64,7 @@ public class StartActivity extends Activity{
 
                 }
                 else{
-                    intent = new Intent(StartActivity.this, SignupActivity.class);
+                    intent = new Intent(StartActivity.this, ReminderActivity.class);
 
                 }
                 startActivity(intent);
