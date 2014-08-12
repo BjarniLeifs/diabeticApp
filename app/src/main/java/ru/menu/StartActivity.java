@@ -15,6 +15,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import jBerry.MySugar.R;
+import ru.History.HistoryActivity;
 import ru.Settings.SettingsActivity;
 import ru.backStore.CustomArrayAdapter;
 import ru.backStore.CustomClass;
@@ -33,10 +34,12 @@ public class StartActivity extends Activity{
         setContentView(R.layout.activity_start);
 
 
-        list.add(new CustomClass(BitmapFactory.decodeResource(getResources(), R.drawable.diabetes),"Calendar"));
+        list.add(new CustomClass(BitmapFactory.decodeResource(getResources(), R.drawable.diabetes),"Dagatal"));
         list.add(new CustomClass(BitmapFactory.decodeResource(getResources(), R.drawable.diabetes),"Check-In"));
-        list.add(new CustomClass(BitmapFactory.decodeResource(getResources(), R.drawable.diabetes),"Settings"));
+        list.add(new CustomClass(BitmapFactory.decodeResource(getResources(), R.drawable.diabetes),"Stillingar"));
         list.add(new CustomClass(BitmapFactory.decodeResource(getResources(), R.drawable.diabetes),"Stuff"));
+        list.add(new CustomClass(BitmapFactory.decodeResource(getResources(), R.drawable.diabetes),"Sagan mín"));
+        list.add(new CustomClass(BitmapFactory.decodeResource(getResources(), R.drawable.diabetes),"Fræðsla"));
 
         final CustomArrayAdapter adapter=new CustomArrayAdapter(getApplicationContext(), list);
         GridView gridView=(GridView)findViewById(R.id.gridView1);
@@ -58,6 +61,14 @@ public class StartActivity extends Activity{
                 }
                 else if(id == 2){
                     intent = new Intent(StartActivity.this, SettingsActivity.class);
+
+                }
+                else if(id == 3){
+                    intent = new Intent(StartActivity.this, SignupActivity.class);
+
+                }
+                else if (id == 4){
+                    intent = new Intent(StartActivity.this, HistoryActivity.class);
 
                 }
                 else{

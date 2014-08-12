@@ -2,10 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="jBerry.MySugar" >
 
-    <uses-sdk
-        android:minSdkVersion="8"
-        android:targetSdkVersion="17"/>
-
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
@@ -21,27 +17,25 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            <!--<meta-data
+            <!--
+                <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="ru.signup.LoginActivity" />-->
+                android:value="ru.signup.LoginActivity" />
+            -->
         </activity>
         <!-- LoginActivity -->
         <activity
             android:name="ru.signup.LoginActivity"
             android:label="@string/title_activity_login" >
-
         </activity>
-            <!--<intent-filter>
+        <!--
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>-->
+            </intent-filter>
+        -->
 
-        <!-- CalendarActivity -->
-        <activity
-            android:name="ru.calendar.CalendarActivity"
-            android:label="@string/title_activity_calendar" >
-        </activity>
         <activity
             android:name="ru.checkin.CheckinActivity"
             android:label="CheckinActivity" />
@@ -51,12 +45,6 @@
         
         <activity
             android:name="ru.calendar.NutritionPerMealActivity"
-            android:label="NutritionPerMealActivity"/>
-        <activity
-        android:name="ru.reminder.ReminderActivity"
-        android:label="ReminderActivity"/>
-
-
             android:label="NutritionPerMealActivity" />
 
         <meta-data
@@ -72,9 +60,17 @@
             android:value="ru.signup.CalendarActivity" />
         />
         <activity
-            android:name="ru.calendar.AddMealActivity"
+            android:name="ru.calendar.AddMealToActivity"
             android:label="@string/title_activity_add_meal" >
         </activity>
-       
+        <activity
+            android:name="ru.calendar.CalendarActivity"
+            android:label="@string/title_activity_calendar" >
+        </activity>
+        <activity
+            android:name="ru.History.HistoryActivity"
+            android:label="@string/title_activity_history" >
+        </activity>
     </application>
+
 </manifest>

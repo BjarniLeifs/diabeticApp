@@ -42,7 +42,7 @@ public class CalendarActivity extends ActionBarActivity {
         addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(CalendarActivity.this, AddMealActivity.class);
+                Intent intent = new Intent(CalendarActivity.this, AddMealToActivity.class);
                 startActivity(intent);
             }
         });

@@ -74,30 +74,6 @@ public class EditMealAdapter extends ArrayAdapter<String>{
             convertView.setTag(R.id.textView, convertView.findViewById(R.id.textView));
         }
 
-        // Should this maybe be: AutoCompleteTextView. User is to be able to write ap and apple comes up
-        //foodItem1 = (AutoCompleteTextView) convertView.getTag(R.id.item1);
-        //String textItem = (String) getItem(position);
-
-        //foodItem1.setText(list.toString().indexOf(0));
-        //gram1.setText(list.Meald);
-
         return r;
     }
 }
-
-        /*
-        foodItem2 = (EditText) findViewById(R.id.item2);
-        foodItem3 = (EditText) findViewById(R.id.item3);
-        foodItem4 = (EditText) findViewById(R.id.item4);
-        foodItem5 = (EditText) findViewById(R.id.item5);
-        gram1 = (EditText) findViewById(R.id.grams1);
-        gram2 = (EditText) findViewById(R.id.grams2);
-        gram3 = (EditText) findViewById(R.id.grams3);
-        gram4 = (EditText) findViewById(R.id.grams4);
-        gram5 = (EditText) findViewById(R.id.grams5);
-        checkIn = (Button) findViewById(R.id.checkInButton);
-        nutrition1 = (Button) findViewById(R.id.nutritionButton);
-        nutrition2 = (Button) findViewById(R.id.nutritionButton2);
-        nutrition3 = (Button) findViewById(R.id.nutritionButton3);
-        nutrition4 = (Button) findViewById(R.id.nutritionButton4);
-        nutrition5 = (Button) findViewById(R.id.nutritionButton5);*/
