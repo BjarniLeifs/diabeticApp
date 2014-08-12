@@ -1,6 +1,7 @@
 package ru.checkin;
 
 import android.content.Context;
+import android.view.LayoutInflater;
 import android.widget.ArrayAdapter;
 
 import com.jberry.dto.Food;
@@ -16,9 +17,10 @@ import java.util.Map;
 
 public class MealAdapter extends ArrayAdapter<Food> {
 
-    String _food;
-    Integer _grams;
-    Food nutrition = null;
+    private static LayoutInflater inflater = null;
+    private String _food;
+    private Integer _grams;
+    private Food nutrition = null;
 
     public void Meal (String food, Integer grams) {
         _food = food;

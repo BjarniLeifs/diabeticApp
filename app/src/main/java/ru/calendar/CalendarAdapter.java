@@ -1,7 +1,7 @@
 package ru.calendar;
 
-
 import android.content.Context;
+
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -19,11 +19,11 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.TimeZone;
-
 import jBerry.MySugar.R;
 /*
  * Created by Sindri on 15/07/14.
- */public class CalendarAdapter extends ArrayAdapter<CalanderMeal> {
+ */
+public class CalendarAdapter extends ArrayAdapter<CalanderMeal> {
 
 
     private ArrayList<CalanderMeal> list = null;
@@ -66,10 +66,9 @@ import jBerry.MySugar.R;
     }
 
     public static long setDeleteRow(long date){
-       return date;
+
+        return date;
     }
-
-
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {

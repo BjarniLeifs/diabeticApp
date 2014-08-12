@@ -32,7 +32,6 @@ public class StartActivity extends Activity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
 
-        GridView gridView=(GridView)findViewById(R.id.gridView1);
 
         list.add(new CustomClass(BitmapFactory.decodeResource(getResources(), R.drawable.diabetes),"Calendar"));
         list.add(new CustomClass(BitmapFactory.decodeResource(getResources(), R.drawable.diabetes),"Check-In"));
@@ -40,7 +39,7 @@ public class StartActivity extends Activity{
         list.add(new CustomClass(BitmapFactory.decodeResource(getResources(), R.drawable.diabetes),"Stuff"));
 
         final CustomArrayAdapter adapter=new CustomArrayAdapter(getApplicationContext(), list);
-
+        GridView gridView=(GridView)findViewById(R.id.gridView1);
         gridView.setAdapter(adapter);
 
 
@@ -53,7 +52,6 @@ public class StartActivity extends Activity{
                 Intent intent;
                 if(id == 0){
                     intent = new Intent(StartActivity.this, CalendarActivity.class);
-
                 }
                 else if(id == 1){
                     intent = new Intent(StartActivity.this, CheckinActivity.class);

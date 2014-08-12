@@ -1,140 +1,90 @@
 package ru.calendar;
 
-import android.annotation.TargetApi;
-import android.app.ActionBar;
-import android.app.ActionBar.TabListener;
-import android.app.FragmentTransaction;
-import android.os.Build;
-import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
+import android.content.Intent;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.util.Log;
+import android.support.v7.app.ActionBarActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.CalendarView;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 
+import com.jberry.dto.CalanderMeal;
+import com.jberry.dto.Meal;
 
-import com.jberry.services.calendar.CalendarService;
-import com.jberry.services.calendar.CalendarServiceFactory;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.GregorianCalendar;
+import java.util.Locale;
+import java.util.TimeZone;
 
 import jBerry.MySugar.R;
 
-@TargetApi(Build.VERSION_CODES.HONEYCOMB)
-public class CalendarActivity extends FragmentActivity implements TabListener {
+public class CalendarActivity extends ActionBarActivity {
 
-    CalendarService cale = CalendarServiceFactory.getCalanderService();
-
-
-    ActionBar actionBar;
-    ViewPager viewPager;
-
+    private ArrayList<CalanderMeal> eventList = new ArrayList<CalanderMeal>();
+    private Meal nutrition = new Meal();
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd", Locale.US);
+    GregorianCalendar cal = new GregorianCalendar(TimeZone.getTimeZone("US/Central"));
 
     @Override
-    protected void onCreate(Bundle arg0) {
-        super.onCreate(arg0);
-        setContentView(R.layout.activity_calendar);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_calendar2);
 
-        viewPager = (ViewPager) findViewById(R.id.calendarContainer);
-        viewPager.setAdapter(new MyAdapter(getSupportFragmentManager()));
-        viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+        final CalendarView calendarView = (CalendarView) findViewById(R.id.calendarView1);
+        cal.setTimeInMillis(calendarView.getDate());
 
+        final Button addBtn = (Button) findViewById(R.id.saveAddBtn2);
+
+        addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onPageSelected(int arg0) {
-                actionBar.setSelectedNavigationItem(arg0);
-                // Intent intent = new Intent(this, CalendarActivity.class);
-                // startActivity(intent);
-                Log.d("DpoiNT", "onPageSelected at " + " position " + arg0);
-
-            }
-
-            @Override
-            public void onPageScrolled(int arg0, float arg1, int arg2) {
-                //    Log.d("DpoiNT", "onPageScrolled at "+" position " +arg0+" from " +arg1+" with number of pixels "+arg2);
-
-            }
-
-
-            @Override
-            public void onPageScrollStateChanged(int arg0) {
-                if(arg0== ViewPager.SCROLL_STATE_IDLE){
-                    Log.d("DpoiNT", "onPageScrollStateChanged Idle");
-                }
-                if(arg0== ViewPager.SCROLL_STATE_DRAGGING){
-                    Log.d("DpoiNT", "onPageScrollStateChanged Dragging");
-                }
-                if(arg0== ViewPager.SCROLL_STATE_SETTLING){
-                    Log.d("DpoiNT", "onPageScrollStateChanged Settling");
-                }
-
+            public void onClick(View v) {
+                Intent intent = new Intent(CalendarActivity.this, AddMealActivity.class);
+                startActivity(intent);
             }
         });
 
-        actionBar = getActionBar();
-        assert actionBar != null;
-        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-
-        ActionBar.Tab tab1=actionBar.newTab();
-        tab1.setText("Tab 1");
-        tab1.setTabListener(this);
-
-        ActionBar.Tab tab2=actionBar.newTab();
-        tab2.setText("Tab 2");
-        tab2.setTabListener(this);
-
-        ActionBar.Tab tab3=actionBar.newTab();
-        tab3.setText("Tab 3");
-        tab3.setTabListener(this);
-
-        actionBar.addTab(tab1);
-        actionBar.addTab(tab2);
-        actionBar.addTab(tab3);
-    }
 
 
-    @Override
-    public void onTabSelected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
-        // Log.d("DpoiNT", "onTabSelected at "+" position " +tab.getPosition()+" name "+tab.getText());
-        viewPager.setCurrentItem(tab.getPosition());
-    }
+        eventList = (ArrayList<CalanderMeal>) CalendarAdapter.getDayItems(Long.parseLong(sdf.format(cal.getTime())));
+        nutrition = (Meal) CalendarAdapter.getNutrition();
 
-    @Override
-    public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
-        // Log.d("DpoiNT", "onTabUnselected at "+" position " +tab.getPosition()+" name "+tab.getText());
+        ListAdapter adapter = new CalendarAdapter(getApplicationContext(), R.layout.notification_list_item, eventList, nutrition);
+        ListView listview = (ListView) findViewById(R.id.eventList);
+        listview.setAdapter(adapter);
 
-    }
 
-    @Override
-    public void onTabReselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
-        // Log.d("DpoiNT", "onTabReselected at "+" position "+tab.getPosition()+" name "+tab.getText());
+        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                FragmentManager fm = getSupportFragmentManager();
+
+                dialogFragment dialog = new dialogFragment();
+
+                dialog.show(fm, "abc");
+            }
+        });
+
+
+        calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+
+            @Override
+            public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
+                cal.setTimeInMillis(calendarView.getDate());
+                eventList = (ArrayList<CalanderMeal>) CalendarAdapter.getDayItems(Long.parseLong(sdf.format(cal.getTime())));
+                nutrition = (Meal) CalendarAdapter.getNutrition();
+
+                ListAdapter adapter = new CalendarAdapter(getApplicationContext(), R.layout.notification_list_item, eventList, nutrition);
+                ListView listview = (ListView) findViewById(R.id.eventList);
+                listview.setAdapter(adapter);
+            }
+        });
 
     }
+
 }
 
 
-class MyAdapter extends FragmentPagerAdapter {
-
-
-    public MyAdapter(FragmentManager fm) {
-        super(fm);
-    }
-
-
-
-    @Override
-    public Fragment getItem(int arg0) {
-
-        switch(arg0){
-            case 0: return FragmentA.newInstance("FragmentA, Instance 1");
-            //case 1: return FragmentB.newInstance("FragmentB, Instance 2");
-            case 2: return FragmentC.newInstance("FragmentC, Instance 3");
-            default: return FragmentA.newInstance("FragmentA, Default");
-        }
-    }
-
-    @Override
-    public int getCount() {
-        return 3;
-    }
-
-
-}
