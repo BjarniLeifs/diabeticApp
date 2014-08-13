@@ -4,8 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -15,9 +13,6 @@ import android.widget.TimePicker;
 import android.view.View.OnClickListener;
 
 
-import com.jberry.dto.CalanderMeal;
-
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
@@ -25,33 +20,15 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.TimeZone;
 import java.util.concurrent.TimeUnit;
-
 import jBerry.MySugar.R;
+import ru.Events.Events;
 
 public class AddMealToActivity extends Activity {
-
-
 
     private Button btnSave;
     long timestamp;
     GregorianCalendar cal = new GregorianCalendar(TimeZone.getTimeZone("US/Central"));
     final Map<String, Integer> data = new HashMap<String, Integer>();
-
-    int[] idItems = new int[]{
-            R.id.item1,
-            R.id.item2,
-            R.id.item3,
-            R.id.item4,
-            R.id.item5
-    };
-
-    int[] idGrams = new int[]{
-            R.id.grams1,
-            R.id.grams2,
-            R.id.grams3,
-            R.id.grams4,
-            R.id.grams5
-    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,11 +58,11 @@ public class AddMealToActivity extends Activity {
                 timestamp = date.getTime()+hour+min;
 
                 for (int i = 0; i < 1; i++) {
-                    AutoCompleteTextView item = (AutoCompleteTextView) findViewById(idItems[i]);
-                    EditText gram = (EditText) findViewById(idGrams[i]);
+                    AutoCompleteTextView item = (AutoCompleteTextView) findViewById(Events.idItems[i]);
+                    EditText gram = (EditText) findViewById(Events.idGrams[i]);
 
                     if (item.getText().toString().trim().length() > 0) {
-                        data.put(idItems.toString(), Integer.parseInt(gram.getText().toString()));
+                        data.put(item.toString(), Integer.parseInt(gram.getText().toString()));
                     }
                 }
 
@@ -94,6 +71,5 @@ public class AddMealToActivity extends Activity {
                 startActivity(intent);
             }
         });
-
     }
 }

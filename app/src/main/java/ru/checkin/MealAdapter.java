@@ -17,6 +17,7 @@ import java.util.Map;
 public class MealAdapter extends ArrayAdapter<Meal> {
     private ArrayList<Meal> list = null;
 
+
     private static LayoutInflater inflater = null;
     private String _food;
     private Integer _grams;
@@ -33,6 +34,7 @@ public class MealAdapter extends ArrayAdapter<Meal> {
     public static  int setMeal(double ratio, Map data, double bloodSugar, boolean exercise) {
 
         CheckInService checker = CheckInServiceFactory.getCheckInService();
+
         return checker.calculateInsulin(ratio, data, bloodSugar, exercise);
     }
 

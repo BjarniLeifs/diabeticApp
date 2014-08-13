@@ -14,30 +14,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import jBerry.MySugar.R;
+import ru.Events.Events;
 
 public class EditMealActivity extends ActionBarActivity {
 
     private Meal mealList;
     private Button btn;
     final Map<String, Integer> data = new HashMap<String, Integer>();
-
-    int[] idItems = new int[]{
-            R.id.item1,
-            R.id.item2,
-            R.id.item3,
-            R.id.item4,
-            R.id.item5
-    };
-
-    int[] idGrams = new int[]{
-            R.id.grams1,
-            R.id.grams2,
-            R.id.grams3,
-            R.id.grams4,
-            R.id.grams5
-
-    };
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,8 +37,8 @@ public class EditMealActivity extends ActionBarActivity {
         final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.select_dialog_item, listIngrdients);
 
         for(int i = 0; i < listIngrdients.size(); i++){
-            AutoCompleteTextView item = (AutoCompleteTextView) findViewById(idItems[i]);
-            EditText gram = (EditText) findViewById(idGrams[i]);
+            AutoCompleteTextView item = (AutoCompleteTextView) findViewById(Events.idItems[i]);
+            EditText gram = (EditText) findViewById(Events.idGrams[i]);
             item.setText(listIngrdients.get(i));
             item.setThreshold(1);
             item.setAdapter(adapter);
@@ -69,10 +52,10 @@ public class EditMealActivity extends ActionBarActivity {
             public void onClick(View v) {
 
                 for(int i=0; i<listIngrdients.size(); i++){
-                    AutoCompleteTextView item = (AutoCompleteTextView)findViewById(idItems[i]);
-                    EditText gram = (EditText) findViewById(idGrams[i]);
+                    AutoCompleteTextView item = (AutoCompleteTextView)findViewById(Events.idItems[i]);
+                    EditText gram = (EditText) findViewById(Events.idGrams[i]);
                     if(item.getText().toString().trim().length() > 0){
-                        data.put(idItems.toString(), Integer.parseInt(gram.getText().toString()));
+                        data.put(Events.idItems.toString(), Integer.parseInt(gram.getText().toString()));
                     }
                 }
 

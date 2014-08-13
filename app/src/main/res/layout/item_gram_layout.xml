@@ -9,8 +9,7 @@
 
     <RelativeLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/item11">
+        android:layout_height="wrap_content">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -147,9 +146,9 @@
             android:layout_width="140dp"
             android:layout_height="wrap_content"
             android:id="@+id/item4"
+            android:visibility="visible"
             android:inputType="textAutoComplete"
             android:imeOptions="actionNext"
-            android:visibility="visible"
             android:layout_alignParentLeft="true"
             android:layout_marginLeft="30dp" >
         </AutoCompleteTextView>
@@ -175,6 +174,7 @@
             android:layout_alignBottom="@+id/grams4"
             android:layout_toRightOf="@+id/grams4" />
     </RelativeLayout>
+
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content">
@@ -209,5 +209,4 @@
             android:layout_alignBottom="@+id/grams5"
             android:layout_toRightOf="@+id/grams5" />
     </RelativeLayout>
-
 </LinearLayout>
