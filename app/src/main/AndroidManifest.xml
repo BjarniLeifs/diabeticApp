@@ -10,23 +10,25 @@
         <service android:name="ru.reminder.ReminderIntentService"/>
         <activity
             android:name="ru.menu.StartActivity"
-            android:label="@string/title_activity_start"
-            android:parentActivityName="ru.signup.LoginActivity" >
+            android:label="@string/title_activity_start">
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value="ru.signup.LoginActivity" />
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            <!--
-                <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="ru.signup.LoginActivity" />
-            -->
+
         </activity>
         <!-- LoginActivity -->
         <activity
             android:name="ru.signup.LoginActivity"
             android:label="@string/title_activity_login" >
+        </activity>
+        <activity
+            android:name="ru.signup.SignupActivity"
+            android:label="@string/title_activity_signup" >
         </activity>
         <!--
             <intent-filter>
@@ -55,10 +57,7 @@
             android:name="ru.calendar.EditMealActivity"
             android:label="@string/title_activity_edit_meal" />
 
-        <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value="ru.signup.CalendarActivity" />
-        />
+
         <activity
             android:name="ru.calendar.AddMealToActivity"
             android:label="@string/title_activity_add_meal" >

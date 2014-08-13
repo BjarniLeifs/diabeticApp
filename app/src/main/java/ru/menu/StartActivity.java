@@ -22,6 +22,7 @@ import ru.backStore.CustomClass;
 import ru.calendar.CalendarActivity;
 import ru.checkin.CheckinActivity;
 import ru.reminder.ReminderActivity;
+import ru.signup.SignupActivity;
 
 
 public class StartActivity extends Activity{
@@ -37,7 +38,7 @@ public class StartActivity extends Activity{
         list.add(new CustomClass(BitmapFactory.decodeResource(getResources(), R.drawable.diabetes),"Dagatal"));
         list.add(new CustomClass(BitmapFactory.decodeResource(getResources(), R.drawable.diabetes),"Check-In"));
         list.add(new CustomClass(BitmapFactory.decodeResource(getResources(), R.drawable.diabetes),"Stillingar"));
-        list.add(new CustomClass(BitmapFactory.decodeResource(getResources(), R.drawable.diabetes),"Stuff"));
+        list.add(new CustomClass(BitmapFactory.decodeResource(getResources(), R.drawable.diabetes),"Áminning"));
         list.add(new CustomClass(BitmapFactory.decodeResource(getResources(), R.drawable.diabetes),"Sagan mín"));
         list.add(new CustomClass(BitmapFactory.decodeResource(getResources(), R.drawable.diabetes),"Fræðsla"));
 
@@ -64,7 +65,7 @@ public class StartActivity extends Activity{
 
                 }
                 else if(id == 3){
-                    intent = new Intent(StartActivity.this, SignupActivity.class);
+                    intent = new Intent(StartActivity.this, ReminderActivity.class);
 
                 }
                 else if (id == 4){
