@@ -19,5 +19,6 @@
     <string name="title_activity_edit_meal">EditMealActivity</string>
     <string name="title_activity_add_meal">addMealActivity</string>
     <string name="title_activity_history">History</string>
+    <string name="title_activity_reminder">Reminder</string>
 
 </resources>

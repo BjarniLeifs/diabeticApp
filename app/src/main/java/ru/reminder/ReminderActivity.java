@@ -25,7 +25,7 @@ public class ReminderActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         intent.setClass(this, ReminderIntentService.class);
 
-        setContentView(R.layout.activity_notification);
+        setContentView(R.layout.activity_reminder);
 
         noti = (Button) findViewById(R.id.NotificationButton);
         final NumberPicker mNumberPicker = (NumberPicker)findViewById(R.id.numberPicker);

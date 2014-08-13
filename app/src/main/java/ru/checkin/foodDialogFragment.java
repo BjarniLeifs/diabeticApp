@@ -22,7 +22,7 @@ public class foodDialogFragment extends DialogFragment {
                              Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.checkin_dialog, container, false);
-        nutrition = (Food) MealAdapter.getFoodNutrition();
+        nutrition = (Food) CheckInAdapter.getFoodNutrition();
 
         getDialog().setTitle(nutrition.Nafn);
 

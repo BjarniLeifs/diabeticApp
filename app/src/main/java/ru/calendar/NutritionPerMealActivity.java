@@ -48,7 +48,7 @@ public class NutritionPerMealActivity extends Activity  {
         TextView alkahol = (TextView) findViewById(R.id.alkahol);
         TextView steinefni = (TextView) findViewById(R.id.steinefni);
         TextView avitamin = (TextView) findViewById(R.id.avitamin);
-        TextView dvitiamin = (TextView) findViewById(R.id.dvitiamin);
+        TextView dvitamin = (TextView) findViewById(R.id.dvitiamin);
         TextView evitamin = (TextView) findViewById(R.id.evitamin);
         TextView b1vitamin = (TextView) findViewById(R.id.b1vitamin);
         TextView b2vitamin = (TextView) findViewById(R.id.b2vitamin);
@@ -67,7 +67,7 @@ public class NutritionPerMealActivity extends Activity  {
         alkahol.setText("Alkahól: " + alk);
         steinefni.setText("Steinefni: " + ste);
         avitamin.setText("A vítamín: " + Avi);
-        dvitiamin.setText("D vítamín: " + Dvi);
+        dvitamin.setText("D vítamín: " + Dvi);
         evitamin.setText("E vítamín: " + Evi) ;
         b1vitamin.setText("B1 vítamín: " + B1v);
         b2vitamin.setText("B2 vítamín: " + B2v);

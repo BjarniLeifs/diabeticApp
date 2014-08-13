@@ -69,6 +69,11 @@
         <activity
             android:name="ru.History.HistoryActivity"
             android:label="@string/title_activity_history" >
+
+        </activity>
+        <activity
+            android:name="ru.reminder.ReminderActivity"
+            android:label="@string/title_activity_reminder" >
         </activity>
     </application>
 

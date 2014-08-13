@@ -15,7 +15,8 @@ import java.util.Map;
  * Created by Anna on 24.7.2014.
  */
 
-public class MealAdapter extends ArrayAdapter<Food> {
+public class CheckInAdapter extends ArrayAdapter<Food> {
+
 
     private static LayoutInflater inflater = null;
     private String _food;
@@ -28,7 +29,7 @@ public class MealAdapter extends ArrayAdapter<Food> {
 
     }
 
-    public MealAdapter(Context context, int layoutResourceID, Food _nutrition) {
+    public CheckInAdapter(Context context, int layoutResourceID, Food _nutrition) {
         super(context, layoutResourceID, (java.util.List<Food>) _nutrition);
         this.nutrition = _nutrition;
     }
@@ -36,6 +37,7 @@ public class MealAdapter extends ArrayAdapter<Food> {
 
 
         CheckInService checker = CheckInServiceFactory.getCheckInService();
+
         return checker.calculateInsulin(ratio, data, bloodSugar, exercise);
     }
     public static Object getFoodNutrition(){
