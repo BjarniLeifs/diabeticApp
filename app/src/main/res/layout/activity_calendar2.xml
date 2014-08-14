@@ -1,30 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <CalendarView
-        android:id="@+id/calendarView1"
-        android:layout_width="match_parent"
-        android:layout_height="250dp" />
 
+    <LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="0dp"
+    android:layout_weight="0.45">
+        <CalendarView
+            android:id="@+id/calendarView1"
+            android:layout_width="match_parent"
+            android:layout_height="250dp" />
+    </LinearLayout>
 
-    <Button
+    <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/calendarView1"
-        android:text="Ég vill bæta við í dagatal"
-        android:id="@+id/saveAddBtn2"/>
+        android:layout_height="0dp"
+        android:layout_weight="0.08">
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/calendarView1"
+            android:text="Ég vill bæta við í dagatal"
+            android:clickable="true"
+            android:layout_gravity="center_vertical"
+            android:id="@+id/saveAddBtn2"/>
+    </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".5"
+        >
+        <ListView
+            android:id="@+id/eventList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/saveAddBtn2"
+            android:layout_marginTop="1dp"/>
 
-    <ListView
-        android:id="@+id/eventList"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/saveAddBtn2"
-        android:layout_marginTop="1dp" >
-    </ListView>
-
-</RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

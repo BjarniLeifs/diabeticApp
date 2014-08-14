@@ -7,7 +7,7 @@
     android:background="#fff"
     >
 
-    <GraphView
+    <com.jjoe64.graphview.GraphView
         android:id="@+id/graphview"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent" />

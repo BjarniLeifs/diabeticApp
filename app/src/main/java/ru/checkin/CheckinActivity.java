@@ -1,5 +1,6 @@
 package ru.checkin;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.ActionBarActivity;
@@ -27,6 +28,7 @@ import java.util.Map;
 
 import jBerry.MySugar.R;
 import ru.Events.Events;
+import ru.calendar.CalendarActivity;
 import ru.calendar.EditMealAdapter;
 
 /*
@@ -38,7 +40,9 @@ public class CheckinActivity extends ActionBarActivity {
     private Meal mealList;
     FragmentManager fManager;
     EditText bloodSugar, item1, gram1;
-    Button checkIn;
+    Button checkIn, toCalendarBtn;
+    int mealId;
+    Meal meal;
 
     String[] food ={"epli", "bananabrauð", "banani", "appelsina", "mango"};
 
@@ -56,6 +60,17 @@ public class CheckinActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_checkin);
 
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+        if(bundle!=null){
+            mealId = bundle.getInt("mealId");
+        }
+
+        // NEED INT
+        meal = EditMealAdapter.getMealById();
+
+
+
         final Map<String, Integer> data = new HashMap<String, Integer>();
 
         mealList = EditMealAdapter.getMealById();
@@ -63,10 +78,31 @@ public class CheckinActivity extends ActionBarActivity {
         final ArrayList<Integer> gramIngrdients = new ArrayList<Integer>(mealList.Ingredients.values());
         final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.select_dialog_item, listIngrdients);
         checkIn = (Button) findViewById(R.id.checkInButton);
+        toCalendarBtn = (Button) findViewById(R.id.toCalanderBtn);
         item1 = (EditText) findViewById(Events.idItems[0]);
         gram1 = (EditText) findViewById(Events.idGrams[0]);
 
        // EditText text = (EditText) findViewById(Events.idItems[0]);
+
+        if(bundle != null){
+            for(int i = 0; i < meal.Ingredients.size(); i++){
+                AutoCompleteTextView item = (AutoCompleteTextView) findViewById(Events.idItems[i]);
+                EditText gram = (EditText) findViewById(Events.idGrams[i]);
+                item.setText(listIngrdients.get(i));
+                item.setThreshold(1);
+                item.setAdapter(adapter);
+
+                gram.setText("" + gramIngrdients.get(i));
+            }
+        }
+
+        toCalendarBtn.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CheckinActivity.this, CalendarActivity.class);
+                startActivity(intent);
+            }
+        });
 
         for(int i = 0; i < Events.idItems.length; i++){
             AutoCompleteTextView actv = (AutoCompleteTextView)findViewById(Events.idItems[i]);
@@ -88,10 +124,6 @@ public class CheckinActivity extends ActionBarActivity {
             });
         }
         TextWatcher tw = new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {
-
-            }
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
@@ -106,6 +138,11 @@ public class CheckinActivity extends ActionBarActivity {
             public void afterTextChanged(Editable editable) {
 
             }
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {
+
+            }
+
         };
         item1.addTextChangedListener(tw);
         gram1.addTextChangedListener(tw);

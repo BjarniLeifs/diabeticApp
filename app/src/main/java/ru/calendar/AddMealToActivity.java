@@ -57,7 +57,7 @@ public class AddMealToActivity extends Activity {
 
                 timestamp = date.getTime()+hour+min;
 
-                for (int i = 0; i < 1; i++) {
+                for (int i = 0; i < Events.idItems.length; i++) {
                     AutoCompleteTextView item = (AutoCompleteTextView) findViewById(Events.idItems[i]);
                     EditText gram = (EditText) findViewById(Events.idGrams[i]);
 

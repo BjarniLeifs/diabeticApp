@@ -9,7 +9,7 @@
         android:theme="@style/AppTheme">
         <service android:name="ru.reminder.ReminderIntentService"/>
         <activity
-            android:name="ru.menu.StartActivity"
+            android:name="ru.menu.MenuActivity"
             android:label="@string/title_activity_start">
         <meta-data
             android:name="android.support.PARENT_ACTIVITY"

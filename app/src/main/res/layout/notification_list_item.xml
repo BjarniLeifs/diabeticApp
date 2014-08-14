@@ -3,7 +3,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal" >
+    android:orientation="horizontal"
+    android:layout_margin="5dp"
+    >
 
 
     <LinearLayout
@@ -13,29 +15,26 @@
         <TextView
             android:id="@+id/timeOfMeal"
             android:layout_width="0dp"
-            android:layout_weight=".30"
+            android:layout_weight=".20"
+            android:textSize="20dp"
+            android:textStyle="bold"
             android:layout_height="wrap_content"
-            android:layout_margin="7dp"
             android:text="Time"
-            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_margin="7dp"
             />
 
         <TextView
             android:id="@+id/notificationTitle"
             android:layout_width="0dp"
-            android:layout_weight=".60"
+            android:layout_weight=".80"
             android:layout_height="wrap_content"
             android:layout_margin="7dp"
-            android:layout_marginLeft="20dp"
             android:text="Title"
-            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textSize="20dp"
             android:textStyle="bold" />
-
-        <ImageView
-            android:id="@+id/imgX"
-            android:layout_width="20dp"
-            android:layout_height="20dp" />
     </LinearLayout>
+
+
 
 
 
@@ -48,8 +47,8 @@
             android:textStyle="italic"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="40dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginLeft="75dp"
+            android:layout_marginTop="37dp"
             android:text="description"
             android:textAppearance="?android:attr/textAppearanceSmall" />
     </LinearLayout>

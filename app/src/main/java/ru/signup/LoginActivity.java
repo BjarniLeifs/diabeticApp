@@ -14,6 +14,7 @@ import com.jberry.services.user.UserService;
 import com.jberry.services.user.UserServiceFactory;
 
 import jBerry.MySugar.R;
+import ru.menu.MenuActivity;
 
 /**
  * Created by Anna on 25.6.2014.
@@ -84,7 +85,7 @@ public class LoginActivity extends ActionBarActivity {
                     e.printStackTrace();
                 }
                 if(access) {
-                    Intent intent = new Intent(ru.signup.LoginActivity.this, ru.menu.StartActivity.class);
+                    Intent intent = new Intent(ru.signup.LoginActivity.this, MenuActivity.class);
                     startActivityForResult(intent, 1);
                 }
                 else{
@@ -110,7 +111,7 @@ public class LoginActivity extends ActionBarActivity {
                     e.printStackTrace();
                 }
                 if(accessSignup){
-                    Intent intent = new Intent(LoginActivity.this, ru.menu.StartActivity.class);
+                    Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
                     intent.putExtra("name", Name);
                     startActivity(intent);
                 }

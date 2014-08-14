@@ -29,6 +29,7 @@
             android:layout_marginLeft="200dp"
             android:hint="cm" />
     </RelativeLayout>
+
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content">
@@ -54,6 +55,7 @@
             android:layout_marginLeft="200dp"
             android:hint="Kg" />
     </RelativeLayout>
+
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content">
@@ -78,30 +80,30 @@
             android:layout_alignParentLeft="true"
             android:layout_marginLeft="200dp"
             android:hint="Years" />
-
     </RelativeLayout>
+
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Gender"
-        android:id="@+id/genderText"
-        android:textSize="20dp"
-        android:textColor="#ff65706a"
-        android:layout_marginTop="30dp"
-        android:layout_gravity="center_vertical|left"
-        android:layout_marginLeft="30dp" />
-    <CheckBox
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="KK"
-        android:id="@+id/male"
-        android:layout_marginTop="25dp"
-        android:layout_marginLeft="120dp"
-        android:checked="false" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Gender"
+            android:id="@+id/genderText"
+            android:textSize="20dp"
+            android:textColor="#ff65706a"
+            android:layout_marginTop="30dp"
+            android:layout_gravity="center_vertical|left"
+            android:layout_marginLeft="30dp" />
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="KK"
+            android:id="@+id/male"
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="120dp"
+            android:checked="false" />
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -109,9 +111,7 @@
             android:id="@+id/female"
             android:layout_marginTop="25dp"
             android:layout_marginLeft="200dp"/>
-
     </RelativeLayout>
-
 
     <TextView
         android:layout_width="wrap_content"
@@ -151,12 +151,10 @@
         android:hint="Evening Ratio" />
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="Save"
         android:id="@+id/saveButton"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="2dp" />
-
-
 </LinearLayout>

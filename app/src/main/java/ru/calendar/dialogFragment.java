@@ -13,10 +13,11 @@ import android.widget.TextView;
 import com.jberry.dto.Meal;
 
 import jBerry.MySugar.R;
+import ru.checkin.CheckinActivity;
 
 public class dialogFragment extends DialogFragment {
-    private Button nutritionView, editView, deleteView;
-    private Meal nutrition = new Meal();
+    private Button nutritionView, editView, deleteView, toCheckInBtn;
+    private Meal nutrition, meal = new Meal();
 
     public  dialogFragment (){
 
@@ -34,6 +35,7 @@ public class dialogFragment extends DialogFragment {
         nutritionView = (Button) rootView.findViewById(R.id.nutrition2);
         editView = (Button) rootView.findViewById(R.id.edit2);
         deleteView = (Button) rootView.findViewById(R.id.delete2);
+        toCheckInBtn = (Button) rootView.findViewById(R.id.toCheckInBtn);
 
         String pro = Float.toString(nutrition.PróteinAlls);
         String kol = Float.toString(nutrition.KolvetniAlls);
@@ -71,6 +73,16 @@ public class dialogFragment extends DialogFragment {
             public void onClick(View v) {
 
                 Intent intent = new Intent(getActivity(), NutritionPerMealActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        toCheckInBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(getActivity(), CheckinActivity.class);
+                intent.putExtra("mealId", nutrition.Meald);
                 startActivity(intent);
             }
         });

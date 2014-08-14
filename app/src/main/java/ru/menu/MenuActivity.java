@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.Button;
 import android.widget.GridView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,30 +23,29 @@ import ru.backStore.CustomClass;
 import ru.calendar.CalendarActivity;
 import ru.checkin.CheckinActivity;
 import ru.reminder.ReminderActivity;
-import ru.signup.SignupActivity;
 
 
-public class StartActivity extends Activity{
+public class MenuActivity extends Activity{
+
 
     ArrayList<CustomClass> list=new ArrayList<CustomClass>();
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_start);
+        setContentView(R.layout.menu_grid);
 
+        list.add(new CustomClass(BitmapFactory.decodeResource(getResources(), R.drawable.calendar),"Dagatal"));
+        list.add(new CustomClass(BitmapFactory.decodeResource(getResources(), R.drawable.list),"Check-In"));
+        list.add(new CustomClass(BitmapFactory.decodeResource(getResources(), R.drawable.settings),"Stillingar"));
+        list.add(new CustomClass(BitmapFactory.decodeResource(getResources(), R.drawable.clock),"Áminning"));
+        list.add(new CustomClass(BitmapFactory.decodeResource(getResources(), R.drawable.graph1),"Sagan mín"));
+        list.add(new CustomClass(BitmapFactory.decodeResource(getResources(), R.drawable.student),"Fræðsla"));
 
-        list.add(new CustomClass(BitmapFactory.decodeResource(getResources(), R.drawable.diabetes),"Dagatal"));
-        list.add(new CustomClass(BitmapFactory.decodeResource(getResources(), R.drawable.diabetes),"Check-In"));
-        list.add(new CustomClass(BitmapFactory.decodeResource(getResources(), R.drawable.diabetes),"Stillingar"));
-        list.add(new CustomClass(BitmapFactory.decodeResource(getResources(), R.drawable.diabetes),"Áminning"));
-        list.add(new CustomClass(BitmapFactory.decodeResource(getResources(), R.drawable.diabetes),"Sagan mín"));
-        list.add(new CustomClass(BitmapFactory.decodeResource(getResources(), R.drawable.diabetes),"Fræðsla"));
 
         final CustomArrayAdapter adapter=new CustomArrayAdapter(getApplicationContext(), list);
         GridView gridView=(GridView)findViewById(R.id.gridView1);
         gridView.setAdapter(adapter);
-
 
         gridView.setOnItemClickListener(new OnItemClickListener()
         {
@@ -55,36 +55,24 @@ public class StartActivity extends Activity{
                                     long id){
                 Intent intent;
                 if(id == 0){
-                    intent = new Intent(StartActivity.this, CalendarActivity.class);
+                    intent = new Intent(MenuActivity.this, CalendarActivity.class);
                 }
                 else if(id == 1){
-                    intent = new Intent(StartActivity.this, CheckinActivity.class);
+                    intent = new Intent(MenuActivity.this, CheckinActivity.class);
                 }
                 else if(id == 2){
-                    intent = new Intent(StartActivity.this, SettingsActivity.class);
-
+                    intent = new Intent(MenuActivity.this, SettingsActivity.class);
                 }
                 else if(id == 3){
-                    intent = new Intent(StartActivity.this, ReminderActivity.class);
-
+                    intent = new Intent(MenuActivity.this, ReminderActivity.class);
                 }
                 else if (id == 4){
-                    intent = new Intent(StartActivity.this, HistoryActivity.class);
-
+                    intent = new Intent(MenuActivity.this, HistoryActivity.class);
                 }
                 else{
-                    intent = new Intent(StartActivity.this, ReminderActivity.class);
-
+                    intent = new Intent(MenuActivity.this, ReminderActivity.class);
                 }
                 startActivity(intent);
-
-                TextView view2=(TextView) ((ViewGroup) view).getChildAt(1);
-                String s= null;
-                if (view2 != null) {
-                    s = view2.getText().toString();
-                }
-                Toast.makeText(getApplicationContext(), s, Toast.LENGTH_LONG).show();
-
             }
         });
 

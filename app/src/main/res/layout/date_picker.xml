@@ -1,44 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
-    android:baselineAligned="true"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/dateTimeView">
 
-    <RelativeLayout
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="0.5">
 
-        <CalendarView
-            android:layout_width="fill_parent"
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/addCalendarView"/>
+            android:layout_weight="0.5">
+
+            <CalendarView
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/addCalendarView"/>
 
 
-    </RelativeLayout>
-    <RelativeLayout
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="0.5">
-
-        <TimePicker
-            android:layout_width="fill_parent"
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/timePickerView">
+            android:layout_weight="0.5">
+
+            <TimePicker
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/timePickerView">
 
 
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
-                    android:text="Save!"
-                    android:id="@+id/saveAddBtn"/>
 
-
-        </TimePicker>
-    </RelativeLayout>
-
-
+            </TimePicker>
+        </RelativeLayout>
 </LinearLayout>

@@ -74,6 +74,13 @@
             android:layout_below="@+id/edit2"
             android:layout_centerInParent="true"
             android:text="Eyða" />
+        <Button
+            android:id="@+id/toCheckInBtn"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/delete2"
+            android:layout_centerInParent="true"
+            android:text="Check-it in" />
 
 
         </RelativeLayout>

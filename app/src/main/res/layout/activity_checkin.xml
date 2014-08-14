@@ -43,7 +43,7 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Calander"
-            android:id="@+id/fromCalander"
+            android:id="@+id/toCalanderBtn"
             android:textSize="15dp"
             android:layout_gravity="center_vertical|left"
             android:layout_marginLeft="230dp"
