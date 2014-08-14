@@ -61,43 +61,8 @@ public class Events {
             R.id.cvitamin
     };
 
-    private TextView protein,
-            kolvetni,
-            fita,
-            mettadarfitusyrur,
-            kolesterol,
-            kalk,
-            vidbaettursykur,
-            trefjaefn,
-            alkahol,
-            steinefni,
-            avitamin,
-            dvitamin,
-            evitamin,
-            b1vitamin,
-            b2vitamin,
-            b12vitamin,
-            cvitamin;
 
-    TextView[] textViews = new TextView[]{
-            protein,
-            kolvetni,
-            fita,
-            mettadarfitusyrur,
-            kolesterol,
-            kalk,
-            vidbaettursykur,
-            trefjaefn,
-            alkahol,
-            steinefni,
-            avitamin,
-            dvitamin,
-            evitamin,
-            b1vitamin,
-            b2vitamin,
-            b12vitamin,
-            cvitamin
-    };
+
     public static
     int[] idLink = new int[]{
             R.id.Link1,

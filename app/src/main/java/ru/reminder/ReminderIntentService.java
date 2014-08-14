@@ -11,7 +11,7 @@ import android.os.Bundle;
 import jBerry.MySugar.R;
 import ru.checkin.CheckinActivity;
 
-/**
+/*
  * Created by Anna on 7.8.2014.
  */
 public  class ReminderIntentService extends IntentService {
@@ -62,6 +62,5 @@ public  class ReminderIntentService extends IntentService {
         // Vibration
         notification.defaults |= Notification.DEFAULT_VIBRATE;
         mNotificationManager.notify(0, notification);
-
     }
 }
