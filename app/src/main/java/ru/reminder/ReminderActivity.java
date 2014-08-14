@@ -39,7 +39,6 @@ public class ReminderActivity extends ActionBarActivity {
                 notiValue = mNumberPicker.getValue();
                 intent.putExtra("HourValue", notiValue);
                 startService(intent);
-                //generateNotification(ReminderActivity.this, message);
                 Toast.makeText(getBaseContext(), "You'll be reminded " + notiValue + " hours from last checkin", Toast.LENGTH_SHORT).show();
             }
         });
