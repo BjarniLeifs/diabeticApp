@@ -29,7 +29,7 @@ public  class ReminderIntentService extends IntentService {
         value = extras.get("HourValue");
         int i = (Integer) value;
         //The alert goes on when the chosen amount of hours has passed
-        long alertTime = System.currentTimeMillis() + (i * 3600000);
+        long alertTime = System.currentTimeMillis() + (i * 1000);//3600000);
         while (System.currentTimeMillis() < alertTime) {
             synchronized (this) {
                 try {
@@ -43,7 +43,7 @@ public  class ReminderIntentService extends IntentService {
 
     }
     private static void generateNotification(Context context, String message) {
-        int icon = R.drawable.ic_launcher;
+        int icon = R.drawable.diabetes;
         long when = System.currentTimeMillis();
         String NotificationTitle = context.getString(R.string.app_name);
         //set intent

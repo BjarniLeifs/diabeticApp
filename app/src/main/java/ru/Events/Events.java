@@ -1,6 +1,5 @@
 package ru.Events;
 
-import android.widget.Button;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
@@ -98,5 +97,19 @@ public class Events {
             b2vitamin,
             b12vitamin,
             cvitamin
+    };
+    public static
+    int[] idLink = new int[]{
+            R.id.Link1,
+            R.id.Link2,
+            R.id.Link3,
+            R.id.Link4
+    };
+    public static
+    int[] idString = new int[]{
+            R.string.youtubeLink1,
+            R.string.dtcLink,
+            R.string.lyfjaLink,
+            R.string.uptodateLink
     };
 }
