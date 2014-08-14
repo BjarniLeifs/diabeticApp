@@ -8,22 +8,11 @@ import android.support.v7.app.ActionBarActivity;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
 import android.view.View;
-import android.widget.AutoCompleteTextView;
 import android.widget.TextView;
-
-import org.apache.http.protocol.HTTP;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLConnection;
-
 import jBerry.MySugar.R;
 import ru.Events.Events;
 
-/**
+/*
  * Created by Anna on 13.8.2014.
  */
 public class EducationActivity extends ActionBarActivity{
