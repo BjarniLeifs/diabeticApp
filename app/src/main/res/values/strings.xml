@@ -20,5 +20,12 @@
     <string name="title_activity_add_meal">addMealActivity</string>
     <string name="title_activity_history">History</string>
     <string name="title_activity_reminder">Reminder</string>
+    <string name="title_activity_education">Education</string>
+
+
+    <string name="youtubeLink1">www.youtube.com/watch?v=ifOC0xnUJXM&amp;list=PLW6UPX-B1IAbxEkXLbIUIt-fy4Fg2NGys</string>
+    <string name="dtcLink">http://dtc.ucsf.edu/types-of-diabetes/type2/treatment-of-type-2-diabetes/medications-and-therapies/type-2-insulin-rx/calculating-insulin-dose/</string>
+    <string name="lyfjaLink">http://www.lyfja.is/Fraedsla/Sykursyki/Greinar/FrodleikurUmSykursyki/</string>
+    <string name="uptodateLink">http://www.uptodate.com/contents/management-of-exercise-for-children-and-adolescents-with-type-1-diabetes-mellitus#H54652485</string>
 
 </resources>
