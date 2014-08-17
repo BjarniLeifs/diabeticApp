@@ -35,6 +35,7 @@ public class checkinDialog extends DialogFragment {
         insulinView.setText(value + " einingar");
 
         getDialog().setTitle("Áætlaður útreikningur");
+
         calcel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

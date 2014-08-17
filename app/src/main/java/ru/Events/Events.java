@@ -39,42 +39,14 @@ public class Events {
     };
 
 
-
-    public static
-    int[] idnute = new int[]{
-            R.id.protein,
-            R.id.kolvetni,
-            R.id.fita,
-            R.id.mettadarfitusyrur,
-            R.id.kolesterol,
-            R.id.kalk,
-            R.id.vidbaettursykur,
-            R.id.trefjaefni,
-            R.id.alkahol,
-            R.id.steinefni,
-            R.id.avitamin,
-            R.id.dvitiamin,
-            R.id.evitamin,
-            R.id.b1vitamin,
-            R.id.b2vitamin,
-            R.id.b12vitamin,
-            R.id.cvitamin
-    };
-
-
-
+    // Id of TextView in education activity
     public static
     int[] idLink = new int[]{
-            R.id.Link1,
-            R.id.Link2,
-            R.id.Link3,
-            R.id.Link4
+            R.id.link1,
+            R.id.link2,
+            R.id.link3,
+            R.id.link4,
+            R.id.link5
     };
-    public static
-    int[] idString = new int[]{
-            R.string.youtubeLink1,
-            R.string.dtcLink,
-            R.string.lyfjaLink,
-            R.string.uptodateLink
-    };
+
 }

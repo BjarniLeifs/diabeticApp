@@ -3,6 +3,7 @@
     android:orientation="vertical"
     android:layout_width="wrap_content"
     android:layout_height="fill_parent"
+    android:layout_marginLeft="30dp"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <TextView
@@ -15,78 +16,43 @@
         android:layout_margin="10dp" />
 
     <TextView
+        android:id="@+id/link1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Almennt um sykursýki 1 fræðslumyndbönd"
-        android:id="@+id/textView6"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="5dp" />
+        android:layout_centerInParent="true"
+        android:layout_marginTop="20dp"
+        android:text="@string/youtubeLink1"/>
 
     <TextView
-        android:id="@+id/Link1"
-        android:autoLink="all|web"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:linksClickable="true"
-        android:text="@string/youtubeLink1"
-        android:layout_marginRight="10dp"
-        android:layout_marginLeft="10dp" />
-
-    <TextView
+        android:id="@+id/link2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hvernig á að reikna út insúlin skammt"
-        android:id="@+id/textView5"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="5dp"
-        android:layout_marginTop="5dp" />
+        android:layout_centerInParent="true"
+        android:layout_marginTop="20dp"
+        android:text="@string/dtcLink"/>
 
     <TextView
-        android:id="@+id/Link2"
-        android:autoLink="all|web"
+        android:id="@+id/link3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:linksClickable="true"
-        android:text="@string/dtcLink"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp" />
+        android:layout_centerInParent="true"
+        android:layout_marginTop="20dp"
+        android:text="@string/lyfjaLink"/>
 
     <TextView
+        android:id="@+id/link4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Fróðleikur um sykursýki"
-        android:id="@+id/textView7"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp" />
+        android:layout_centerInParent="true"
+        android:layout_marginTop="20dp"
+        android:text="@string/uptodateLink"/>
 
     <TextView
-        android:id="@+id/Link3"
-        android:autoLink="all|web"
+        android:id="@+id/link5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:linksClickable="true"
-        android:text="@string/lyfjaLink"
-        android:layout_marginRight="10dp"
-        android:layout_marginLeft="10dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hagur líkamsræktar fyrir sykursjúka"
-        android:id="@+id/textView8"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="5dp"
-        android:layout_marginTop="5dp" />
-
-    <TextView
-        android:id="@+id/Link4"
-        android:autoLink="all|web"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:linksClickable="true"
-        android:text="@string/uptodateLink"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp" />
+        android:layout_centerInParent="true"
+        android:layout_marginTop="20dp"
+        android:text="@string/google"/>
 
 </LinearLayout>
