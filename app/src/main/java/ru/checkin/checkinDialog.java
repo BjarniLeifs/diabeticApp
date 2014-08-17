@@ -32,7 +32,7 @@ public class checkinDialog extends DialogFragment {
         Bundle mArgs = getArguments();
         int myValue = mArgs.getInt("insulinUnits");
         final String value = String.valueOf(myValue);
-        insulinView.setText(value);
+        insulinView.setText(value + " einingar");
 
         getDialog().setTitle("Áætlaður útreikningur");
         calcel.setOnClickListener(new View.OnClickListener() {

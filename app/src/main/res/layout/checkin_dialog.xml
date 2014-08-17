@@ -20,17 +20,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true">
+        android:layout_alignParentStart="false">
         <TextView
             android:id="@+id/insulinView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:paddingTop="10dp"
-            android:textSize="70dp"
-            android:layout_margin="50dp"
+            android:textSize="50dp"
             android:background="#CFCFCF"
             android:gravity="center_horizontal"
-            />
+            android:layout_margin="50dp" />
     </LinearLayout>
 
 

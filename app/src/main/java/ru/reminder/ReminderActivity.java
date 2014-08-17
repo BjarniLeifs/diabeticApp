@@ -44,7 +44,7 @@ public class ReminderActivity extends ActionBarActivity {
                 notiValue = mNumberPicker.getValue();
                 intent.putExtra("HourValue", notiValue);
                 startService(intent);
-                Toast.makeText(getBaseContext(), "Þú færð áminningu eftir" + notiValue + "klukkutíma", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getBaseContext(), "Þú færð áminningu eftir " + notiValue + " klukkutíma", Toast.LENGTH_SHORT).show();
             }
         });
     }
