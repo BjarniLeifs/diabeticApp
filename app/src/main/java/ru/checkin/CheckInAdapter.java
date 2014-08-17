@@ -34,8 +34,6 @@ public class CheckInAdapter extends ArrayAdapter<Food> {
         this.nutrition = _nutrition;
     }
     public static  int setMeal(double ratio, Map data, double bloodSugar, boolean exercise) {
-
-
         CheckInService checker = CheckInServiceFactory.getCheckInService();
 
         return checker.calculateInsulin(ratio, data, bloodSugar, exercise);

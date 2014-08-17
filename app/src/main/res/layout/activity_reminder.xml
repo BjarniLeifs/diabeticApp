@@ -11,19 +11,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Set reminder"
+        android:text="Skrá áminingu "
         android:id="@+id/textView"
         android:layout_gravity="center_horizontal"
         android:layout_margin="20dp" />
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Get reminded to measure your bloodsugar "
+        android:text="Fáðu áminingu um að skrá inn máltíð eftir 0-24 tíma frá seinustu máltíð"
         android:id="@+id/textView2"
         android:layout_weight="0.11"
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="center_horizontal"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp" />
 
     <NumberPicker
         android:layout_width="wrap_content"
@@ -32,16 +34,18 @@
         android:layout_gravity="center_horizontal" />
 
     <TextView
-        android:layout_width="105dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:id="@+id/time1"
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:text="Veldu klukktíma " />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Save alarm"
+        android:text="Vista áminningu "
         android:id="@+id/NotificationButton"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="10dp" />
