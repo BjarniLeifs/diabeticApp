@@ -66,7 +66,7 @@ public class AddMealToActivity extends Activity {
                     }
                 }
 
-                //AddToCalendarAdapter.addMeal(data, timestamp, hour, min, anna);
+                //AddToCalendarAdapter.addMeal(data, timestamp, hour, min);
                 Intent intent = new Intent(AddMealToActivity.this, CalendarActivity.class);
                 startActivity(intent);
             }

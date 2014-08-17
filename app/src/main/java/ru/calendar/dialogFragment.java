@@ -28,7 +28,7 @@ public class dialogFragment extends DialogFragment {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.calendar_dialog, container,
                 false);
-        nutrition = (Meal) CalendarAdapter.getNutrition();
+        nutrition = (Meal) CalendarAdapter.getMealById();
 
         getDialog().setTitle("Og hvað svo?");
 

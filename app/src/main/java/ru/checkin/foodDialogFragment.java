@@ -21,7 +21,7 @@ public class foodDialogFragment extends DialogFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View rootView = inflater.inflate(R.layout.checkin_dialog, container, false);
+        View rootView = inflater.inflate(R.layout.checkin_food_dialog, container, false);
         nutrition = (Food) CheckInAdapter.getFoodNutrition();
 
         getDialog().setTitle(nutrition.Nafn);

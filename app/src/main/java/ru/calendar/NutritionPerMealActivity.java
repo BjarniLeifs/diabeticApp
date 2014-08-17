@@ -16,7 +16,7 @@ public class NutritionPerMealActivity extends Activity  {
         setContentView(R.layout.nutritioninfo);
 
 
-        nutrition = (Meal) CalendarAdapter.getNutrition();
+        nutrition =  CalendarAdapter.getMealById();
 
         String pro = Float.toString(nutrition.PróteinAlls);
         String kol = Float.toString(nutrition.KolvetniAlls);
