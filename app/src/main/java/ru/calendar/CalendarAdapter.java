@@ -17,7 +17,9 @@ import com.jberry.services.meal.MealServiceFactory;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.TimeZone;
 import jBerry.MySugar.R;
 /*
@@ -38,21 +40,46 @@ public class CalendarAdapter extends ArrayAdapter<CalanderMeal> {
         this.nutrition = _nutrition;
     }
 
-    public static List<CalanderMeal> getDayItems(long unixTime){
+    public static List<CalanderMeal> getMealsByDay(long unixTime){
 
         List<CalanderMeal> calList;
         CalendarService calService = CalendarServiceFactory.getCalanderService();
         calList = calService.getMealsByDay(unixTime);
-
         return calList;
     }
-
+/*
     public static Object getNutrition(){
 
         Object _mealByName;
         MealService calService = MealServiceFactory.getMealService();
         _mealByName = calService.getMealByName();
         return _mealByName;
+    }
+*/
+    public static Meal getMealById(){
+        Meal mealList;
+        MealService mealService = MealServiceFactory.getMealService();
+        mealList = mealService.getMealByName();
+
+        return mealList;
+    }
+
+    public static HashMap addMeal(Map items, long timestamp, int hour, int min){
+        CalendarService service = CalendarServiceFactory.getCalanderService();
+        //service.addMealsByDay(items, timestamp, hour, min);
+        return null;
+    }
+
+    public static HashMap setEditMeal(Map mealList){
+
+        MealService service = MealServiceFactory.getMealService();
+        //  return service.setEditMeal(mealList);
+        return null;
+    }
+
+    public static long setDeleteRow(long date){
+
+        return date;
     }
 
     @Override
@@ -65,10 +92,6 @@ public class CalendarAdapter extends ArrayAdapter<CalanderMeal> {
         return position;
     }
 
-    public static long setDeleteRow(long date){
-
-        return date;
-    }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {

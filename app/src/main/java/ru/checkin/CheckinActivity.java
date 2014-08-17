@@ -1,5 +1,6 @@
 package ru.checkin;
 
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
@@ -29,7 +30,8 @@ import java.util.Map;
 import jBerry.MySugar.R;
 import ru.Events.Events;
 import ru.calendar.CalendarActivity;
-import ru.calendar.EditMealAdapter;
+import ru.calendar.CalendarAdapter;
+import ru.menu.MenuActivity;
 
 /*
  * Created by Anna on 26.6.2014.
@@ -67,13 +69,13 @@ public class CheckinActivity extends ActionBarActivity {
         }
 
         // NEED INT
-        meal = EditMealAdapter.getMealById();
+        meal = CalendarAdapter.getMealById();
 
 
 
         final Map<String, Integer> data = new HashMap<String, Integer>();
 
-        mealList = EditMealAdapter.getMealById();
+        mealList = CalendarAdapter.getMealById();
         final ArrayList<String> listIngrdients = new ArrayList<String>(mealList.Ingredients.keySet());
         final ArrayList<Integer> gramIngrdients = new ArrayList<Integer>(mealList.Ingredients.values());
         final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.select_dialog_item, listIngrdients);
@@ -181,10 +183,19 @@ public class CheckinActivity extends ActionBarActivity {
                 //Send checkin info to the checkinserver
                 int i = CheckInAdapter.setMeal(ratio, data, BL, exercise/*, infoText*/);
 
-                Toast.makeText(getBaseContext(), "You need " + i + " insulin units", Toast.LENGTH_SHORT).show();
 
-
-            }
+                if(i > 100){
+                    Toast.makeText(getBaseContext(), "Ertu eitthvað snar, þú drepur þig á þessu!", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(CheckinActivity.this, MenuActivity.class);
+                    startActivity(intent);
+                }else{
+                    Bundle args = new Bundle();
+                    args.putInt("insulinUnits", i);
+                    checkinDialog dialog = new checkinDialog();
+                    dialog.setArguments(args);
+                    dialog.show(getFragmentManager(), "abc");
+                }
+             }
         });
 
         Exercise.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -196,5 +207,6 @@ public class CheckinActivity extends ActionBarActivity {
 
     }
 }
+
 
 

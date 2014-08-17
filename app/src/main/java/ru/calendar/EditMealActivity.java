@@ -29,7 +29,7 @@ public class EditMealActivity extends ActionBarActivity {
 
 
         // getMealById returns: mango, apple, banana
-        mealList = EditMealAdapter.getMealById();
+        mealList = CalendarAdapter.getMealById();
         final ArrayList<String> listIngrdients = new ArrayList<String>(mealList.Ingredients.keySet());
         ArrayList<Integer> gramIngrdients = new ArrayList<Integer>(mealList.Ingredients.values());
 
@@ -59,30 +59,9 @@ public class EditMealActivity extends ActionBarActivity {
                     }
                 }
 
-                EditMealAdapter.setEditMeal(data);
+                CalendarAdapter.setEditMeal(data);
             }
         });
-
-
-
-
-/*
-
-
-
-        Resources res = getResources(); //if you are in an activity
-        for(int i = 0; i < mealList.Ingredients.size(); i++){
-            EditText t = (EditText) findViewById(idItems[i]);
-            values.add(t.getText().toString());
-
-        }
-*/
-
-
-
-
-
-
     }
 
 
@@ -105,20 +84,3 @@ public class EditMealActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 }
-    /*   //final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.select_dialog_item, food);
-       // AutoCompleteTextView actv = (AutoCompleteTextView)findViewById(R.id.item1);
-       // actv.setThreshold(1);
-     //   actv.setAdapter(adapter);
-        AutoCompleteTextView actv2 = (AutoCompleteTextView)findViewById(R.id.item2);
-        actv2.setThreshold(1);
-      //  actv2.setAdapter(adapter);
-        AutoCompleteTextView actv3 = (AutoCompleteTextView)findViewById(R.id.item3);
-        actv3.setThreshold(1);
-      //  actv3.setAdapter(adapter);
-        AutoCompleteTextView actv4 = (AutoCompleteTextView)findViewById(R.id.item4);
-        actv4.setThreshold(1);
-       // actv4.setAdapter(adapter);
-        AutoCompleteTextView actv5 = (AutoCompleteTextView)findViewById(R.id.item5);
-        actv5.setThreshold(1);
-       // actv5.setAdapter(adapter);
-*/

@@ -49,8 +49,8 @@ public class CalendarActivity extends ActionBarActivity {
 
 
 
-        eventList = (ArrayList<CalanderMeal>) CalendarAdapter.getDayItems(Long.parseLong(sdf.format(cal.getTime())));
-        nutrition = (Meal) CalendarAdapter.getNutrition();
+        eventList = (ArrayList<CalanderMeal>) CalendarAdapter.getMealsByDay(Long.parseLong(sdf.format(cal.getTime())));
+        nutrition = CalendarAdapter.getMealById();
 
         ListAdapter adapter = new CalendarAdapter(getApplicationContext(), R.layout.notification_list_item, eventList, nutrition);
         ListView listview = (ListView) findViewById(R.id.eventList);
@@ -74,8 +74,8 @@ public class CalendarActivity extends ActionBarActivity {
             @Override
             public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
                 cal.setTimeInMillis(calendarView.getDate());
-                eventList = (ArrayList<CalanderMeal>) CalendarAdapter.getDayItems(Long.parseLong(sdf.format(cal.getTime())));
-                nutrition = (Meal) CalendarAdapter.getNutrition();
+                eventList = (ArrayList<CalanderMeal>) CalendarAdapter.getMealsByDay(Long.parseLong(sdf.format(cal.getTime())));
+                nutrition =  CalendarAdapter.getMealById();
 
                 ListAdapter adapter = new CalendarAdapter(getApplicationContext(), R.layout.notification_list_item, eventList, nutrition);
                 ListView listview = (ListView) findViewById(R.id.eventList);
