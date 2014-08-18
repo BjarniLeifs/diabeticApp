@@ -1,13 +1,8 @@
 package ru.education;
 
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.text.Html;
 import android.text.method.LinkMovementMethod;
-import android.view.View;
 import android.widget.TextView;
 import jBerry.MySugar.R;
 import ru.Events.Events;
@@ -18,9 +13,6 @@ import ru.Events.Events;
 public class EducationActivity extends ActionBarActivity{
 
     TextView myUrl;
-    private static final String HTTPS = "https://";
-    private static final String HTTP = "http://";
-    private String urlString;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
