@@ -109,7 +109,7 @@ public class CalendarAdapter extends ArrayAdapter<CalanderMeal> {
 
         CalanderMeal c = list.get(position);
 
-        Date date = new Date(c.timeOfMeal*1000L);
+       /* Date date = new Date(c.timeOfMeal*1000L);
         SimpleDateFormat sdf = new SimpleDateFormat("HH:mm"); // the format of your date
         sdf.setTimeZone(TimeZone.getTimeZone("GMT-0"));
 
@@ -121,7 +121,7 @@ public class CalendarAdapter extends ArrayAdapter<CalanderMeal> {
 
         mealName.setText(c.mealName);
         nuteInfo.setText("Protein: " + p + " Kolvetni: " + k + " Fita" + f);
-        time.setText(timeOfMeal);
+        time.setText(timeOfMeal);*/
 
         return row;
     }

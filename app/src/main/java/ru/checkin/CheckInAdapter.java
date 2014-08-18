@@ -5,8 +5,9 @@ import android.view.LayoutInflater;
 import android.widget.ArrayAdapter;
 
 import com.jberry.dto.Food;
-import com.jberry.services.checkin.CheckInService;
-import com.jberry.services.checkin.CheckInServiceFactory;
+import com.jberry.dto.Insulin;
+import com.jberry.services.insulin.InsulinServiceFactory;
+import com.jberry.services.insulin.InsulinService;
 import com.jberry.services.food.FoodService;
 import com.jberry.services.food.FoodServiceFactory;
 import java.util.Map;
@@ -34,10 +35,12 @@ public class CheckInAdapter extends ArrayAdapter<Food> {
         this.nutrition = _nutrition;
     }
     public static  int setMeal(double ratio, Map data, double bloodSugar, boolean exercise) {
-        CheckInService checker = CheckInServiceFactory.getCheckInService();
+        InsulinService insulin = InsulinServiceFactory.getInsulinService();
 
-        return checker.calculateInsulin(ratio, data, bloodSugar, exercise);
+
+        return insulin.calculateInsulin(ratio, data, bloodSugar, exercise);
     }
+
     public static Object getFoodNutrition(){
         Food _foodByName;
         FoodService calService = FoodServiceFactory.getFoodService();
