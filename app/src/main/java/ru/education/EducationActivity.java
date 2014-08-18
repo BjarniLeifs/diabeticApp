@@ -18,9 +18,6 @@ import ru.Events.Events;
 public class EducationActivity extends ActionBarActivity{
 
     TextView myUrl;
-    private static final String HTTPS = "https://";
-    private static final String HTTP = "http://";
-    private String urlString;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
