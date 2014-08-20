@@ -9,7 +9,11 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+
+import com.jberry.dto.FoodTO;
 import com.jberry.dto.Meal;
+
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -18,25 +22,32 @@ import ru.Events.Events;
 
 public class EditMealActivity extends ActionBarActivity {
 
-    private Meal mealList;
+    //private Meal mealList;
     private Button btn;
     final Map<String, Integer> data = new HashMap<String, Integer>();
+    private ArrayList<String> matisList = new ArrayList<String>();
+    //private ArrayList<String> itemList = new ArrayList<String>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_meal);
+       // mealList.getIngredients();
+
+       // FoodTO[] da = mealList.getIngredients();
+
+       // mealList = CalendarAdapter.getMealById();
+        final ArrayList<String> listIngrdients = new ArrayList<String>();
+        ArrayList<Integer> gramIngrdients = new ArrayList<Integer>();
 
 
-        // getMealById returns: mango, apple, banana
-        mealList = CalendarAdapter.getMealById();
-        final ArrayList<String> listIngrdients = new ArrayList<String>(mealList.Ingredients.keySet());
-        ArrayList<Integer> gramIngrdients = new ArrayList<Integer>(mealList.Ingredients.values());
+
 
 
         final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.select_dialog_item, listIngrdients);
 
-        for(int i = 0; i < listIngrdients.size(); i++){
+        for(int i = 0; i < Events.idItems.length; i++){
             AutoCompleteTextView item = (AutoCompleteTextView) findViewById(Events.idItems[i]);
             EditText gram = (EditText) findViewById(Events.idGrams[i]);
             item.setText(listIngrdients.get(i));
@@ -45,6 +56,19 @@ public class EditMealActivity extends ActionBarActivity {
 
             gram.setText("" + gramIngrdients.get(i));
         }
+
+
+        // Ef notandi skrifar ep þá koma upp allar fæðutegundir sem byrja á ep t.d. epli
+        for(int i = 0; i < Events.idItems.length; i++){
+            AutoCompleteTextView actv = (AutoCompleteTextView)findViewById(Events.idItems[i]);
+            actv.setThreshold(1);
+            String item = actv.getText().toString();
+
+            matisList = CalendarAdapter.getFoodTitle(item);
+         //   ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.select_dialog_item, matisList);
+            actv.setAdapter(adapter);
+        }
+
 
         btn = (Button) findViewById(R.id.editSaveBtn);
         btn.setOnClickListener(new View.OnClickListener() {
@@ -59,9 +83,10 @@ public class EditMealActivity extends ActionBarActivity {
                     }
                 }
 
-                CalendarAdapter.setEditMeal(data);
+             //   CalendarAdapter.editMeal(data);
             }
         });
+
     }
 
 

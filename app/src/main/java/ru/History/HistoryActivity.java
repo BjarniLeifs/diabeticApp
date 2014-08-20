@@ -53,7 +53,7 @@ public class HistoryActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_history);
         long time= 20140812;
-        historyList = (ArrayList<CalanderMeal>) CalendarAdapter.getMealsByDay(time);
+        //historyList = (ArrayList<CalanderMeal>) CalendarAdapter.getMealsByDay(time);
 
         ListAdapter adapter = new HistoryAdapter(getApplicationContext(), R.layout.history_list_layout, historyList);
         ListView listView = (ListView) findViewById(R.id.historyList);

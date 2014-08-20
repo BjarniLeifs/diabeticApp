@@ -60,16 +60,7 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textStyle="bold"
         android:typeface="sans" />
-    <TextView
-        android:id="@+id/addSugarDialog"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginTop="10dp"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textStyle="bold"
-        android:typeface="sans" />
+
     <TextView
         android:id="@+id/fiberDialog"
         android:layout_width="fill_parent"
@@ -80,105 +71,6 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textStyle="bold"
         android:typeface="sans" />
-    <TextView
-        android:id="@+id/alcoholDialog"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginTop="10dp"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textStyle="bold"
-        android:typeface="sans" />
-    <TextView
-        android:id="@+id/MineralsDialog"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginTop="10dp"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textStyle="bold"
-        android:typeface="sans" />
-    <TextView
-        android:id="@+id/vitaminADialog"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginTop="10dp"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textStyle="bold"
-        android:typeface="sans" />
-    <TextView
-        android:id="@+id/vitaminDDialog"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginTop="10dp"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textStyle="bold"
-        android:typeface="sans" />
-    <TextView
-        android:id="@+id/vitaminEDialog"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginTop="10dp"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textStyle="bold"
-        android:typeface="sans" />
-    <TextView
-        android:id="@+id/vitaminCDialog"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginTop="10dp"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textStyle="bold"
-        android:typeface="sans" />
-    <TextView
-        android:id="@+id/vitaminB1Dialog"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginTop="10dp"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textStyle="bold"
-        android:typeface="sans" />
-    <TextView
-        android:id="@+id/vitaminB2Dialog"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginTop="10dp"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textStyle="bold"
-        android:typeface="sans" />
-    <TextView
-        android:id="@+id/vitaminB12Dialog"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginTop="10dp"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textStyle="bold"
-        android:typeface="sans" />
-    <TextView
-        android:id="@+id/calciumDialog"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginTop="10dp"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textStyle="bold"
-        android:typeface="sans" />
+
     </LinearLayout>
 </ScrollView>

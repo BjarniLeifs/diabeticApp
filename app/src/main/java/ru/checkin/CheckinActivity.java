@@ -1,6 +1,7 @@
 package ru.checkin;
 
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
@@ -18,14 +19,21 @@ import android.view.View.OnClickListener;
 import android.widget.Toast;
 
 
+import com.jberry.dto.Diabetic;
+import com.jberry.dto.Food;
+import com.jberry.dto.FoodTO;
 import com.jberry.dto.Meal;
 
+import java.io.IOException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 import jBerry.MySugar.R;
 import ru.Events.Events;
@@ -39,24 +47,31 @@ import ru.menu.MenuActivity;
 public class CheckinActivity extends ActionBarActivity {
 
     CheckBox Exercise;
-    private Meal mealList;
+    //private Meal oneMeal;
+    private ArrayList<Food> oneMeal = new ArrayList<Food>();
+    private ArrayList<String> matisList = new ArrayList<String>();
+    private ArrayList<FoodTO> addFood;
+
+    Diabetic diabetic;
+
     FragmentManager fManager;
     EditText bloodSugar, item1, gram1;
     Button checkIn, toCalendarBtn;
     int mealId;
     Meal meal;
-
-    String[] food ={"epli", "bananabrauð", "banani", "appelsina", "mango"};
-
+    foodDialogFragment dialog;
+/*
     //Drasl sem kemur ur database
     double ratio = 10; //Frá settings
     double morningRatio = 12;//frá settings
     double noonRatio = 15;//fra settings
     double eveningRatio = 17; //fra settings
-
+*/
     //Fra notanda
     double BL = 0; //Frá checkin
     boolean exercise = false; // Fra checkin
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,16 +84,23 @@ public class CheckinActivity extends ActionBarActivity {
         }
 
         // NEED INT
-        meal = CalendarAdapter.getMealById();
-
-
+        //oneMeal = CalendarAdapter.getMealById(mealId);
 
         final Map<String, Integer> data = new HashMap<String, Integer>();
 
-        mealList = CalendarAdapter.getMealById();
-        final ArrayList<String> listIngrdients = new ArrayList<String>(mealList.Ingredients.keySet());
-        final ArrayList<Integer> gramIngrdients = new ArrayList<Integer>(mealList.Ingredients.values());
-        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.select_dialog_item, listIngrdients);
+
+        // Ef notandi skrifar ep þá koma upp allar fæðutegundir sem byrja á ep t.d. epli
+        for(int i = 0; i < Events.idItems.length; i++){
+            AutoCompleteTextView actv = (AutoCompleteTextView)findViewById(Events.idItems[i]);
+            actv.setThreshold(1);
+            String item = actv.getText().toString();
+
+            matisList = CalendarAdapter.getFoodTitle(item);
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.select_dialog_item, matisList);
+            actv.setAdapter(adapter);
+        }
+
+       // final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.select_dialog_item, );
         checkIn = (Button) findViewById(R.id.checkInButton);
         toCalendarBtn = (Button) findViewById(R.id.toCalanderBtn);
         item1 = (EditText) findViewById(Events.idItems[0]);
@@ -86,17 +108,29 @@ public class CheckinActivity extends ActionBarActivity {
 
        // EditText text = (EditText) findViewById(Events.idItems[0]);
 
-        if(bundle != null){
-            for(int i = 0; i < meal.Ingredients.size(); i++){
+       // Need to get mealById
+
+     /*   try {
+            oneMeal = CalendarAdapter.getFoodInformation(da);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+*/
+
+      /*  if(bundle != null){
+            for(int i = 0; i < 5; i++){
                 AutoCompleteTextView item = (AutoCompleteTextView) findViewById(Events.idItems[i]);
                 EditText gram = (EditText) findViewById(Events.idGrams[i]);
-                item.setText(listIngrdients.get(i));
+                item.setText(oneMeal.getMealName());
                 item.setThreshold(1);
                 item.setAdapter(adapter);
 
-                gram.setText("" + gramIngrdients.get(i));
+                gram.setText("" + oneMeal.getMealName());
+                oneMeal.
             }
         }
+*/
 
         toCalendarBtn.setOnClickListener(new OnClickListener() {
             @Override
@@ -106,27 +140,30 @@ public class CheckinActivity extends ActionBarActivity {
             }
         });
 
-        for(int i = 0; i < Events.idItems.length; i++){
-            AutoCompleteTextView actv = (AutoCompleteTextView)findViewById(Events.idItems[i]);
-            actv.setThreshold(1);
-            actv.setAdapter(adapter);
-        }
+
         bloodSugar = (EditText) findViewById(R.id.bloodSugarItem);
         Exercise = (CheckBox) findViewById(R.id.checkBoxItem);
 
         for (int i=0; i < Events.idButton.length; i++){
             Button btn = (Button) findViewById(Events.idButton[i]);
+            AutoCompleteTextView item = (AutoCompleteTextView) findViewById(Events.idItems[i]);
+            String food = item.getText().toString();
+            Bundle args = new Bundle();
+            args.putString("itemName", food);
+            fManager = getSupportFragmentManager();
+            dialog = new foodDialogFragment();
+            dialog.setArguments(args);
+
             btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                   fManager = getSupportFragmentManager();
-                   foodDialogFragment dialog = new foodDialogFragment();
-                   dialog.show(fManager, "stuff");
+
+                    dialog.show(fManager, "stuff");
                 }
             });
         }
-        TextWatcher tw = new TextWatcher() {
 
+        TextWatcher tw = new TextWatcher() {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
                 //if the username or password is missing the log in button is not clickable
@@ -159,6 +196,7 @@ public class CheckinActivity extends ActionBarActivity {
 
                     if(item.getText().toString().length() > 0 &&  gram.getText().length() > 0){
                         data.put(item.getText().toString(), Integer.parseInt(gram.getText().toString()));
+
                     }
                 }
                   //final EditText infoText = (EditText) findViewById(R.id.noteInfo);
@@ -169,28 +207,36 @@ public class CheckinActivity extends ActionBarActivity {
                 Calendar calendar = new GregorianCalendar();
                 Date trialTime = new Date();
                 calendar.setTime(trialTime);
-                int hours = calendar.get(Calendar.HOUR_OF_DAY);
-                if(hours < 11)
-                    ratio = morningRatio;
-                else if(hours >= 11 && hours < 17)
-                    ratio = noonRatio;
-                else if(hours >= 17 && hours < 23)
-                    ratio = eveningRatio;
 
                 //Get bloodsugar input
                 BL = Double.parseDouble(bloodSugar.getText().toString());
 
-                //Send checkin info to the checkinserver
-                int i = CheckInAdapter.setMeal(ratio, data, BL, exercise/*, infoText*/);
+                long unixTime = System.currentTimeMillis() / 1000L;
 
+                double i = 0;
+                try {
+                    i = CalendarAdapter.calculateInsulin(unixTime, addFood, BL, exercise);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
 
                 if(i > 100){
                     Toast.makeText(getBaseContext(), "Ertu eitthvað snar, þú drepur þig á þessu!", Toast.LENGTH_SHORT).show();
+
+                    try{
+                        TimeUnit.SECONDS.wait(1);
+                    }catch (InterruptedException e){
+
+                    }
+
                     Intent intent = new Intent(CheckinActivity.this, MenuActivity.class);
                     startActivity(intent);
+                }
+                else if(i == 0){
+                    return;
                 }else{
                     Bundle args = new Bundle();
-                    args.putInt("insulinUnits", i);
+                    args.putInt("insulinUnits", (int) i);
                     checkinDialog dialog = new checkinDialog();
                     dialog.setArguments(args);
                     dialog.show(getFragmentManager(), "abc");

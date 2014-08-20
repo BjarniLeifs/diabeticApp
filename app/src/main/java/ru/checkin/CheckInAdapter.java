@@ -3,12 +3,12 @@ package ru.checkin;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.widget.ArrayAdapter;
-
 import com.jberry.dto.Food;
-import com.jberry.services.checkin.CheckInService;
-import com.jberry.services.checkin.CheckInServiceFactory;
 import com.jberry.services.food.FoodService;
 import com.jberry.services.food.FoodServiceFactory;
+import com.jberry.services.insulin.InsulinService;
+import com.jberry.services.insulin.InsulinServiceFactory;
+
 import java.util.Map;
 
 /**
@@ -33,17 +33,8 @@ public class CheckInAdapter extends ArrayAdapter<Food> {
         super(context, layoutResourceID, (java.util.List<Food>) _nutrition);
         this.nutrition = _nutrition;
     }
-    public static  int setMeal(double ratio, Map data, double bloodSugar, boolean exercise) {
-        CheckInService checker = CheckInServiceFactory.getCheckInService();
 
-        return checker.calculateInsulin(ratio, data, bloodSugar, exercise);
-    }
-    public static Object getFoodNutrition(){
-        Food _foodByName;
-        FoodService calService = FoodServiceFactory.getFoodService();
-        _foodByName = calService.getFoodInformation();
-        return _foodByName;
-    }
+
 
 
 }

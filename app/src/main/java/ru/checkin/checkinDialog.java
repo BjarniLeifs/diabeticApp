@@ -10,7 +10,13 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.jberry.dto.Diabetic;
+import com.jberry.dto.Meal;
+
+import java.io.IOException;
+
 import jBerry.MySugar.R;
+import ru.calendar.CalendarAdapter;
 import ru.menu.MenuActivity;
 
 /**
@@ -24,19 +30,20 @@ public class checkinDialog extends DialogFragment {
         View rootView = inflater.inflate(R.layout.checkin_dialog, container, false);
 
 
+
         TextView insulinView = (TextView) rootView.findViewById(R.id.insulinView);
-        Button calcel = (Button) rootView.findViewById(R.id.canselCheckInInsulinBtn);
+        Button cancel = (Button) rootView.findViewById(R.id.canselCheckInInsulinBtn);
         Button confirm = (Button) rootView.findViewById(R.id.confirmCheckInBtn);
 
 
         Bundle mArgs = getArguments();
-        int myValue = mArgs.getInt("insulinUnits");
+        final int myValue = mArgs.getInt("insulinUnits");
         final String value = String.valueOf(myValue);
         insulinView.setText(value + " einingar");
 
         getDialog().setTitle("Áætlaður útreikningur");
 
-        calcel.setOnClickListener(new View.OnClickListener() {
+        cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), CheckinActivity.class);
@@ -47,15 +54,22 @@ public class checkinDialog extends DialogFragment {
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), MenuActivity.class);
 
-                // Senda gögnin til baka með timestamp.
+                double i = Double.valueOf(myValue);
+                long unixTime = System.currentTimeMillis() / 1000L;
 
-                startActivity(intent);
+                Diabetic diabetic = new Diabetic();
+                diabetic.setLastDoseAmount(i);
+                diabetic.setLastDoseTime(unixTime);
+
+                try {
+                    CalendarAdapter.finishCheckIn(diabetic);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
 
          return rootView;
-
     }
 }

@@ -10,14 +10,20 @@ import android.widget.Button;
 import android.widget.TextView;
 
 
+import com.jberry.dto.Food;
 import com.jberry.dto.Meal;
+
+import java.io.IOException;
+import java.util.ArrayList;
 
 import jBerry.MySugar.R;
 import ru.checkin.CheckinActivity;
 
 public class dialogFragment extends DialogFragment {
     private Button nutritionView, editView, deleteView, toCheckInBtn;
-    private Meal nutrition, meal = new Meal();
+    private Meal  meal = new Meal();
+    private ArrayList<Food> nutrition = new ArrayList<Food>();
+
 
     public  dialogFragment (){
 
@@ -28,7 +34,15 @@ public class dialogFragment extends DialogFragment {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.calendar_dialog, container,
                 false);
-        nutrition = (Meal) CalendarAdapter.getMealById();
+
+        Bundle mArgs = getArguments();
+        String itemName = mArgs.getString("fakeName");
+
+        try {
+            nutrition =  CalendarAdapter.getFoodInformation(itemName);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         getDialog().setTitle("Og hvað svo?");
 
@@ -37,18 +51,18 @@ public class dialogFragment extends DialogFragment {
         deleteView = (Button) rootView.findViewById(R.id.delete2);
         toCheckInBtn = (Button) rootView.findViewById(R.id.toCheckInBtn);
 
-        String pro = Float.toString(nutrition.PróteinAlls);
-        String kol = Float.toString(nutrition.KolvetniAlls);
-        String fit = Float.toString(nutrition.FitaAlls);
+        String pro = Double.toString(nutrition.get(0).getProteins());
+        String kol = Double.toString(nutrition.get(0).getTotalCarbohydrates());
+        String fit = Double.toString(nutrition.get(0).getFat());
 
         TextView protein = (TextView) rootView.findViewById(R.id.meal1);
         TextView kolvetni = (TextView) rootView.findViewById(R.id.meal2);
         TextView fita = (TextView) rootView.findViewById(R.id.meal3);
 
-        protein.setText("Prótein: " + pro + "gr");
+/*      protein.setText("Prótein: " + pro + "gr");
         kolvetni.setText("Kolvetni: " + kol + "gr");
         fita.setText("Fita: " + fit + "gr");
-
+*/
 
         nutritionView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,7 +96,7 @@ public class dialogFragment extends DialogFragment {
             public void onClick(View v) {
 
                 Intent intent = new Intent(getActivity(), CheckinActivity.class);
-                intent.putExtra("mealId", nutrition.Meald);
+                //intent.putExtra("mealId", nutrition.Meald);
                 startActivity(intent);
             }
         });

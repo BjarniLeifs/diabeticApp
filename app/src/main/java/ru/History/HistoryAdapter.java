@@ -54,20 +54,20 @@ public class HistoryAdapter extends ArrayAdapter<CalanderMeal> {
 
         CalanderMeal c = historyList.get(position);
 
-        Date date = new Date(c.timeOfMeal*1000L);
+     //   Date date = new Date(c.timeOfMeal*1000L);
 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd"); // the format of your date
         sdf.setTimeZone(TimeZone.getTimeZone("GMT-0"));
-        String dateit = sdf.format(date);
+     //   String dateit = sdf.format(date);
 
         SimpleDateFormat sdfit = new SimpleDateFormat("HH:mm"); // the format of your date
         sdfit.setTimeZone(TimeZone.getTimeZone("GMT-0"));
-        String timeit = sdf.format(date);
+ //       String timeit = sdf.format(date);
 
-        historyDate.setText(dateit);
-        historyTime.setText(timeit);
-        historyBloodSugerLevel.setText(c.mealName);
-        historyNote.setText(c.mealName + c.mealName + c.mealName);
+    //    historyDate.setText(dateit);
+      //    historyTime.setText(timeit);
+      //  historyBloodSugerLevel.setText(c.mealName);
+      //  historyNote.setText(c.mealName + c.mealName + c.mealName);
 
         return row;
     }

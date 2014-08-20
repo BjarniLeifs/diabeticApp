@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.jberry.services.tools.ToolService;
+import com.jberry.services.tools.ToolServiceFactory;
 import com.jberry.services.user.UserService;
 import com.jberry.services.user.UserServiceFactory;
 
@@ -23,20 +25,21 @@ public class LoginActivity extends ActionBarActivity {
 
     EditText name, password;
     Button logIn, goToSignUp;
-    UserService user = UserServiceFactory.getUserService();
-    boolean access, accessSignup;
 
     @Override
     protected void onCreate(Bundle savedInstancesState) {
         super.onCreate(savedInstancesState);
         setContentView(R.layout.activity_login);
 
+        ToolService service = ToolServiceFactory.getToolService();
+        String n = service.url();
+
         name = (EditText) findViewById(R.id.UserName);
         password = (EditText) findViewById(R.id.UserPassword);
         goToSignUp = (Button) findViewById(R.id.buttonGoToSignUp);
         logIn = (Button) findViewById(R.id.ButtonLogIn);
 
-        //If the username is missing the log in button is not clickable
+        //If the username is missing the login button is not clickable
         TextWatcher tw = new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {
@@ -60,8 +63,6 @@ public class LoginActivity extends ActionBarActivity {
         password.addTextChangedListener(tw);
         logIn.addTextChangedListener(tw);
 
-
-
         //If the signup button is clicked, they will go to the signup view
         goToSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,15 +77,17 @@ public class LoginActivity extends ActionBarActivity {
             @Override
             public void onClick(View view) {
 
-                final String u = name.getText().toString();
-                final String p = password.getText().toString();
+                final String email = name.getText().toString();
+                final String passWord = password.getText().toString();
+                Boolean authenticated = false;
                 try {
-                    access = user.login(u, p);
-
+                     authenticated = loginAdapter.login(email, passWord);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                if(access) {
+
+
+                if(authenticated) {
                     Intent intent = new Intent(ru.signup.LoginActivity.this, MenuActivity.class);
                     startActivityForResult(intent, 1);
                 }
@@ -96,27 +99,5 @@ public class LoginActivity extends ActionBarActivity {
     }
 
 
-    //Gets the data from the signup activity and starts the main activity with it
-    //Sends the user name from the signup to the main
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if(requestCode == 1) {
-            if(resultCode == RESULT_OK) {
-                String Name = data.getExtras().getString("loginName");
-                String Password = data.getExtras().getString("loginPassword");
-                try {
-                    accessSignup = user.login(Name, Password);
 
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                if(accessSignup){
-                    Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
-                    intent.putExtra("name", Name);
-                    startActivity(intent);
-                }
-            }
-        }
-    }
 }
-
