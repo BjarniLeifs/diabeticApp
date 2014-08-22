@@ -1,39 +1,42 @@
 package ru.calendar;
 
-import android.content.Intent;
-import android.support.v4.app.FragmentManager;
-import android.support.v7.app.ActionBarActivity;
+import android.os.AsyncTask;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.CalendarView;
-import android.widget.ListAdapter;
-import android.widget.ListView;
+import android.support.v7.app.ActionBarActivity;
+import android.widget.Toast;
 
-import com.jberry.dto.CalanderMeal;
-import com.jberry.dto.Meal;
+import com.google.gson.Gson;
+import com.jberry.dto.Food;
+import com.jberry.services.food.FoodService;
+import com.jberry.services.food.FoodServiceFactory;
 
-import java.text.SimpleDateFormat;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.GregorianCalendar;
-import java.util.Locale;
-import java.util.TimeZone;
+import java.util.Arrays;
 
 import jBerry.MySugar.R;
 
 public class CalendarActivity extends ActionBarActivity {
-
-    private ArrayList<CalanderMeal> eventList = new ArrayList<CalanderMeal>();
-    private Meal nutrition = new Meal();
+/*
+  //  private ArrayList<CalanderMeal> eventList = new ArrayList<CalanderMeal>();
+   // private Meal nutrition = new Meal();
     SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd", Locale.US);
     GregorianCalendar cal = new GregorianCalendar(TimeZone.getTimeZone("US/Central"));
-
+*/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar2);
-
+        new FoodTester().execute("Apple");
+    }
+/*
         final CalendarView calendarView = (CalendarView) findViewById(R.id.calendarView1);
         cal.setTimeInMillis(calendarView.getDate());
 
@@ -49,8 +52,8 @@ public class CalendarActivity extends ActionBarActivity {
 
 
 
-        eventList = (ArrayList<CalanderMeal>) CalendarAdapter.getMealsByDay(Long.parseLong(sdf.format(cal.getTime())));
-        nutrition = CalendarAdapter.getMealById();
+       // eventList = (ArrayList<CalanderMeal>) CalendarAdapter.getMealsByDay(Long.parseLong(sdf.format(cal.getTime())));
+        //nutrition = CalendarAdapter.getMealById();
 
         ListAdapter adapter = new CalendarAdapter(getApplicationContext(), R.layout.notification_list_item, eventList, nutrition);
         ListView listview = (ListView) findViewById(R.id.eventList);
@@ -84,7 +87,53 @@ public class CalendarActivity extends ActionBarActivity {
         });
 
     }
+*/
+private class FoodTester extends AsyncTask<String, ArrayList, ArrayList<Food>> {
 
+    // private String[] strings;
+
+    @Override
+    protected ArrayList<Food> doInBackground(String... strings) {
+        FoodService getter = FoodServiceFactory.getFoodService();
+
+        try {
+            return tester(strings[0]);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    protected void onPostExecute(ArrayList<Food> result){
+        Toast.makeText(getBaseContext(), "Got: " + result.toString(), Toast.LENGTH_LONG).show();
+
+    }
+    public ArrayList<Food> tester(String foodName) throws IOException {
+        ToolService toolService = new ToolService();
+        foodName = foodName.replace(" ","%20"); //because fuck jBerry
+        String url = "http://" + toolService.url() + ":3000/api/food/getByName/" + foodName;
+
+        HttpClient client = new DefaultHttpClient();
+        HttpGet request = new HttpGet(url);
+        request.setHeader("Authorization", "Basic " + toolService.userEncoded());
+
+        HttpResponse response = client.execute(request);
+        BufferedReader br = new BufferedReader(
+                new InputStreamReader((response.getEntity().getContent())));
+
+        StringBuilder builder = new StringBuilder();
+        String output;
+        while ((output = br.readLine()) != null) {
+            builder.append(output);
+        }
+        output = builder.toString();
+
+        Gson jesus = new Gson();
+        Food[] fud = jesus.fromJson(output ,Food[].class);
+
+        return new ArrayList<Food>(Arrays.asList(fud));
+
+    }
+}
 }
 
 

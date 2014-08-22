@@ -1,6 +1,7 @@
 package ru.signup;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.text.Editable;
@@ -23,8 +24,9 @@ public class LoginActivity extends ActionBarActivity {
 
     EditText name, password;
     Button logIn, goToSignUp;
-    UserService user = UserServiceFactory.getUserService();
-    boolean access, accessSignup;
+
+    AsyncTask<String, Integer, Double> access;
+    boolean accessSignup;
 
     @Override
     protected void onCreate(Bundle savedInstancesState) {
@@ -79,18 +81,20 @@ public class LoginActivity extends ActionBarActivity {
                 final String u = name.getText().toString();
                 final String p = password.getText().toString();
                 try {
-                    access = user.login(u, p);
+
+                  new MyAsyncTask().execute(u, p);
+
 
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                if(access) {
-                    Intent intent = new Intent(ru.signup.LoginActivity.this, MenuActivity.class);
+                /*if (!access) {
+                    Toast.makeText(getBaseContext(), "wrong username or password", Toast.LENGTH_SHORT).show();
+                } else {
+                    Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
                     startActivityForResult(intent, 1);
                 }
-                else{
-                    Toast.makeText(getBaseContext(), "wrong username or password", Toast.LENGTH_SHORT).show();
-                }
+                */
             }
         });
     }
@@ -98,8 +102,8 @@ public class LoginActivity extends ActionBarActivity {
 
     //Gets the data from the signup activity and starts the main activity with it
     //Sends the user name from the signup to the main
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+   /* protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if(requestCode == 1) {
             if(resultCode == RESULT_OK) {
                 String Name = data.getExtras().getString("loginName");
@@ -117,6 +121,38 @@ public class LoginActivity extends ActionBarActivity {
                 }
             }
         }
+    }*/
+
+    private class MyAsyncTask extends AsyncTask<String, Boolean, Boolean>{
+
+        protected Boolean doInBackground(String... params){
+
+
+            try {
+                return loginCaller(params[0], params[1]);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+        protected void onPostExecute(Boolean result){
+            if(result == false){
+            Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
+            startActivityForResult(intent, 1);}
+            else if(result == true){
+                Toast.makeText(getBaseContext(), "wrong username or password", Toast.LENGTH_SHORT).show();
+            }
+            else{
+                Toast.makeText(getBaseContext(), "to fast nigger", Toast.LENGTH_SHORT).show();
+            }
+        }
+        public boolean loginCaller(String u, String p) throws Exception {
+            UserService penus = UserServiceFactory.getUserService();
+            return penus.login(u, p);
+        }
+
     }
+
+
 }
 

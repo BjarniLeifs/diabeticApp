@@ -15,7 +15,7 @@ import ru.menu.MenuActivity;
 
 /**
  * Created by Sindri on 15/08/14.
- */
+ *//*
 public class checkinDialog extends DialogFragment {
 
     public checkinDialog(){}
@@ -59,3 +59,4 @@ public class checkinDialog extends DialogFragment {
 
     }
 }
+*/

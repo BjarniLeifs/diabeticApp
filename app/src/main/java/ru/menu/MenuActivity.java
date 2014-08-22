@@ -5,13 +5,9 @@ import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.Button;
 import android.widget.GridView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -21,9 +17,10 @@ import ru.Settings.SettingsActivity;
 import ru.backStore.CustomArrayAdapter;
 import ru.backStore.CustomClass;
 import ru.calendar.CalendarActivity;
-import ru.checkin.CheckinActivity;
 import ru.education.EducationActivity;
 import ru.reminder.ReminderActivity;
+
+//import ru.checkin.CheckinActivity;
 
 
 public class MenuActivity extends Activity{
@@ -58,9 +55,9 @@ public class MenuActivity extends Activity{
                 if(id == 0){
                     intent = new Intent(MenuActivity.this, CalendarActivity.class);
                 }
-                else if(id == 1){
-                    intent = new Intent(MenuActivity.this, CheckinActivity.class);
-                }
+                /*else if(id == 1){
+                    //intent = new Intent(MenuActivity.this, CheckinActivity.class);
+                }*/
                 else if(id == 2){
                     intent = new Intent(MenuActivity.this, SettingsActivity.class);
                 }

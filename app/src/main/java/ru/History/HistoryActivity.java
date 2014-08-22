@@ -1,25 +1,17 @@
 package ru.History;
 
-import android.graphics.Color;
 import android.support.v7.app.ActionBarActivity;
-import android.os.Bundle;
-import android.widget.LinearLayout;
-import android.widget.ListAdapter;
-import android.widget.ListView;
-import com.jberry.dto.CalanderMeal;
+
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.GraphViewSeries;
-import com.jjoe64.graphview.LineGraphView;
+
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.Locale;
 import java.util.TimeZone;
-import jBerry.MySugar.R;
-import ru.calendar.CalendarAdapter;
 public class HistoryActivity extends ActionBarActivity {
 
-    private ArrayList<CalanderMeal> historyList = new ArrayList<CalanderMeal>();
+   // private ArrayList<CalanderMeal> historyList = new ArrayList<CalanderMeal>();
     private String[] dates = {
             "8",  "10",  "12", "14", "16", "18", "20", "22", "24"
     };
@@ -47,15 +39,15 @@ public class HistoryActivity extends ActionBarActivity {
             , new GraphView.GraphViewData(9, 1.9d)
     });
 
-
+/*
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_history);
         long time= 20140812;
-        historyList = (ArrayList<CalanderMeal>) CalendarAdapter.getMealsByDay(time);
+       // historyList = (ArrayList<CalanderMeal>) CalendarAdapter.getMealsByDay(time);
 
-        ListAdapter adapter = new HistoryAdapter(getApplicationContext(), R.layout.history_list_layout, historyList);
+       // ListAdapter adapter = new HistoryAdapter(getApplicationContext(), R.layout.history_list_layout, historyList);
         ListView listView = (ListView) findViewById(R.id.historyList);
         listView.setAdapter(adapter);
 
@@ -79,6 +71,6 @@ public class HistoryActivity extends ActionBarActivity {
 
 
     }
-
+*/
 
 }

@@ -5,13 +5,11 @@ import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
-import com.jberry.dto.Food;
 import jBerry.MySugar.R;
 
 public class foodDialogFragment extends DialogFragment {
-    private Food nutrition = new Food();
+   // private Food nutrition = new Food();
 
     public foodDialogFragment() {
 
@@ -22,8 +20,8 @@ public class foodDialogFragment extends DialogFragment {
                              Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.checkin_food_dialog, container, false);
-        nutrition = (Food) CheckInAdapter.getFoodNutrition();
-
+        //nutrition = (Food) CheckInAdapter.getFoodNutrition();
+/*
         getDialog().setTitle(nutrition.Nafn);
 
 
@@ -81,7 +79,7 @@ public class foodDialogFragment extends DialogFragment {
         vitaminB12.setText("B12 vítamín: " + vitB12);
         calcium.setText("Kalk: " + calc);
 
-
+*/
         return rootView;
 
     }

@@ -1,23 +1,9 @@
 package ru.calendar;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.TextView;
-
-
-import com.jberry.dto.Meal;
-
-import jBerry.MySugar.R;
-import ru.checkin.CheckinActivity;
-
+/*
 public class dialogFragment extends DialogFragment {
     private Button nutritionView, editView, deleteView, toCheckInBtn;
-    private Meal nutrition, meal = new Meal();
+    //private Meal nutrition, meal = new Meal();
 
     public  dialogFragment (){
 
@@ -28,7 +14,7 @@ public class dialogFragment extends DialogFragment {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.calendar_dialog, container,
                 false);
-        nutrition = (Meal) CalendarAdapter.getMealById();
+        //nutrition = (Meal) CalendarAdapter.getMealById();
 
         getDialog().setTitle("Og hvað svo?");
 
@@ -37,9 +23,9 @@ public class dialogFragment extends DialogFragment {
         deleteView = (Button) rootView.findViewById(R.id.delete2);
         toCheckInBtn = (Button) rootView.findViewById(R.id.toCheckInBtn);
 
-        String pro = Float.toString(nutrition.PróteinAlls);
-        String kol = Float.toString(nutrition.KolvetniAlls);
-        String fit = Float.toString(nutrition.FitaAlls);
+        //String pro = Float.toString(nutrition.PróteinAlls);
+       // String kol = Float.toString(nutrition.KolvetniAlls);
+        //String fit = Float.toString(nutrition.FitaAlls);
 
         TextView protein = (TextView) rootView.findViewById(R.id.meal1);
         TextView kolvetni = (TextView) rootView.findViewById(R.id.meal2);
@@ -82,7 +68,7 @@ public class dialogFragment extends DialogFragment {
             public void onClick(View v) {
 
                 Intent intent = new Intent(getActivity(), CheckinActivity.class);
-                intent.putExtra("mealId", nutrition.Meald);
+                //intent.putExtra("mealId", nutrition.Meald);
                 startActivity(intent);
             }
         });
@@ -91,4 +77,4 @@ public class dialogFragment extends DialogFragment {
         return rootView;
     }
 }
-
+*/

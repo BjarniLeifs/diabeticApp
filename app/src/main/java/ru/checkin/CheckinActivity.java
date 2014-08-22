@@ -1,43 +1,16 @@
 package ru.checkin;
 
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
 import android.support.v7.app.ActionBarActivity;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
-import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
-import android.widget.EditText;
-import android.view.View.OnClickListener;
-import android.widget.Toast;
-
-
-import com.jberry.dto.Meal;
-
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.HashMap;
-import java.util.Map;
 
 import jBerry.MySugar.R;
-import ru.Events.Events;
-import ru.calendar.CalendarActivity;
-import ru.calendar.CalendarAdapter;
-import ru.menu.MenuActivity;
 
 /*
  * Created by Anna on 26.6.2014.
  */
 public class CheckinActivity extends ActionBarActivity {
-
+/*
     CheckBox Exercise;
     private Meal mealList;
     FragmentManager fManager;
@@ -57,11 +30,12 @@ public class CheckinActivity extends ActionBarActivity {
     //Fra notanda
     double BL = 0; //Frá checkin
     boolean exercise = false; // Fra checkin
-    @Override
+   */ @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_checkin);
 
+/*
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         if(bundle!=null){
@@ -163,7 +137,7 @@ public class CheckinActivity extends ActionBarActivity {
                 }
                   //final EditText infoText = (EditText) findViewById(R.id.noteInfo);
 
-                /*Calculation */
+
 
                 //Get the hour of the day to set the ratio
                 Calendar calendar = new GregorianCalendar();
@@ -181,7 +155,7 @@ public class CheckinActivity extends ActionBarActivity {
                 BL = Double.parseDouble(bloodSugar.getText().toString());
 
                 //Send checkin info to the checkinserver
-                int i = CheckInAdapter.setMeal(ratio, data, BL, exercise/*, infoText*/);
+                int i = CheckInAdapter.setMeal(ratio, data, BL, exercise);
 
 
                 if(i > 100){
@@ -199,12 +173,12 @@ public class CheckinActivity extends ActionBarActivity {
         });
 
         Exercise.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
+
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 exercise = Exercise.isChecked();
             }
         });
-
+*/
     }
 }
 

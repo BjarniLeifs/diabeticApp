@@ -2,13 +2,12 @@ package ru.calendar;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.widget.TextView;
-import com.jberry.dto.Meal;
+
 import jBerry.MySugar.R;
 
 public class NutritionPerMealActivity extends Activity  {
 
-    private Meal nutrition = new Meal();
+  //  private Meal nutrition = new Meal();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,8 +15,8 @@ public class NutritionPerMealActivity extends Activity  {
         setContentView(R.layout.nutritioninfo);
 
 
-        nutrition =  CalendarAdapter.getMealById();
-
+        //nutrition =  CalendarAdapter.getMealById();
+/*
         String pro = Float.toString(nutrition.PróteinAlls);
         String kol = Float.toString(nutrition.KolvetniAlls);
         String fit = Float.toString(nutrition.FitaAlls);
@@ -73,7 +72,7 @@ public class NutritionPerMealActivity extends Activity  {
         b2vitamin.setText("B2 vítamín: " + B2v);
         b12vitamin.setText("B12 Vítamín: " + B12);
         cvitamin.setText("C vítamín: " + Cvi);
-
+*/
 
     }
 

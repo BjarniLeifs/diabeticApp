@@ -1,20 +1,14 @@
 package ru.Settings;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 
-import com.jberry.dto.Diabetic;
-
-import java.io.IOException;
-
 import jBerry.MySugar.R;
-
-import static ru.Settings.SettingsAdapter.*;
 
 /**
  * Created by Anna on 16.7.2014.
@@ -49,13 +43,13 @@ public class SettingsActivity extends ActionBarActivity {
         nRat = Double.parseDouble(nRatio.getText().toString());
         eRat = Double.parseDouble(eRatio.getText().toString());
 
-        Diabetic res = getDiabeticInfo();
-        double Rat1 = res.getMorningRatio();
-        double Rat2 = res.getNoonRatio();
-        double Rat3 = res.getEveningRatio();
-        mRatio.setText((int) Rat1);
-        nRatio.setText((int) Rat2);
-        eRatio.setText((int) Rat3);
+        //Diabetic res = getDiabeticInfo();
+       // double Rat1 = res.getMorningRatio();
+        //double Rat2 = res.getNoonRatio();
+        //double Rat3 = res.getEveningRatio();
+       // mRatio.setText((int) Rat1);
+       // nRatio.setText((int) Rat2);
+        //eRatio.setText((int) Rat3);
 
         CompoundButton.OnCheckedChangeListener genderListener = new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -77,7 +71,7 @@ public class SettingsActivity extends ActionBarActivity {
             }
         };
 
-        save.setOnClickListener(new View.OnClickListener() {
+        /*save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mBirthday = sendDate(birthday);
@@ -91,10 +85,18 @@ public class SettingsActivity extends ActionBarActivity {
                 // Toast.makeText(getBaseContext(), "Þú átt afmæli" + year, Toast.LENGTH_SHORT).show();
             }
         });
-
+*/
         isFemale.setOnCheckedChangeListener(genderListener);
         isMale.setOnCheckedChangeListener(genderListener);
 
+    }
+    private class ProfileTask extends AsyncTask<String, Integer, Integer>{
+
+
+        @Override
+        protected Integer doInBackground(String... strings) {
+            return null;
+        }
     }
 }
 
