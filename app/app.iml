@@ -68,14 +68,13 @@
     <orderEntry type="library" exported="" name="gson-2.2.4-javadoc" level="project" />
     <orderEntry type="library" exported="" name="httpcore-4.3.2" level="project" />
     <orderEntry type="library" exported="" name="GraphView-3.1.2" level="project" />
-    <orderEntry type="library" exported="" name="SweetestApi_jar" level="project" />
-    <orderEntry type="library" exported="" name="SweetApi" level="project" />
     <orderEntry type="library" exported="" name="support-v4-19.1.0" level="project" />
     <orderEntry type="library" exported="" name="httpclient-cache-4.3.5" level="project" />
     <orderEntry type="library" exported="" name="fluent-hc-4.3.5" level="project" />
     <orderEntry type="library" exported="" name="httpclient-4.3.5" level="project" />
     <orderEntry type="library" exported="" name="gson-2.2.4-sources" level="project" />
     <orderEntry type="library" exported="" name="appcompat-v7-19.1.0" level="project" />
+    <orderEntry type="library" exported="" name="SweeterAPI" level="project" />
   </component>
 </module>
 

@@ -38,7 +38,6 @@ android {
 dependencies {
     compile files('lib/GraphView-3.1.2.jar')
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile files('lib/SweetApi.jar')
     compile 'com.android.support:appcompat-v7:19.+'
     compile files('lib/httpclient-4.3.5.jar')
     compile files('lib/httpclient-cache-4.3.5.jar')
@@ -50,5 +49,5 @@ dependencies {
     compile files('lib/gson-2.2.4.jar')
     compile files('lib/gson-2.2.4-javadoc.jar')
     compile files('lib/gson-2.2.4-sources.jar')
-    compile files('lib/SweetestApi_jar.jar')
+    compile files('lib/SweeterAPI.jar')
 }

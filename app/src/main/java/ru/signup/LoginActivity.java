@@ -124,32 +124,91 @@ public class LoginActivity extends ActionBarActivity {
     }*/
 
     private class MyAsyncTask extends AsyncTask<String, Boolean, Boolean>{
-
-        protected Boolean doInBackground(String... params){
-
-
+        @Override
+        protected Boolean doInBackground(String... params) {
+            UserService user = UserServiceFactory.getUserService();
+            boolean kaka = false;
             try {
-                return loginCaller(params[0], params[1]);
+                kaka = user.login(params[0], params[1]);
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            return null;
+
+            return kaka;
+
+
         }
+
         protected void onPostExecute(Boolean result){
-            if(result == false){
+            if(result == true){
             Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
             startActivityForResult(intent, 1);}
-            else if(result == true){
+            else if(result == false){
                 Toast.makeText(getBaseContext(), "wrong username or password", Toast.LENGTH_SHORT).show();
             }
             else{
                 Toast.makeText(getBaseContext(), "to fast nigger", Toast.LENGTH_SHORT).show();
             }
         }
-        public boolean loginCaller(String u, String p) throws Exception {
-            UserService penus = UserServiceFactory.getUserService();
-            return penus.login(u, p);
+       /* public boolean loginCaller(String u, String p) throws Exception {
+
+            ToolService toolService = new ToolService();
+            String Url = "http://" + toolService.url() + ":3000/api/login";
+
+            HttpClient client = new DefaultHttpClient();
+            HttpPost request = new HttpPost(Url);
+
+            List<NameValuePair> params = new LinkedList<NameValuePair>();
+            params.add(new BasicNameValuePair("email", u));
+            params.add(new BasicNameValuePair("password", p));
+
+            request.setEntity(new UrlEncodedFormEntity(params,"UTF-8"));
+            HttpResponse response = client.execute(request);
+
+            if(response.getStatusLine().getStatusCode() != 302){
+                return false;
+            }
+            User notandi = User.getTheUser();
+            notandi.setEmail(u);
+            notandi.setPassword(p);
+            if (!initUser(u, p)){
+                return false;
+            }
+            return true;
+
         }
+        public boolean initUser(String u, String p) throws IOException {
+            User user = User.getTheUser();
+
+            ToolService toolService = new ToolService();
+            String url = "http://" + toolService.url() + ":3000/api/userinfo";
+
+            HttpClient client = new DefaultHttpClient();
+            HttpGet request = new HttpGet(url);
+            request.setHeader("Authorization", "Basic " + toolService.getB64Auth());
+
+            HttpResponse response = client.execute(request);
+            if (response.getStatusLine().getStatusCode() != 200){ return false; }
+
+            BufferedReader br = new BufferedReader(
+                    new InputStreamReader((response.getEntity().getContent())));
+
+            StringBuilder builder = new StringBuilder();
+            String output;
+            while ((output = br.readLine()) != null) {
+                builder.append(output);
+            }
+            output = builder.toString();
+
+            Gson jesus = new Gson();
+            User usr = jesus.fromJson(output ,User.class);
+
+            user.setId(usr.getId());
+            user.setUserName(usr.getUserName());
+
+            return true;
+
+        }*/
 
     }
 
