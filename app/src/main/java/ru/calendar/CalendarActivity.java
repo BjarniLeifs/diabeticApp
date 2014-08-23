@@ -1,24 +1,54 @@
 package ru.calendar;
 
+import android.content.Intent;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.ActionBarActivity;
+import android.view.View;
+import android.widget.Adapter;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
+import android.widget.Button;
+import android.widget.CalendarView;
+import android.widget.ListAdapter;
+import android.widget.ListView;
+
+import com.jberry.dto.*;
+import com.jberry.services.calendar.CalendarService;
+import com.jberry.services.calendar.CalendarServiceFactory;
+import com.jberry.services.food.FoodService;
+import com.jberry.services.food.FoodServiceFactory;
+
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.GregorianCalendar;
+import java.util.Locale;
+import java.util.TimeZone;
+
+import jBerry.MySugar.R;
+
 
 public class CalendarActivity extends ActionBarActivity {
-/*
-  //  private ArrayList<CalanderMeal> eventList = new ArrayList<CalanderMeal>();
-   // private Meal nutrition = new Meal();
+
+    private ArrayList<CalanderMeal> mealsList;
     SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd", Locale.US);
     GregorianCalendar cal = new GregorianCalendar(TimeZone.getTimeZone("US/Central"));
-*/
-   /* @Override
+
+    public CalendarActivity(){
+
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar2);
-        //new FoodTester().execute("Apple");
-    }*/
-/*
+
+
         final CalendarView calendarView = (CalendarView) findViewById(R.id.calendarView1);
         cal.setTimeInMillis(calendarView.getDate());
-
         final Button addBtn = (Button) findViewById(R.id.saveAddBtn2);
 
         addBtn.setOnClickListener(new View.OnClickListener() {
@@ -28,91 +58,72 @@ public class CalendarActivity extends ActionBarActivity {
                 startActivity(intent);
             }
         });
+        long unixTime = System.currentTimeMillis() / 1000L;
+
+       // Þetta kall virkar en skilar tómum lista
+       // new getMealsByDayConnection().execute(unixTime);
 
 
+     //   ListAdapter adapter = new CalendarAdapter(getApplicationContext(), R.layout.notification_list_item, mealsList);
+      //  final ListView listview = (ListView) findViewById(R.id.eventList);
+      //  listview.setAdapter(adapter);
 
-       // eventList = (ArrayList<CalanderMeal>) CalendarAdapter.getMealsByDay(Long.parseLong(sdf.format(cal.getTime())));
-        //nutrition = CalendarAdapter.getMealById();
-
-        ListAdapter adapter = new CalendarAdapter(getApplicationContext(), R.layout.notification_list_item, eventList, nutrition);
-        ListView listview = (ListView) findViewById(R.id.eventList);
-        listview.setAdapter(adapter);
-
-
+/*
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                FragmentManager fm = getSupportFragmentManager();
 
+                String fakeName = "disIsFake";
+
+
+                Bundle args = new Bundle();
+                args.putString("fakeName", fakeName);
+                FragmentManager fm = getSupportFragmentManager();
                 dialogFragment dialog = new dialogFragment();
 
+                dialog.setArguments(args);
                 dialog.show(fm, "abc");
+
+
             }
         });
-
+*/
 
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
-
             @Override
             public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
                 cal.setTimeInMillis(calendarView.getDate());
-                eventList = (ArrayList<CalanderMeal>) CalendarAdapter.getMealsByDay(Long.parseLong(sdf.format(cal.getTime())));
-                nutrition =  CalendarAdapter.getMealById();
+                new getMealsByDayConnection().execute(calendarView.getDate());
 
-                ListAdapter adapter = new CalendarAdapter(getApplicationContext(), R.layout.notification_list_item, eventList, nutrition);
+                ListAdapter adapter = new CalendarAdapter(getApplicationContext(), R.layout.notification_list_item, mealsList);
                 ListView listview = (ListView) findViewById(R.id.eventList);
                 listview.setAdapter(adapter);
             }
         });
 
     }
-*//*
-private class FoodTester extends AsyncTask<String, ArrayList, ArrayList<Food>> {
 
-    // private String[] strings;
+    private class getMealsByDayConnection extends AsyncTask<Long, ArrayList<CalanderMeal>, ArrayList<CalanderMeal>> {
 
-    @Override
-    protected ArrayList<Food> doInBackground(String... strings) {
-        FoodService getter = FoodServiceFactory.getFoodService();
+        protected ArrayList<CalanderMeal> doInBackground(Long... params) {
 
-        try {
-            return tester(strings[0]);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+            CalendarService service = CalendarServiceFactory.getCalanderService();
+            try {
+               return service.getMealsByDay(params[0]);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         return null;
-    }
-    protected void onPostExecute(ArrayList<Food> result){
-        Toast.makeText(getBaseContext(), "Got: " + result.toString(), Toast.LENGTH_LONG).show();
-
-    }
-    public ArrayList<Food> tester(String foodName) throws IOException {
-        ToolService toolService = new ToolService();
-        foodName = foodName.replace(" ","%20"); //because fuck jBerry
-        String url = "http://" + toolService.url() + ":3000/api/food/getByName/" + foodName;
-
-        HttpClient client = new DefaultHttpClient();
-        HttpGet request = new HttpGet(url);
-        request.setHeader("Authorization", "Basic " + toolService.getB64Auth());
-
-        HttpResponse response = client.execute(request);
-        BufferedReader br = new BufferedReader(
-                new InputStreamReader((response.getEntity().getContent())));
-
-        StringBuilder builder = new StringBuilder();
-        String output;
-        while ((output = br.readLine()) != null) {
-            builder.append(output);
         }
-        output = builder.toString();
 
-        Gson jesus = new Gson();
-        Food[] fud = jesus.fromJson(output ,Food[].class);
+        @Override
+        protected void onPostExecute(ArrayList<CalanderMeal> result){
+            CalendarAdapter adapter = null;
+            adapter.notifyDataSetChanged();
 
-        return new ArrayList<Food>(Arrays.asList(fud));
-
+        }
     }
-}*/
+
 }
 
 

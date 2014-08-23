@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="SweetClean">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/app/lib/SweetClean.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

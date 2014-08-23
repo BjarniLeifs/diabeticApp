@@ -17,6 +17,7 @@ import ru.Settings.SettingsActivity;
 import ru.backStore.CustomArrayAdapter;
 import ru.backStore.CustomClass;
 import ru.calendar.CalendarActivity;
+import ru.checkin.CheckinActivity;
 import ru.education.EducationActivity;
 import ru.reminder.ReminderActivity;
 
@@ -55,9 +56,9 @@ public class MenuActivity extends Activity{
                 if(id == 0){
                     intent = new Intent(MenuActivity.this, CalendarActivity.class);
                 }
-                /*else if(id == 1){
-                    //intent = new Intent(MenuActivity.this, CheckinActivity.class);
-                }*/
+                else if(id == 1){
+                    intent = new Intent(MenuActivity.this, CheckinActivity.class);
+                }
                 else if(id == 2){
                     intent = new Intent(MenuActivity.this, SettingsActivity.class);
                 }

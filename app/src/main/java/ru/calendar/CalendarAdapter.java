@@ -1,30 +1,43 @@
 package ru.calendar;
 
+import android.content.Context;
 import android.os.AsyncTask;
 import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Toast;
 
-import com.jberry.dto.CalanderMeal;
-import com.jberry.dto.Meal;
+import com.google.gson.Gson;
+import com.jberry.dto.*;
+import com.jberry.dto.Food;
+import com.jberry.services.food.FoodService;
+import com.jberry.services.food.FoodServiceFactory;
 
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /*
  * Created by Sindri on 15/07/14.
  */
-public class CalendarAdapter {
+public class CalendarAdapter extends ArrayAdapter<CalanderMeal>{
 
 
-   private ArrayList<CalanderMeal> list = null;
+    private ArrayList<CalanderMeal> mealsList;
     private Meal nutrition = null;
     private static LayoutInflater inflater=null;
 
-    /*public CalendarAdapter(Context context, int layoutResourceID,
-                           ArrayList<CalanderMeal> calList, Meal _nutrition){
+    public CalendarAdapter(Context context, int layoutResourceID, ArrayList<CalanderMeal> mealsList){
+        super(context, layoutResourceID, mealsList);
 
-        super(context, layoutResourceID, calList);
-        this.list = calList;
-        this.nutrition = _nutrition;
-    }*/
+    }
 
   /*  public static List<CalanderMeal> getMealsByDay(long unixTime){
 
@@ -33,6 +46,12 @@ public class CalendarAdapter {
         calList = calService.getMealsByDay(unixTime);
         return calList;
     }*/
+
+
+    public static  ArrayList<Food> getFoodInformation(String foodName){
+       //new MatisConnection().execute(foodName);
+        return null;
+    }
 /*
     public static Object getNutrition(){
 
@@ -113,15 +132,49 @@ public class CalendarAdapter {
         return row;
     }
 */
-        private class MyAsyncTask extends AsyncTask<String, Boolean, Boolean>{
+/*
+    private static class MatisConnection extends AsyncTask<String, ArrayList<Food>, ArrayList<Food>> {
 
-
-            @Override
-            protected Boolean doInBackground(String... strings) {
-
-
-                return null;
-            }
+        public MatisConnection(){
         }
 
+        @Override
+        protected ArrayList<Food> doInBackground(String... strings) {
+
+            try {
+                return tester(strings[0]);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+        protected void onPostExecute(ArrayList<Food> result){
+
+
+
+        }
+
+        public ArrayList<Food> tester(String foodName) throws IOException {
+            ToolService toolService = new ToolService();
+            foodName = foodName.replace(" ","%20"); //because fuck jBerry
+            String url = "http://" + toolService.url() + ":3000/api/food/getByName/" + foodName;
+
+            HttpClient client = new DefaultHttpClient();
+            HttpGet request = new HttpGet(url);
+            request.setHeader("Authorization", ToolService.getB64Auth());
+            HttpResponse response = client.execute(request);
+            BufferedReader br = new BufferedReader(
+                    new InputStreamReader((response.getEntity().getContent())));
+            StringBuilder builder = new StringBuilder();
+            String output;
+            while ((output = br.readLine()) != null) {
+                builder.append(output);
+            }
+            output = builder.toString();
+            Gson jesus = new Gson();
+            com.jberry.dto.Food[] fud = jesus.fromJson(output , com.jberry.dto.Food[].class);
+
+            return new ArrayList<Food>(Arrays.asList(fud));
+        }
+    }*/
 }

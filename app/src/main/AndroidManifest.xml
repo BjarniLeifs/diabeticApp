@@ -14,12 +14,12 @@
             android:label="@string/title_activity_start">
 
 
-
         </activity>
         <!-- LoginActivity -->
         <activity
             android:name="ru.signup.LoginActivity"
             android:label="@string/title_activity_login" >
+
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -29,6 +29,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
 
 
         </activity>

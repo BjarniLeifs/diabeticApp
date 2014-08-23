@@ -15,7 +15,7 @@ import ru.menu.MenuActivity;
 
 /**
  * Created by Sindri on 15/08/14.
- *//*
+ */
 public class checkinDialog extends DialogFragment {
 
     public checkinDialog(){}
@@ -30,7 +30,7 @@ public class checkinDialog extends DialogFragment {
 
 
         Bundle mArgs = getArguments();
-        int myValue = mArgs.getInt("insulinUnits");
+        double myValue = mArgs.getDouble("insulinUnits");
         final String value = String.valueOf(myValue);
         insulinView.setText(value + " einingar");
 
@@ -59,4 +59,3 @@ public class checkinDialog extends DialogFragment {
 
     }
 }
-*/

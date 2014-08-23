@@ -1,7 +1,7 @@
 <component name="libraryTable">
-  <library name="SweeterAPI">
+  <library name="SweetestApi_jar">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/app/lib/SweeterAPI.jar!/" />
+      <root url="jar://$PROJECT_DIR$/app/lib/SweetestApi_jar.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

@@ -41,7 +41,9 @@
             android:layout_width="140dp"
             android:layout_height="wrap_content"
             android:id="@+id/item1"
+            android:textColor="#000"
             android:inputType="textAutoComplete"
+            android:textColorHint="#000"
             android:imeOptions="actionNext"
             android:layout_alignParentLeft="true"
             android:layout_marginLeft="30dp" >
