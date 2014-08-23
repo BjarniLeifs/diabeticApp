@@ -1,27 +1,6 @@
 package ru.calendar;
 
-import android.os.AsyncTask;
-import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.widget.Toast;
-
-import com.google.gson.Gson;
-import com.jberry.dto.Food;
-import com.jberry.services.food.FoodService;
-import com.jberry.services.food.FoodServiceFactory;
-
-import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.Arrays;
-
-import jBerry.MySugar.R;
 
 public class CalendarActivity extends ActionBarActivity {
 /*
@@ -30,12 +9,12 @@ public class CalendarActivity extends ActionBarActivity {
     SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd", Locale.US);
     GregorianCalendar cal = new GregorianCalendar(TimeZone.getTimeZone("US/Central"));
 */
-    @Override
+   /* @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar2);
-        new FoodTester().execute("Apple");
-    }
+        //new FoodTester().execute("Apple");
+    }*/
 /*
         final CalendarView calendarView = (CalendarView) findViewById(R.id.calendarView1);
         cal.setTimeInMillis(calendarView.getDate());
@@ -87,7 +66,7 @@ public class CalendarActivity extends ActionBarActivity {
         });
 
     }
-*/
+*//*
 private class FoodTester extends AsyncTask<String, ArrayList, ArrayList<Food>> {
 
     // private String[] strings;
@@ -114,7 +93,7 @@ private class FoodTester extends AsyncTask<String, ArrayList, ArrayList<Food>> {
 
         HttpClient client = new DefaultHttpClient();
         HttpGet request = new HttpGet(url);
-        request.setHeader("Authorization", "Basic " + toolService.userEncoded());
+        request.setHeader("Authorization", "Basic " + toolService.getB64Auth());
 
         HttpResponse response = client.execute(request);
         BufferedReader br = new BufferedReader(
@@ -133,7 +112,7 @@ private class FoodTester extends AsyncTask<String, ArrayList, ArrayList<Food>> {
         return new ArrayList<Food>(Arrays.asList(fud));
 
     }
-}
+}*/
 }
 
 
