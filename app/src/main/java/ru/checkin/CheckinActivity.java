@@ -157,7 +157,7 @@ public class CheckinActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 for(int m = 0; m < Events.idItems.length; m++){
-                    AutoCompleteTextView item= (AutoCompleteTextView) (Events.idItems[m]);
+                    AutoCompleteTextView item= (AutoCompleteTextView) findViewById(Events.idItems[m]);
                     EditText gram = (EditText) findViewById(Events.idGrams[m]);
 
                     if(item.getText().toString().length() > 0 &&  gram.getText().length() > 0){

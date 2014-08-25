@@ -1,7 +1,7 @@
 <component name="libraryTable">
-  <library name="SweetDude">
+  <library name="SweetClean">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/app/lib/SweetDude.jar!/" />
+      <root url="jar://$PROJECT_DIR$/app/lib/SweetClean.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

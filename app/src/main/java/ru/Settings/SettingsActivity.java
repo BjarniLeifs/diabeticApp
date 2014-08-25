@@ -8,15 +8,6 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 
-import com.jberry.dto.Diabetic;
-import com.jberry.dto.Profile;
-import com.jberry.services.diabetic.DiabeticService;
-import com.jberry.services.diabetic.DiabeticServiceFactory;
-import com.jberry.services.profile.ProfileService;
-import com.jberry.services.profile.ProfileServiceFactory;
-
-import java.io.IOException;
-
 import jBerry.MySugar.R;
 
 /**
@@ -99,40 +90,13 @@ public class SettingsActivity extends ActionBarActivity {
         isMale.setOnCheckedChangeListener(genderListener);
 
     }
-    //Þessi tvö eru að sett-a gildi sem notandi slær inn
-    //það þarf að implimenta í menue activity kannski að þegar kallað er á profile
-    //þá eru sóttar upplýsingar sem eru þegar til staðar í database
-    private class ProfileTask extends AsyncTask<Object, Boolean, Boolean>{
+    private class ProfileTask extends AsyncTask<String, Integer, Integer>{
+
 
         @Override
-        protected Boolean doInBackground(Object... params) {
-            Profile pUser = (Profile)params[0];//Fyrri params er Profile Object
-            Diabetic dUser = (Diabetic)params[1];//Seinni er diabetic Object
-            boolean checker1 = false;
-            boolean checker2 = false;
-
-            ProfileService pServ = ProfileServiceFactory.getProfileService();
-            DiabeticService dServ = DiabeticServiceFactory.getDiabeticService();
-
-
-            try {
-                checker1 = pServ.postUpdatedProfile(pUser);
-                checker2 = dServ.postDiabeticInfo(dUser);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            if(checker1 == true && checker2 == true)
-            {
-                return true;
-            }
-
-            return false;
-        }
-        protected void onPostExecute(Boolean i){
-            //Það sem gerist eeftir að búið er að update-a profile.
-
+        protected Integer doInBackground(String... strings) {
+            return null;
         }
     }
-
 }
 
