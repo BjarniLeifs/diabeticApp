@@ -2,34 +2,32 @@ package ru.calendar;
 
 import android.app.Activity;
 import android.content.Intent;
-
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.TimePicker;
-import android.view.View.OnClickListener;
 import android.widget.Toast;
 
-
-import com.jberry.dto.CalanderMeal;
 import com.jberry.dto.FoodTO;
 import com.jberry.services.calendar.CalendarService;
 import com.jberry.services.calendar.CalendarServiceFactory;
+import com.jberry.services.meal.MealService;
+import com.jberry.services.meal.MealServiceFactory;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
-
 import java.util.Map;
 import java.util.TimeZone;
 import java.util.concurrent.TimeUnit;
+
 import jBerry.MySugar.R;
 import ru.Events.Events;
 
@@ -129,5 +127,28 @@ public class AddMealToActivity extends Activity {
 
         }
     }
+    private class createMealTask extends AsyncTask<Object, Boolean, Boolean>{
+
+
+        @Override
+        protected Boolean doInBackground(Object... params) {
+            String mealName = (String)params[0];
+            ArrayList<FoodTO> ingredients = (ArrayList<FoodTO>)params[1];
+            MealService mealService = MealServiceFactory.getMealService();
+            boolean checker = false;
+            try {
+                checker = mealService.createMeal(mealName, ingredients);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return checker;
+        }
+        protected void onPostExecute(Boolean i){
+            //komin máltíð hérna og verið að staðfesta save eða breyta um view?
+            //pæling að geyma mealName einhverstaðar svo ekki þurfi að kalla líka á getMealByName
+            //þegar verið er að vistaa í dagatal.
+        }
+    }
+
 }
 
