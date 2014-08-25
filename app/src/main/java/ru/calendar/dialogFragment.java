@@ -28,7 +28,7 @@ public class dialogFragment extends DialogFragment {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.calendar_dialog, container,
                 false);
-        nutrition = (Meal) CalendarAdapter.getMealById();
+       // nutrition = (Meal) CalendarAdapter.getMealById();
 
         getDialog().setTitle("Og hvað svo?");
 
@@ -37,17 +37,17 @@ public class dialogFragment extends DialogFragment {
         deleteView = (Button) rootView.findViewById(R.id.delete2);
         toCheckInBtn = (Button) rootView.findViewById(R.id.toCheckInBtn);
 
-        String pro = Float.toString(nutrition.PróteinAlls);
+       /* String pro = Float.toString(nutrition.PróteinAlls);
         String kol = Float.toString(nutrition.KolvetniAlls);
         String fit = Float.toString(nutrition.FitaAlls);
-
+*/
         TextView protein = (TextView) rootView.findViewById(R.id.meal1);
         TextView kolvetni = (TextView) rootView.findViewById(R.id.meal2);
         TextView fita = (TextView) rootView.findViewById(R.id.meal3);
 
-        protein.setText("Prótein: " + pro + "gr");
-        kolvetni.setText("Kolvetni: " + kol + "gr");
-        fita.setText("Fita: " + fit + "gr");
+    //    protein.setText("Prótein: " + pro + "gr");
+    //    kolvetni.setText("Kolvetni: " + kol + "gr");
+    //    fita.setText("Fita: " + fit + "gr");
 
 
         nutritionView.setOnClickListener(new View.OnClickListener() {
@@ -82,8 +82,8 @@ public class dialogFragment extends DialogFragment {
             public void onClick(View v) {
 
                 Intent intent = new Intent(getActivity(), CheckinActivity.class);
-                intent.putExtra("mealId", nutrition.Meald);
-                startActivity(intent);
+             //   intent.putExtra("mealId", nutrition.Meald);
+             //   startActivity(intent);
             }
         });
 
