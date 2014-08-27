@@ -173,11 +173,6 @@ public class CheckinActivity extends ActionBarActivity {
                 MyTaskParams params = new MyTaskParams(mealList, timestamp, BL, exercise);
                 CalculateInsulin calculate = new CalculateInsulin();
                 calculate.execute(params);
-
-
-
-
-
             }
         });
 

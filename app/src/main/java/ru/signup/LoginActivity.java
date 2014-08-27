@@ -23,10 +23,7 @@ import ru.menu.MenuActivity;
 public class LoginActivity extends ActionBarActivity {
 
     EditText name, password;
-    Button logIn, goToSignUp;
-
-    AsyncTask<String, Integer, Double> access;
-    boolean accessSignup;
+    Button logIn;
 
     @Override
     protected void onCreate(Bundle savedInstancesState) {
@@ -35,7 +32,6 @@ public class LoginActivity extends ActionBarActivity {
 
         name = (EditText) findViewById(R.id.UserName);
         password = (EditText) findViewById(R.id.UserPassword);
-        goToSignUp = (Button) findViewById(R.id.buttonGoToSignUp);
         logIn = (Button) findViewById(R.id.ButtonLogIn);
 
         //If the username is missing the log in button is not clickable
@@ -62,18 +58,6 @@ public class LoginActivity extends ActionBarActivity {
         password.addTextChangedListener(tw);
         logIn.addTextChangedListener(tw);
 
-
-
-        //If the signup button is clicked, they will go to the signup view
-        goToSignUp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(ru.signup.LoginActivity.this, SignupActivity.class);
-                startActivityForResult(intent, 1);
-
-
-            }
-        });
         logIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -88,13 +72,8 @@ public class LoginActivity extends ActionBarActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                /*if (!access) {
-                    Toast.makeText(getBaseContext(), "wrong username or password", Toast.LENGTH_SHORT).show();
-                } else {
-                    Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
-                    startActivityForResult(intent, 1);
-                }
-                */
+
+
             }
         });
     }
@@ -130,4 +109,3 @@ public class LoginActivity extends ActionBarActivity {
         }
     }
 }
-

@@ -124,33 +124,86 @@
         android:layout_gravity="center_horizontal"
         android:textSize="20dp"
         android:layout_marginTop="10dp" />
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Morgun hlutfall"
+            android:id="@+id/morningText"
+            android:textSize="20dp"
+            android:textColor="#ff65706a"
+            android:layout_gravity="center_vertical|left"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="10dp" />
 
-    <EditText
-        android:layout_width="146dp"
-        android:layout_height="wrap_content"
-        android:inputType="number"
-        android:ems="10"
-        android:id="@+id/morningRatio"
-        android:layout_gravity="center_horizontal"
-        android:hint="Morgun hlutfall" />
+        <EditText
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:ems="10"
+            android:id="@+id/morningRatio"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="200dp" />
 
-    <EditText
-        android:layout_width="147dp"
-        android:layout_height="wrap_content"
-        android:inputType="number"
-        android:ems="10"
-        android:id="@+id/noonRatio"
-        android:layout_gravity="center_horizontal"
-        android:hint="Hádegishlutfall" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Hádegis hlutfall"
+            android:id="@+id/noonText"
+            android:textSize="20dp"
+            android:textColor="#ff65706a"
+            android:layout_gravity="center_vertical|left"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="10dp" />
 
-    <EditText
-        android:layout_width="149dp"
-        android:layout_height="wrap_content"
-        android:inputType="number"
-        android:ems="10"
-        android:id="@+id/eveningRatio"
-        android:layout_gravity="center_horizontal"
-        android:hint="Kvöld hlutfall" />
+
+        <EditText
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:ems="10"
+            android:id="@+id/noonRatio"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="200dp"
+            android:layout_gravity="center_horizontal" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Hádegis hlutfall"
+            android:id="@+id/eveningText"
+            android:textSize="20dp"
+            android:textColor="#ff65706a"
+            android:layout_gravity="center_vertical|left"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="10dp" />
+
+        <EditText
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:ems="10"
+            android:id="@+id/eveningRatio"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="200dp"
+            android:layout_gravity="center_horizontal" />
+
+    </RelativeLayout>
+
 
     <Button
         android:layout_width="fill_parent"

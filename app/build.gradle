@@ -4,7 +4,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:0.12.+'
+        classpath 'com.android.tools.build:gradle:0.11.+'
     }
 }
 
@@ -52,4 +52,5 @@ dependencies {
     compile files('lib/gson-2.2.4-sources.jar')
     compile files('lib/SweetestApi_jar.jar')
     compile files('lib/SweetClean.jar')
+    compile files('lib/SweetDude.jar')
 }
