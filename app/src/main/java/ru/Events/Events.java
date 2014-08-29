@@ -45,7 +45,7 @@ public class Events {
             R.id.link5
     };
 
-
+/*
     public static
     int[] notificationTitle = new int[]{
             R.id.link1,
@@ -107,5 +107,5 @@ public class Events {
             R.id.timeOfMeal11,
 
     };
-
+*/
 }

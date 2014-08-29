@@ -32,6 +32,8 @@ import jBerry.MySugar.R;
 public class CalendarActivity extends ActionBarActivity {
 
     ArrayList<CalanderMeal> mealsList = new ArrayList<CalanderMeal>();
+    ArrayList<Meal> meal = new ArrayList<Meal>();
+
     SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd", Locale.US);
     GregorianCalendar cal = new GregorianCalendar(TimeZone.getTimeZone("US/Central"));
 
@@ -95,9 +97,6 @@ public class CalendarActivity extends ActionBarActivity {
                 dialog.show(fm, "abc");
             }
         });
-
-
-
     }
     private class GetMealsByDayConnection extends AsyncTask<Long, ArrayList<CalanderMeal>, ArrayList<CalanderMeal>> {
 
@@ -119,6 +118,10 @@ public class CalendarActivity extends ActionBarActivity {
         protected void onPostExecute(ArrayList<CalanderMeal> result){
 
 
+            ListAdapter adapter = new CalendarAdapter(getApplicationContext(), R.layout.notification_list_item, result/*, list*/);
+            ListView listview = (ListView) findViewById(R.id.eventList);
+            listview.setAdapter(adapter);
+            /*
             Meal meal = null;
 
             MyTaskParams params = new MyTaskParams(result, meal);
@@ -126,7 +129,7 @@ public class CalendarActivity extends ActionBarActivity {
             GetMealsByDayNutritionConnection calculate = new GetMealsByDayNutritionConnection();
             calculate.execute(params);
 
-
+*/
 
         }
     }
@@ -164,12 +167,14 @@ public class CalendarActivity extends ActionBarActivity {
         protected void onPostExecute(test t){
 
 
-            ArrayList<CalanderMeal> mealName = t.arrayList;
-            ArrayList<Meal> list = t.meal;
+               // ArrayList<CalanderMeal> mealName = t.arrayList;
+               // ArrayList<Meal> list = t.meal;
 
-            ListAdapter adapter = new CalendarAdapter(getApplicationContext(), R.layout.notification_list_item, mealName, list);
-            ListView listview = (ListView) findViewById(R.id.eventList);
-            listview.setAdapter(adapter);
+
+
+
+
+
 
         }
     }

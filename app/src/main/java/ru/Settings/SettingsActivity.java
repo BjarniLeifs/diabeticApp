@@ -1,5 +1,6 @@
 package ru.Settings;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -28,6 +29,7 @@ import java.util.Date;
 import java.util.List;
 
 import jBerry.MySugar.R;
+import ru.menu.MenuActivity;
 
 /**
  * Created by Anna on 16.7.2014.
@@ -160,6 +162,10 @@ public class SettingsActivity extends ActionBarActivity {
             return null;
         }
         protected void onPostExecute(Boolean result) {
+
+            Intent intent = new Intent(SettingsActivity.this, MenuActivity.class);
+            startActivity(intent);
+
             if(result == true) {
                 Toast.makeText(getBaseContext(), "Update completed", Toast.LENGTH_SHORT).show();
             }

@@ -51,7 +51,7 @@ public class CheckinActivity extends ActionBarActivity {
     FragmentManager fManager;
     EditText bloodSugar, item1, gram1;
     Button checkInBtn, toCalendarBtn;
-    int mealId;
+    String mealName;
 
     //Fra notanda
     double BL = 0; //Frá checkin
@@ -80,8 +80,10 @@ public class CheckinActivity extends ActionBarActivity {
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         if (bundle != null) {
-            mealId = bundle.getInt("mealId");
+            mealName = bundle.getString("mealName");
         }
+
+        new getIngredients().execute(mealName);
 
         checkInBtn = (Button) findViewById(R.id.checkInButton);
         toCalendarBtn = (Button) findViewById(R.id.toCalanderBtn);
@@ -90,20 +92,7 @@ public class CheckinActivity extends ActionBarActivity {
         item1 = (EditText) findViewById(Events.idItems[0]);
         gram1 = (EditText) findViewById(Events.idGrams[0]);
 
-        // EditText text = (EditText) findViewById(Events.idItems[0]);
 
-      /*  if(bundle != null){
-            for(int i = 0; i < meal.Ingredients.size(); i++){
-                AutoCompleteTextView item = (AutoCompleteTextView) findViewById(Events.idItems[i]);
-                EditText gram = (EditText) findViewById(Events.idGrams[i]);
-                item.setText(listIngrdients.get(i));
-                item.setThreshold(1);
-                item.setAdapter(adapter);
-
-                gram.setText("" + gramIngrdients.get(i));
-            }
-        }
-*/
         toCalendarBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -112,29 +101,40 @@ public class CheckinActivity extends ActionBarActivity {
             }
         });
 
-        for (int i = 0; i < Events.idButton.length; i++) {
-            Button btn = (Button) findViewById(Events.idButton[i]);
-            btn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-         /*          fManager = getSupportFragmentManager();
-                   foodDialogFragment dialog = new foodDialogFragment();
-                   dialog.show(fManager, "stuff");
-           */
-                }
-            });
-        }
+
+
+        final EditText item1 = (EditText) findViewById(Events.idItems[0]);
+        EditText item2 = (EditText) findViewById(Events.idItems[1]);
+        EditText item3 = (EditText) findViewById(Events.idItems[2]);
+        EditText item4 = (EditText) findViewById(Events.idItems[3]);
+        EditText item5 = (EditText) findViewById(Events.idItems[4]);
         TextWatcher tw = new TextWatcher() {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
 
-                AutoCompleteTextView actv = (AutoCompleteTextView) findViewById(R.id.item1);
+                AutoCompleteTextView actv = (AutoCompleteTextView)findViewById(R.id.item1);
                 String s = actv.getText().toString();
                 new MatisConnection().execute(s);
 
+                AutoCompleteTextView actv2 = (AutoCompleteTextView)findViewById(R.id.item2);
+                String s2 = actv2.getText().toString();
+                new MatisConnection().execute(s2);
+
+                AutoCompleteTextView actv3 = (AutoCompleteTextView)findViewById(R.id.item3);
+                String s3 = actv3.getText().toString();
+                new MatisConnection().execute(s3);
+
+                AutoCompleteTextView actv4 = (AutoCompleteTextView)findViewById(R.id.item4);
+                String s4 = actv4.getText().toString();
+                new MatisConnection().execute(s4);
+
+                AutoCompleteTextView actv5 = (AutoCompleteTextView)findViewById(R.id.item5);
+                String s5 = actv5.getText().toString();
+                new MatisConnection().execute(s5);
+
                 //if the username or password is missing the log in button is not clickable
-                checkInBtn.setEnabled((item1.getText().toString().length() > 0)
+                checkInBtn.setEnabled((actv.getText().toString().length() > 0)
                         && gram1.getText().toString().length() > 0
                         && bloodSugar.getText().toString().length() > 0);
 
@@ -153,6 +153,10 @@ public class CheckinActivity extends ActionBarActivity {
         };
         item1.addTextChangedListener(tw);
         gram1.addTextChangedListener(tw);
+        item2.addTextChangedListener(tw);
+        item3.addTextChangedListener(tw);
+        item4.addTextChangedListener(tw);
+        item5.addTextChangedListener(tw);
         bloodSugar.addTextChangedListener(tw);
 
         checkInBtn.setOnClickListener(new View.OnClickListener() {
@@ -236,15 +240,14 @@ public class CheckinActivity extends ActionBarActivity {
 
             if (i > 100) {
                 Toast.makeText(getBaseContext(), "Ertu eitthvað snar, þú drepur þig á þessu!", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(CheckinActivity.this, MenuActivity.class);
-                startActivity(intent);
-            } else {
+
+            }
                 Bundle args = new Bundle();
                 args.putDouble("insulinUnits", i);
                 checkinDialog dialog = new checkinDialog();
                 dialog.setArguments(args);
                 dialog.show(getFragmentManager(), "abc");
-            }
+
 
         }
     }
@@ -254,45 +257,53 @@ public class CheckinActivity extends ActionBarActivity {
         protected ArrayList<Food> doInBackground(String... params) {
 
 
-            try {
-                return matisCaller(params[0]);
-            } catch (Exception e) {
-                e.printStackTrace();
+            ArrayList<Food> food = new ArrayList<Food>();
+            if(params[0].equals("")){
+                return food;
+            }else{
+                try {
+                    food = matisCaller(params[0]);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
 
-            return null;
+
+
+            return food;
         }
 
         @Override
         protected void onPostExecute(ArrayList<Food> result) {
 
-            String[] strings = new String[5];
-            for (int i = 0; i < strings.length; i++) {
-                strings[i] = result.get(0).getNameEng();
+            if(result.size() > 0) {
+                String[] strings = new String[10];
+                for (int i = 0; i < strings.length; i++) {
+                    strings[i] = result.get(0).getNameEng();
+                }
+
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.select_dialog_item, strings);
+
+                AutoCompleteTextView actv1 = (AutoCompleteTextView) findViewById(R.id.item1);
+                actv1.setThreshold(4);
+                actv1.setAdapter(adapter);
+
+                AutoCompleteTextView actv2 = (AutoCompleteTextView) findViewById(R.id.item2);
+                actv2.setThreshold(4);
+                actv2.setAdapter(adapter);
+
+                AutoCompleteTextView actv3 = (AutoCompleteTextView) findViewById(R.id.item3);
+                actv3.setThreshold(4);
+                actv3.setAdapter(adapter);
+
+                AutoCompleteTextView actv4 = (AutoCompleteTextView) findViewById(R.id.item4);
+                actv4.setThreshold(4);
+                actv4.setAdapter(adapter);
+
+                AutoCompleteTextView actv5 = (AutoCompleteTextView) findViewById(R.id.item5);
+                actv5.setThreshold(4);
+                actv5.setAdapter(adapter);
             }
-
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.select_dialog_item, strings);
-
-            AutoCompleteTextView actv1 = (AutoCompleteTextView) findViewById(R.id.item1);
-            actv1.setThreshold(4);
-            actv1.setAdapter(adapter);
-
-            AutoCompleteTextView actv2 = (AutoCompleteTextView) findViewById(R.id.item2);
-            actv2.setThreshold(4);
-            actv2.setAdapter(adapter);
-
-            AutoCompleteTextView actv3 = (AutoCompleteTextView) findViewById(R.id.item3);
-            actv3.setThreshold(4);
-            actv3.setAdapter(adapter);
-
-            AutoCompleteTextView actv4 = (AutoCompleteTextView) findViewById(R.id.item4);
-            actv4.setThreshold(4);
-            actv4.setAdapter(adapter);
-
-            AutoCompleteTextView actv5 = (AutoCompleteTextView) findViewById(R.id.item5);
-            actv5.setThreshold(4);
-            actv5.setAdapter(adapter);
-
         }
 
         public ArrayList<Food> matisCaller(String list) throws Exception {
@@ -301,5 +312,47 @@ public class CheckinActivity extends ActionBarActivity {
             anna = service.getFoodInformation(list);
             return anna;
         }
+    }
+
+    private class getIngredients extends AsyncTask<String, String, Meal> {
+
+        @Override
+        protected Meal doInBackground(String... params) {
+
+            MealService service = MealServiceFactory.getMealService();
+            String name = params[0];
+            Meal meal = null;
+            try {
+                meal = service.getMealByName(name);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return meal;
+        }
+        @Override
+        protected void onPostExecute(Meal result){
+
+
+            ArrayList<FoodTO> ingrdients = new ArrayList<FoodTO>(result.getIngredients());
+
+            //final ArrayAdapter<FoodTO> adapter = new ArrayAdapter<FoodTO>(this, android.R.layout.select_dialog_item, ingrdients);
+
+            for(int i = 0; i < ingrdients.size(); i++){
+                String name = ingrdients.get(i).getFoodName();
+                String gramValue = String.valueOf(ingrdients.get(i).getGrams());
+
+                AutoCompleteTextView item = (AutoCompleteTextView) findViewById(Events.idItems[i]);
+                EditText gram = (EditText) findViewById(Events.idGrams[i]);
+                //item.setThreshold(1);
+                //item.setAdapter(adapter);
+
+                item.setText("" + name);
+                gram.setText("" + gramValue);
+            }
+
+
+        }
+
+
     }
 }

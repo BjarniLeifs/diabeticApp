@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 
 import jBerry.MySugar.R;
+import ru.menu.MenuActivity;
 
 /**
  * Created by Anna on 7.8.2014.
@@ -45,8 +46,11 @@ public class ReminderActivity extends ActionBarActivity {
                 intent.putExtra("HourValue", notiValue);
                 startService(intent);
                 Toast.makeText(getBaseContext(), "Þú færð áminningu eftir " + notiValue + " klukkutíma", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(ReminderActivity.this, MenuActivity.class);
+                startActivity(intent);
             }
         });
+
     }
 }
 

@@ -98,12 +98,13 @@ public class NutritionPerMealActivity extends Activity  {
         protected ArrayList<Food> doInBackground(String... params) {
 
             FoodService service = FoodServiceFactory.getFoodService();
+            ArrayList<Food> foo = null;
             try {
-                foodArrayList = service.getFoodInformation(params[0]);
+                foo = service.getFoodInformation(params[0]);
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            return foodArrayList;
+            return foo;
         }
 
         @Override

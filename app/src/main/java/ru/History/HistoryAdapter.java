@@ -25,8 +25,6 @@ import jBerry.MySugar.R;
     public HistoryAdapter(Context context, int resource, ArrayList<CalanderMeal> historyList) {
         super(context, resource, historyList);
             this.historyList = historyList;
-
-
     }
 
     @Override

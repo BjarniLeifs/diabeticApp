@@ -82,7 +82,7 @@ public class dialogFragment extends DialogFragment {
 
                 new DeleteMeal().execute(timeOfMeal);
 
-                Intent intent = new Intent(getActivity(), NutritionPerMealActivity.class);
+                Intent intent = new Intent(getActivity(), CalendarActivity.class);
                 startActivity(intent);
             }
         });
@@ -92,7 +92,7 @@ public class dialogFragment extends DialogFragment {
             public void onClick(View v) {
 
                 Intent intent = new Intent(getActivity(), CheckinActivity.class);
-                //intent.putExtra("mealId", nutrition.Meald);
+                intent.putExtra("mealName", mealName);
                 startActivity(intent);
             }
         });
@@ -116,11 +116,9 @@ public class dialogFragment extends DialogFragment {
         @Override
         protected void onPostExecute(Boolean result){
 
-            if(result){
+
                 Toast.makeText(getActivity(), "Þessu hefur verið hent!", Toast.LENGTH_SHORT).show();
-            }else{
-                Toast.makeText(getActivity(), "Ekki tókst að henda að svo stöddu!", Toast.LENGTH_SHORT).show();
-            }
+
         }
     }
 
@@ -138,16 +136,15 @@ public class dialogFragment extends DialogFragment {
                 e.printStackTrace();
             }
 
-
             return meal;
         }
 
         @Override
         protected void onPostExecute(Meal result){
 
-            String pro = Double.toString(result.getTotalProtien());
-            String kol = Double.toString(result.getTotalFiber());
-            String fit = Double.toString(result.getTotalFat());
+            String pro = Double.toString(Math.round(result.getTotalProtien()));
+            String kol = Double.toString(Math.round(result.getTotalFiber()));
+            String fit = Double.toString(Math.round(result.getTotalFat()));
 
             TextView protein = (TextView) rootView.findViewById(R.id.meal1);
             TextView kolvetni = (TextView) rootView.findViewById(R.id.meal2);

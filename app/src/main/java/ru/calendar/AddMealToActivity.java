@@ -44,7 +44,9 @@ public class AddMealToActivity extends Activity {
 
     private Button btnSave;
     long timestamp;
-    String mealName;
+
+    String mealName, foody;
+    int grams;
     GregorianCalendar cal = new GregorianCalendar(TimeZone.getTimeZone("US/Central"));
     private ArrayList<FoodTO> mealList = new ArrayList<FoodTO>();
 
@@ -59,33 +61,53 @@ public class AddMealToActivity extends Activity {
         timePicker.setIs24HourView(true);
 
         EditText item1 = (EditText) findViewById(Events.idItems[0]);
-        EditText gram1 = (EditText) findViewById(Events.idGrams[0]);
+        EditText item2 = (EditText) findViewById(Events.idItems[1]);
+        EditText item3 = (EditText) findViewById(Events.idItems[2]);
+        EditText item4 = (EditText) findViewById(Events.idItems[3]);
+        EditText item5 = (EditText) findViewById(Events.idItems[4]);
         TextWatcher tw = new TextWatcher() {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
 
+
                 AutoCompleteTextView actv = (AutoCompleteTextView)findViewById(R.id.item1);
                 String s = actv.getText().toString();
                 new MatisConnection().execute(s);
 
+                AutoCompleteTextView actv2 = (AutoCompleteTextView)findViewById(R.id.item2);
+                String s2 = actv2.getText().toString();
+                new MatisConnection().execute(s2);
 
+                AutoCompleteTextView actv3 = (AutoCompleteTextView)findViewById(R.id.item3);
+                String s3 = actv3.getText().toString();
+                new MatisConnection().execute(s3);
 
+                AutoCompleteTextView actv4 = (AutoCompleteTextView)findViewById(R.id.item4);
+                String s4 = actv4.getText().toString();
+                new MatisConnection().execute(s4);
+
+                AutoCompleteTextView actv5 = (AutoCompleteTextView)findViewById(R.id.item5);
+                String s5 = actv5.getText().toString();
+                new MatisConnection().execute(s5);
             }
 
             @Override
             public void afterTextChanged(Editable editable) {
 
+
             }
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {
 
-            }
 
+            }
         };
         item1.addTextChangedListener(tw);
-        gram1.addTextChangedListener(tw);
-
+        item2.addTextChangedListener(tw);
+        item3.addTextChangedListener(tw);
+        item4.addTextChangedListener(tw);
+        item5.addTextChangedListener(tw);
 
 
         btnSave = (Button) findViewById(R.id.saveAddBtn);
@@ -111,8 +133,8 @@ public class AddMealToActivity extends Activity {
                     EditText gram = (EditText) findViewById(Events.idGrams[i]);
 
                     if (item.getText().toString().length() > 0 && gram.getText().length() > 0) {
-                        String foody = item.getText().toString();
-                        int grams = Integer.parseInt(gram.getText().toString());
+                        foody = item.getText().toString();
+                        grams = Integer.parseInt(gram.getText().toString());
                         mealList.add(new FoodTO(foody, grams));
 
                     }
@@ -150,6 +172,7 @@ public class AddMealToActivity extends Activity {
 
             MyTaskParams meal = params[0];
             String mealName = meal.mealName;
+
             long TimeStamp = meal.timeStamp;
             boolean i = false;
             CalendarService service = CalendarServiceFactory.getCalanderService();
@@ -191,6 +214,7 @@ public class AddMealToActivity extends Activity {
 
             this.ingredients = ingredients;
             this.mealName = mealName;
+
         }
     }
 
@@ -202,9 +226,10 @@ public class AddMealToActivity extends Activity {
             MealService service = MealServiceFactory.getMealService();
 
             MyParams meal = params[0];
+
             String mealName = meal.mealName;
             ArrayList<FoodTO> ingredients = meal.ingredients;
-
+            foody = mealName;
             try {
                 i =  service.createMeal(mealName, ingredients);
             } catch (IOException e) {
@@ -240,45 +265,54 @@ public class AddMealToActivity extends Activity {
 
         protected ArrayList<com.jberry.dto.Food> doInBackground(String... params) {
 
-
-            try {
-                return matisCaller(params[0]);
-            } catch (Exception e) {
-                e.printStackTrace();
+            ArrayList<Food> food = new ArrayList<Food>();
+            if(params[0].equals("")){
+                return food;
+            }else{
+                try {
+                    food = matisCaller(params[0]);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
 
-            return null;
+
+
+            return food;
         }
 
         @Override
         protected void onPostExecute(ArrayList<com.jberry.dto.Food> result){
 
-            String[] strings = new String[5];
-            for(int i = 0 ; i < strings.length; i++){
-                strings[i] = result.get(0).getNameEng();
+            if(result.size() > 0){
+                String[] strings = new String[10];
+                for(int i = 0 ; i < strings.length; i++){
+                    strings[i] = result.get(0).getNameEng();
+                }
+
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.select_dialog_item, strings);
+
+                AutoCompleteTextView actv1 = (AutoCompleteTextView)findViewById(R.id.item1);
+                actv1.setThreshold(4);
+                actv1.setAdapter(adapter);
+
+                AutoCompleteTextView actv2 = (AutoCompleteTextView)findViewById(R.id.item2);
+                actv2.setThreshold(4);
+                actv2.setAdapter(adapter);
+
+                AutoCompleteTextView actv3 = (AutoCompleteTextView)findViewById(R.id.item3);
+                actv3.setThreshold(4);
+                actv3.setAdapter(adapter);
+
+                AutoCompleteTextView actv4 = (AutoCompleteTextView)findViewById(R.id.item4);
+                actv4.setThreshold(4);
+                actv4.setAdapter(adapter);
+
+                AutoCompleteTextView actv5 = (AutoCompleteTextView)findViewById(R.id.item5);
+                actv5.setThreshold(4);
+                actv5.setAdapter(adapter);
+
             }
-
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.select_dialog_item, strings);
-
-            AutoCompleteTextView actv1 = (AutoCompleteTextView)findViewById(R.id.item1);
-            actv1.setThreshold(4);
-            actv1.setAdapter(adapter);
-
-            AutoCompleteTextView actv2 = (AutoCompleteTextView)findViewById(R.id.item2);
-            actv2.setThreshold(4);
-            actv2.setAdapter(adapter);
-
-            AutoCompleteTextView actv3 = (AutoCompleteTextView)findViewById(R.id.item3);
-            actv3.setThreshold(4);
-            actv3.setAdapter(adapter);
-
-            AutoCompleteTextView actv4 = (AutoCompleteTextView)findViewById(R.id.item4);
-            actv4.setThreshold(4);
-            actv4.setAdapter(adapter);
-
-            AutoCompleteTextView actv5 = (AutoCompleteTextView)findViewById(R.id.item5);
-            actv5.setThreshold(4);
-            actv5.setAdapter(adapter);
 
         }
 
@@ -289,5 +323,8 @@ public class AddMealToActivity extends Activity {
             return anna;
         }
     }
+
+
+
 }
 

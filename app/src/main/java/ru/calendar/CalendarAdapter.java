@@ -38,24 +38,28 @@ import ru.Events.Events;
 public class CalendarAdapter extends ArrayAdapter<CalanderMeal>{
 
 
-    private ArrayList<CalanderMeal> mealsList = new ArrayList<CalanderMeal>();
-    private ArrayList<Meal> nutrition = null;
+
+    ArrayList<CalanderMeal> mealsList = new ArrayList<CalanderMeal>();
+   // private  ArrayList<Meal> nutrition = new  ArrayList<Meal>();
     private static LayoutInflater inflater=null;
 
-    public CalendarAdapter(Context context, int layoutResourceID, ArrayList<CalanderMeal> mealsList, ArrayList<Meal> nutrition){
-        super(context, layoutResourceID, mealsList);
+    public CalendarAdapter(Context context, int layoutResourceID, ArrayList<CalanderMeal> mealsList){/*, ArrayList<Meal> nutrition*/
+        super(context, layoutResourceID);
+
 
         this.mealsList = mealsList;
-        this.nutrition = nutrition;
+        inflater = LayoutInflater.from(context);
+
     }
 
-    public CalendarAdapter(Context context, int notification_list_item, ArrayList<CalanderMeal> mealsList) {
-        super(context, notification_list_item, mealsList);
-
-        this.mealsList = mealsList;
+    public int getCount (){
+        return mealsList.size();
     }
 
-    public static long setDeleteRow(long date){
+
+
+
+        public static long setDeleteRow(long date){
 
         return date;
     }
@@ -64,6 +68,7 @@ public class CalendarAdapter extends ArrayAdapter<CalanderMeal>{
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
+
         View row = convertView;
         if(convertView == null)
         {
@@ -71,26 +76,26 @@ public class CalendarAdapter extends ArrayAdapter<CalanderMeal>{
             row = inflater.inflate(R.layout.notification_list_item, null);
         }
 
+        TextView mealName = (TextView)row.findViewById(R.id.notificationTitle1);
+        //TextView nuteInfo = (TextView)row.findViewById(R.id.info1);
+        TextView time = (TextView)row.findViewById(R.id.timeOfMeal1);
 
-        for (int i = 0 ; i < mealsList.size(); i++) {
-            TextView mealName = (TextView)row.findViewById(Events.notificationTitle[i]);
-            TextView nuteInfo = (TextView)row.findViewById(Events.info[i]);
-            TextView time = (TextView)row.findViewById(Events.timeOfMeal[i]);
+           CalanderMeal c = mealsList.get(position);
 
-            CalanderMeal c = mealsList.get(i);
-            ArrayList<FoodTO> m = nutrition.get(i).getIngredients();
+        Date date = new Date(c.getTimeOfMeal()*1000L);
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm"); // the format of your date
+        sdf.setTimeZone(TimeZone.getTimeZone("GMT-0"));
 
-            Date date = new Date(c.getTimeOfMeal() * 1000L);
-            SimpleDateFormat sdf = new SimpleDateFormat("HH:mm"); // the format of your date
-            sdf.setTimeZone(TimeZone.getTimeZone("GMT-0"));
+        String timeOfMeal = sdf.format(date);
 
-            String timeOfMeal = sdf.format(date);
-            String p = m.get(0).getFoodName();
+     /*   String p = Float.toString(nutrition.PróteinAlls);
+        String k = Float.toString(nutrition.KolvetniAlls);
+        String f = Float.toString(nutrition.FitaAlls);
+*/
+        mealName.setText(c.getMealName());
+      //  nuteInfo.setText("Protein: " + p + " Kolvetni: " + k + " Fita" + f);
+        time.setText(timeOfMeal);
 
-            mealName.setText(c.getMealName());
-            nuteInfo.setText("Innihald: " + p);
-            time.setText(timeOfMeal);
-        }
 
         return row;
     }
