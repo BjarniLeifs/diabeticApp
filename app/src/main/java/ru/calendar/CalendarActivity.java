@@ -6,10 +6,7 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
-import android.widget.Adapter;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.ListAdapter;
@@ -18,10 +15,11 @@ import android.widget.ListView;
 import com.jberry.dto.*;
 import com.jberry.services.calendar.CalendarService;
 import com.jberry.services.calendar.CalendarServiceFactory;
-import com.jberry.services.food.FoodService;
-import com.jberry.services.food.FoodServiceFactory;
+import com.jberry.services.meal.MealService;
+import com.jberry.services.meal.MealServiceFactory;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
@@ -33,7 +31,7 @@ import jBerry.MySugar.R;
 
 public class CalendarActivity extends ActionBarActivity {
 
-    private ArrayList<CalanderMeal> mealsList;
+    ArrayList<CalanderMeal> mealsList = new ArrayList<CalanderMeal>();
     SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd", Locale.US);
     GregorianCalendar cal = new GregorianCalendar(TimeZone.getTimeZone("US/Central"));
 
@@ -48,7 +46,6 @@ public class CalendarActivity extends ActionBarActivity {
 
 
         final CalendarView calendarView = (CalendarView) findViewById(R.id.calendarView1);
-        cal.setTimeInMillis(calendarView.getDate());
         final Button addBtn = (Button) findViewById(R.id.saveAddBtn2);
 
         addBtn.setOnClickListener(new View.OnClickListener() {
@@ -58,71 +55,144 @@ public class CalendarActivity extends ActionBarActivity {
                 startActivity(intent);
             }
         });
-        long unixTime = System.currentTimeMillis() / 1000L;
-
-       // Þetta kall virkar en skilar tómum lista
-       // new getMealsByDayConnection().execute(unixTime);
 
 
-     //   ListAdapter adapter = new CalendarAdapter(getApplicationContext(), R.layout.notification_list_item, mealsList);
-      //  final ListView listview = (ListView) findViewById(R.id.eventList);
-      //  listview.setAdapter(adapter);
+        long unixTime = calendarView.getDate() / 1000L;
 
-/*
+        // Þetta kall virkar en skilar tómum lista
+        new GetMealsByDayConnection().execute(unixTime);
+
+        calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+            @Override
+            public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
+                long unixTime = calendarView.getDate() / 1000L;
+                new GetMealsByDayConnection().execute(unixTime);
+            }
+        });
+
+
+
+        ListAdapter adapter = new CalendarAdapter(getApplicationContext(), R.layout.notification_list_item, mealsList);
+        final ListView listview = (ListView) findViewById(R.id.eventList);
+        listview.setAdapter(adapter);
+
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                String fakeName = "disIsFake";
 
+
+                String foodName = mealsList.get(position).getMealName();
+                long timeOfMeal = mealsList.get(position).getTimeOfMeal();
 
                 Bundle args = new Bundle();
-                args.putString("fakeName", fakeName);
+                args.putString("mealName", foodName);
+                args.putLong("timeOfMeal", timeOfMeal);
                 FragmentManager fm = getSupportFragmentManager();
                 dialogFragment dialog = new dialogFragment();
 
                 dialog.setArguments(args);
                 dialog.show(fm, "abc");
-
-
             }
         });
-*/
 
-        calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
-            @Override
-            public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
-                cal.setTimeInMillis(calendarView.getDate());
-                new getMealsByDayConnection().execute(calendarView.getDate());
 
-                ListAdapter adapter = new CalendarAdapter(getApplicationContext(), R.layout.notification_list_item, mealsList);
-                ListView listview = (ListView) findViewById(R.id.eventList);
-                listview.setAdapter(adapter);
-            }
-        });
 
     }
-
-    private class getMealsByDayConnection extends AsyncTask<Long, ArrayList<CalanderMeal>, ArrayList<CalanderMeal>> {
+    private class GetMealsByDayConnection extends AsyncTask<Long, ArrayList<CalanderMeal>, ArrayList<CalanderMeal>> {
 
         protected ArrayList<CalanderMeal> doInBackground(Long... params) {
 
             CalendarService service = CalendarServiceFactory.getCalanderService();
+
             try {
-               return service.getMealsByDay(params[0]);
+                mealsList =  service.getMealsByDay(params[0]);
             } catch (IOException e) {
                 e.printStackTrace();
+            } catch (NullPointerException e){
+                e.getMessage();
             }
-        return null;
-
+            return mealsList;
         }
 
         @Override
         protected void onPostExecute(ArrayList<CalanderMeal> result){
-            CalendarAdapter adapter = null;
-            adapter.notifyDataSetChanged();
+
+
+            Meal meal = null;
+
+            MyTaskParams params = new MyTaskParams(result, meal);
+            params.arrayList = result;
+            GetMealsByDayNutritionConnection calculate = new GetMealsByDayNutritionConnection();
+            calculate.execute(params);
+
+
 
         }
+    }
+
+
+    private class GetMealsByDayNutritionConnection extends AsyncTask<MyTaskParams, Meal, test> {
+
+        protected test doInBackground(MyTaskParams... params) {
+
+            MealService service = MealServiceFactory.getMealService();
+            ArrayList<Meal> newMeal = new ArrayList<Meal>();
+
+            Meal meal = null;
+            try {
+                for(int i = 0; i < params[0].arrayList.size(); i++){
+                    String mealName = params[0].arrayList.get(i).getMealName();
+
+                    meal =  service.getMealByName(mealName);
+                    newMeal.add(meal);
+
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (NullPointerException e){
+                e.getMessage();
+            }
+
+            test t = new test();
+            t.arrayList = params[0].arrayList;
+            t.meal = newMeal;
+            return t;
+        }
+
+        @Override
+        protected void onPostExecute(test t){
+
+
+            ArrayList<CalanderMeal> mealName = t.arrayList;
+            ArrayList<Meal> list = t.meal;
+
+            ListAdapter adapter = new CalendarAdapter(getApplicationContext(), R.layout.notification_list_item, mealName, list);
+            ListView listview = (ListView) findViewById(R.id.eventList);
+            listview.setAdapter(adapter);
+
+        }
+    }
+    private static class MyTaskParams {
+
+        ArrayList<CalanderMeal> arrayList;
+        Meal meal;
+
+        MyTaskParams(ArrayList<CalanderMeal> arrayList, Meal meal) {
+
+            this.arrayList = arrayList;
+            this.meal = meal;
+
+        }
+
+
+    }
+    public class test{
+        ArrayList<Meal> meal;
+
+        ArrayList<CalanderMeal> arrayList;
+
+
     }
 
 }

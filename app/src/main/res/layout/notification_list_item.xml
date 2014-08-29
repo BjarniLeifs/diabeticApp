@@ -10,12 +10,13 @@
 
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
->
+        android:layout_height="70dp"
+
+        >
         <TextView
-            android:id="@+id/timeOfMeal"
+            android:id="@+id/timeOfMeal1"
             android:layout_width="0dp"
-            android:layout_weight=".20"
+            android:layout_weight="0.42"
             android:textSize="20dp"
             android:textStyle="bold"
             android:layout_height="wrap_content"
@@ -24,7 +25,7 @@
             />
 
         <TextView
-            android:id="@+id/notificationTitle"
+            android:id="@+id/notificationTitle1"
             android:layout_width="0dp"
             android:layout_weight=".80"
             android:layout_height="wrap_content"
@@ -32,6 +33,245 @@
             android:text="Title"
             android:textSize="20dp"
             android:textStyle="bold" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:weightSum="1">
+        <TextView
+            android:id="@+id/info1"
+            android:textStyle="italic"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+
+            android:layout_marginLeft="75dp"
+            android:layout_marginTop="37dp"
+            android:text="description"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:layout_weight="4.08" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="70dp"
+
+        >
+        <TextView
+            android:id="@+id/timeOfMeal2"
+            android:layout_width="0dp"
+            android:layout_weight="0.42"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:layout_height="wrap_content"
+            android:text="Time"
+            android:layout_margin="7dp"
+            />
+
+        <TextView
+            android:id="@+id/notificationTitle2"
+            android:layout_width="0dp"
+            android:layout_weight=".80"
+            android:layout_height="wrap_content"
+            android:layout_margin="7dp"
+            android:text="Title"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:weightSum="1">
+        <TextView
+            android:id="@+id/info2"
+            android:textStyle="italic"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+
+            android:layout_marginLeft="75dp"
+            android:layout_marginTop="37dp"
+            android:text="description"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:layout_weight="4.08" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="70dp"
+
+        >
+        <TextView
+            android:id="@+id/timeOfMeal3"
+            android:layout_width="0dp"
+            android:layout_weight="0.42"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:layout_height="wrap_content"
+            android:text="Time"
+            android:layout_margin="7dp"
+            />
+
+        <TextView
+            android:id="@+id/notificationTitle3"
+            android:layout_width="0dp"
+            android:layout_weight=".80"
+            android:layout_height="wrap_content"
+            android:layout_margin="7dp"
+            android:text="Title"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:weightSum="1">
+        <TextView
+            android:id="@+id/info3"
+            android:textStyle="italic"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+
+            android:layout_marginLeft="75dp"
+            android:layout_marginTop="37dp"
+            android:text="description"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:layout_weight="4.08" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="70dp"
+
+        >
+        <TextView
+            android:id="@+id/timeOfMeal4"
+            android:layout_width="0dp"
+            android:layout_weight="0.42"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:layout_height="wrap_content"
+            android:text="Time"
+            android:layout_margin="7dp"
+            />
+
+        <TextView
+            android:id="@+id/notificationTitle4"
+            android:layout_width="0dp"
+            android:layout_weight=".80"
+            android:layout_height="wrap_content"
+            android:layout_margin="7dp"
+            android:text="Title"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:weightSum="1">
+        <TextView
+            android:id="@+id/info4"
+            android:textStyle="italic"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+
+            android:layout_marginLeft="75dp"
+            android:layout_marginTop="37dp"
+            android:text="description"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:layout_weight="4.08" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="70dp"
+
+        >
+        <TextView
+            android:id="@+id/timeOfMeal5"
+            android:layout_width="0dp"
+            android:layout_weight="0.42"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:layout_height="wrap_content"
+            android:text="Time"
+            android:layout_margin="7dp"
+            />
+
+        <TextView
+            android:id="@+id/notificationTitle5"
+            android:layout_width="0dp"
+            android:layout_weight=".80"
+            android:layout_height="wrap_content"
+            android:layout_margin="7dp"
+            android:text="Title"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:weightSum="1">
+        <TextView
+            android:id="@+id/info5"
+            android:textStyle="italic"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+
+            android:layout_marginLeft="75dp"
+            android:layout_marginTop="37dp"
+            android:text="description"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:layout_weight="4.08" />
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="70dp"
+
+        >
+        <TextView
+            android:id="@+id/timeOfMeal6"
+            android:layout_width="0dp"
+            android:layout_weight="0.42"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:layout_height="wrap_content"
+            android:text="Time"
+            android:layout_margin="7dp"
+            />
+
+        <TextView
+            android:id="@+id/notificationTitle6"
+            android:layout_width="0dp"
+            android:layout_weight=".80"
+            android:layout_height="wrap_content"
+            android:layout_margin="7dp"
+            android:text="Title"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:weightSum="1">
+        <TextView
+            android:id="@+id/info6"
+            android:textStyle="italic"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+
+            android:layout_marginLeft="75dp"
+            android:layout_marginTop="37dp"
+            android:text="description"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:layout_weight="4.08" />
     </LinearLayout>
 
 
@@ -40,17 +280,246 @@
 
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
+        android:layout_height="70dp"
+
+        >
+        <TextView
+            android:id="@+id/timeOfMeal7"
+            android:layout_width="0dp"
+            android:layout_weight="0.42"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:layout_height="wrap_content"
+            android:text="Time"
+            android:layout_margin="7dp"
+            />
 
         <TextView
-            android:id="@+id/info"
+            android:id="@+id/notificationTitle7"
+            android:layout_width="0dp"
+            android:layout_weight=".80"
+            android:layout_height="wrap_content"
+            android:layout_margin="7dp"
+            android:text="Title"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:weightSum="1">
+        <TextView
+            android:id="@+id/info7"
             android:textStyle="italic"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+
             android:layout_marginLeft="75dp"
             android:layout_marginTop="37dp"
             android:text="description"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:layout_weight="4.08" />
     </LinearLayout>
+
+
+
+
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="70dp"
+
+        >
+        <TextView
+            android:id="@+id/timeOfMeal8"
+            android:layout_width="0dp"
+            android:layout_weight="0.42"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:layout_height="wrap_content"
+            android:text="Time"
+            android:layout_margin="7dp"
+            />
+
+        <TextView
+            android:id="@+id/notificationTitle8"
+            android:layout_width="0dp"
+            android:layout_weight=".80"
+            android:layout_height="wrap_content"
+            android:layout_margin="7dp"
+            android:text="Title"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:weightSum="1">
+        <TextView
+            android:id="@+id/info8"
+            android:textStyle="italic"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+
+            android:layout_marginLeft="75dp"
+            android:layout_marginTop="37dp"
+            android:text="description"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:layout_weight="4.08" />
+    </LinearLayout>
+
+
+
+
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="70dp"
+
+        >
+        <TextView
+            android:id="@+id/timeOfMeal9"
+            android:layout_width="0dp"
+            android:layout_weight="0.42"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:layout_height="wrap_content"
+            android:text="Time"
+            android:layout_margin="7dp"
+            />
+
+        <TextView
+            android:id="@+id/notificationTitle9"
+            android:layout_width="0dp"
+            android:layout_weight=".80"
+            android:layout_height="wrap_content"
+            android:layout_margin="7dp"
+            android:text="Title"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:weightSum="1">
+        <TextView
+            android:id="@+id/info9"
+            android:textStyle="italic"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+
+            android:layout_marginLeft="75dp"
+            android:layout_marginTop="37dp"
+            android:text="description"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:layout_weight="4.08" />
+    </LinearLayout>
+
+
+
+
+
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="70dp"
+
+        >
+        <TextView
+            android:id="@+id/timeOfMeal10"
+            android:layout_width="0dp"
+            android:layout_weight="0.42"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:layout_height="wrap_content"
+            android:text="Time"
+            android:layout_margin="7dp"
+            />
+
+        <TextView
+            android:id="@+id/notificationTitle10"
+            android:layout_width="0dp"
+            android:layout_weight=".80"
+            android:layout_height="wrap_content"
+            android:layout_margin="7dp"
+            android:text="Title"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:weightSum="1">
+        <TextView
+            android:id="@+id/info10"
+            android:textStyle="italic"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+
+            android:layout_marginLeft="75dp"
+            android:layout_marginTop="37dp"
+            android:text="description"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:layout_weight="4.08" />
+    </LinearLayout>
+
+
+
+
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="70dp"
+
+        >
+        <TextView
+            android:id="@+id/timeOfMeal11"
+            android:layout_width="0dp"
+            android:layout_weight="0.42"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:layout_height="wrap_content"
+            android:text="Time"
+            android:layout_margin="7dp"
+            />
+
+        <TextView
+            android:id="@+id/notificationTitle11"
+            android:layout_width="0dp"
+            android:layout_weight=".80"
+            android:layout_height="wrap_content"
+            android:layout_margin="7dp"
+            android:text="Title"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:weightSum="1">
+        <TextView
+            android:id="@+id/info11"
+            android:textStyle="italic"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+
+            android:layout_marginLeft="75dp"
+            android:layout_marginTop="37dp"
+            android:text="description"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:layout_weight="4.08" />
+    </LinearLayout>
+
+
+
 </RelativeLayout>
 

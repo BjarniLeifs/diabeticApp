@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import jBerry.MySugar.R;
 
 public class foodDialogFragment extends DialogFragment {
-   // private Food nutrition = new Food();
+    // private Food nutrition = new Food();
 
     public foodDialogFragment() {
 

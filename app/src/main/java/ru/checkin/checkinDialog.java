@@ -55,7 +55,7 @@ public class checkinDialog extends DialogFragment {
             }
         });
 
-         return rootView;
+        return rootView;
 
     }
 }
