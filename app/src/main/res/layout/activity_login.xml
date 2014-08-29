@@ -25,7 +25,7 @@
         android:layout_marginTop="50dp"
         android:layout_marginRight="20dp"
         android:layout_marginLeft="20dp"
-        android:hint="Username" />
+        android:hint="example@example.org" />
 
     <EditText
         android:layout_width="match_parent"
@@ -48,12 +48,4 @@
         android:clickable="false"
         android:enabled="false"/>
 
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Sign up"
-        android:id="@+id/buttonGoToSignUp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="30dp" />
 </LinearLayout>

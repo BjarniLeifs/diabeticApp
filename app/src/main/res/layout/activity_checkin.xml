@@ -53,24 +53,13 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0.23">
-    <EditText
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:inputType="text"
-        android:ems="10"
-        android:id="@+id/noteInfo"
-        android:layout_marginLeft="15dp"
-        android:hint="Einhverjar athugasemdir?"
-        android:textSize="20dp"
-        android:layout_marginTop="10dp" />
 
-    <CheckBox
+        <CheckBox
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:text="Hefuru stundað íþróttir frá seinustu máltíð?"
         android:id="@+id/checkBoxItem"
         android:layout_marginLeft="20dp"
-        android:layout_below="@id/noteInfo"
         android:singleLine="false"
         android:layout_marginTop="10dp"
         android:clickable="true"
@@ -85,8 +74,6 @@
         android:layout_gravity="right"
         android:enabled="false"
         android:layout_alignBottom="@+id/checkBoxItem"
-        android:layout_alignRight="@+id/noteInfo"
-        android:layout_alignEnd="@+id/noteInfo"
         android:layout_toRightOf="@+id/checkBoxItem" />
 </RelativeLayout>
 </LinearLayout>

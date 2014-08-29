@@ -17,25 +17,15 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.google.gson.Gson;
 import com.jberry.dto.Food;
 import com.jberry.dto.FoodTO;
-import com.jberry.dto.Meal;
 import com.jberry.services.food.FoodService;
 import com.jberry.services.food.FoodServiceFactory;
 import com.jberry.services.insulin.InsulinService;
 import com.jberry.services.insulin.InsulinServiceFactory;
-import com.jberry.services.meal.MealService;
-import com.jberry.services.meal.MealServiceFactory;
 
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.HashMap;
-import java.util.Map;
 import jBerry.MySugar.R;
 import ru.Events.Events;
 import ru.calendar.CalendarActivity;
@@ -48,7 +38,6 @@ public class CheckinActivity extends ActionBarActivity {
 
     CheckBox Exercise;
     ArrayList<FoodTO> mealList = new ArrayList<FoodTO>();
-    FragmentManager fManager;
     EditText bloodSugar, item1, gram1;
     Button checkInBtn, toCalendarBtn;
     int mealId;
@@ -227,7 +216,7 @@ public class CheckinActivity extends ActionBarActivity {
                 e.printStackTrace();
             }
 
-            int m = (int) i;
+            int m = (int) Math.round(i);
             return m;
         }
 
@@ -245,7 +234,6 @@ public class CheckinActivity extends ActionBarActivity {
                 dialog.setArguments(args);
                 dialog.show(getFragmentManager(), "abc");
             }
-
         }
     }
 

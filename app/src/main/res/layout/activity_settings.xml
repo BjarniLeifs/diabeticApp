@@ -184,7 +184,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Hádegis hlutfall"
+            android:text="Kvöld hlutfall"
             android:id="@+id/eveningText"
             android:textSize="20dp"
             android:textColor="#ff65706a"
@@ -206,7 +206,7 @@
 
 
     <Button
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Vista"
         android:id="@+id/saveButton"
