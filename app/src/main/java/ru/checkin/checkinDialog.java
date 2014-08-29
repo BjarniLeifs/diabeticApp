@@ -35,6 +35,8 @@ import ru.menu.MenuActivity;
  */
 public class checkinDialog extends DialogFragment {
 
+    final Diabetic diabetic = new Diabetic();
+
     public checkinDialog() {
     }
 
@@ -53,11 +55,12 @@ public class checkinDialog extends DialogFragment {
         long myValue = (long) mArgs.getDouble("insulinUnits");
         final String value = String.valueOf(myValue);
         insulinView.setText(value + " einingar");
-        final Diabetic diabetic = new Diabetic();
+
 
         Date date = new Date();
-        date.getTime();
-        diabetic.setLastDoseTime(date.getTime());
+        long unixTime = date.getTime() / 1000L;
+
+        diabetic.setLastDoseTime(unixTime);
         diabetic.setLastDoseAmount(myValue);
 
         getDialog().setTitle("Áætlaður útreikningur");
@@ -80,7 +83,6 @@ public class checkinDialog extends DialogFragment {
                 startActivity(intent);
             }
         });
-
         return rootView;
     }
 
@@ -106,7 +108,6 @@ public class checkinDialog extends DialogFragment {
         @Override
         protected void onPostExecute(Boolean t) {
 
-            Toast.makeText(context, "Máltíð bætt við", Toast.LENGTH_SHORT).show();
         }
     }
 

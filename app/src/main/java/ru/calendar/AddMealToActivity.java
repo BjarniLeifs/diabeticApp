@@ -276,8 +276,6 @@ public class AddMealToActivity extends Activity {
                 }
             }
 
-
-
             return food;
         }
 

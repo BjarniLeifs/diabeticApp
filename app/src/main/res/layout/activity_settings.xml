@@ -3,218 +3,217 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Hæð"
-                android:id="@+id/heightText"
-                android:textSize="20dp"
-                android:textColor="#ff65706a"
-                android:layout_marginTop="30dp"
-                android:layout_gravity="center_vertical|left"
-                android:layout_marginLeft="30dp" />
-            <EditText
-                android:layout_width="70dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/height"
-                android:imeOptions="actionNext"
-                android:inputType="number"
-                android:layout_marginTop="20dp"
-                android:layout_alignParentLeft="true"
-                android:layout_marginLeft="200dp"
-                android:hint="cm" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Þyngd"
-                android:id="@+id/weightText"
-                android:textSize="20dp"
-                android:textColor="#ff65706a"
-                android:layout_marginTop="30dp"
-                android:layout_gravity="center_vertical|left"
-                android:layout_marginLeft="30dp" />
-            <EditText
-                android:layout_width="70dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/weight"
-                android:imeOptions="actionNext"
-                android:inputType="number"
-                android:layout_marginTop="20dp"
-                android:layout_alignParentLeft="true"
-                android:layout_marginLeft="200dp"
-                android:hint="Kg" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Afmæli"
-                android:id="@+id/AgeText"
-                android:textSize="20dp"
-                android:textColor="#ff65706a"
-                android:layout_marginTop="30dp"
-                android:layout_gravity="center_vertical|left"
-                android:layout_marginLeft="30dp" />
-
-            <EditText
-                android:layout_width="140dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/birthday"
-                android:imeOptions="actionNext"
-                android:inputType="date"
-                android:layout_marginTop="20dp"
-                android:layout_alignParentLeft="true"
-                android:layout_marginLeft="160dp"
-                android:hint="DD-MM-YYYY" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Kyn"
-                android:id="@+id/genderText"
-                android:textSize="20dp"
-                android:textColor="#ff65706a"
-                android:layout_marginTop="30dp"
-                android:layout_gravity="center_vertical|left"
-                android:layout_marginLeft="30dp" />
-            <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="KK"
-                android:id="@+id/male"
-                android:layout_marginTop="25dp"
-                android:layout_marginLeft="120dp"
-                android:checked="false" />
-            <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="KVK"
-                android:id="@+id/female"
-                android:layout_marginTop="25dp"
-                android:layout_marginLeft="200dp"
-                android:checked="false" />
-        </RelativeLayout>
-
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Kolvetnishlutfall"
-            android:id="@+id/textView"
-            android:layout_gravity="center_horizontal"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Hæð"
+            android:id="@+id/heightText"
             android:textSize="20dp"
-            android:layout_marginTop="10dp" />
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Morgun hlutfall"
-                android:id="@+id/morningText"
-                android:textSize="20dp"
-                android:textColor="#ff65706a"
-                android:layout_gravity="center_vertical|left"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="10dp" />
-
-            <EditText
-                android:layout_width="70dp"
-                android:layout_height="wrap_content"
-                android:inputType="number"
-                android:ems="10"
-                android:id="@+id/morningRatio"
-                android:layout_alignParentLeft="true"
-                android:layout_marginLeft="200dp" />
-
-        </RelativeLayout>
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Hádegis hlutfall"
-                android:id="@+id/noonText"
-                android:textSize="20dp"
-                android:textColor="#ff65706a"
-                android:layout_gravity="center_vertical|left"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="10dp" />
-
-
-            <EditText
-                android:layout_width="70dp"
-                android:layout_height="wrap_content"
-                android:inputType="number"
-                android:ems="10"
-                android:id="@+id/noonRatio"
-                android:layout_alignParentLeft="true"
-                android:layout_marginLeft="200dp"
-                android:layout_gravity="center_horizontal" />
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Hádegis hlutfall"
-                android:id="@+id/eveningText"
-                android:textSize="20dp"
-                android:textColor="#ff65706a"
-                android:layout_gravity="center_vertical|left"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="10dp" />
-
-            <EditText
-                android:layout_width="70dp"
-                android:layout_height="wrap_content"
-                android:inputType="number"
-                android:ems="10"
-                android:id="@+id/eveningRatio"
-                android:layout_alignParentLeft="true"
-                android:layout_marginLeft="200dp"
-                android:layout_gravity="center_horizontal" />
-
-        </RelativeLayout>
-
-
-        <Button
-            android:layout_width="fill_parent"
+            android:textColor="#ff65706a"
+            android:layout_marginTop="30dp"
+            android:layout_gravity="center_vertical|left"
+            android:layout_marginLeft="30dp" />
+        <EditText
+            android:layout_width="70dp"
             android:layout_height="wrap_content"
-            android:text="Vista"
-            android:id="@+id/saveButton"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="2dp" />
-    </LinearLayout>
-    </ScrollView>
+            android:id="@+id/height"
+            android:imeOptions="actionNext"
+            android:inputType="number"
+            android:layout_marginTop="20dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="200dp"
+            android:hint="cm" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Þyngd"
+            android:id="@+id/weightText"
+            android:textSize="20dp"
+            android:textColor="#ff65706a"
+            android:layout_marginTop="30dp"
+            android:layout_gravity="center_vertical|left"
+            android:layout_marginLeft="30dp" />
+        <EditText
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/weight"
+            android:imeOptions="actionNext"
+            android:inputType="number"
+            android:layout_marginTop="20dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="200dp"
+            android:hint="Kg" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Afmæli"
+            android:id="@+id/AgeText"
+            android:textSize="20dp"
+            android:textColor="#ff65706a"
+            android:layout_marginTop="30dp"
+            android:layout_gravity="center_vertical|left"
+            android:layout_marginLeft="30dp" />
+
+        <EditText
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/birthday"
+            android:imeOptions="actionNext"
+            android:inputType="date"
+            android:layout_marginTop="20dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="160dp"
+            android:hint="DD-MM-YYYY" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Kyn"
+            android:id="@+id/genderText"
+            android:textSize="20dp"
+            android:textColor="#ff65706a"
+            android:layout_marginTop="30dp"
+            android:layout_gravity="center_vertical|left"
+            android:layout_marginLeft="30dp" />
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="KK"
+            android:id="@+id/male"
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="120dp"
+            android:checked="false" />
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="KVK"
+            android:id="@+id/female"
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="200dp"
+            android:checked="false" />
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Kolvetnishlutfall"
+        android:id="@+id/textView"
+        android:layout_gravity="center_horizontal"
+        android:textSize="20dp"
+        android:layout_marginTop="10dp" />
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Morgun hlutfall"
+            android:id="@+id/morningText"
+            android:textSize="20dp"
+            android:textColor="#ff65706a"
+            android:layout_gravity="center_vertical|left"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="10dp" />
+
+        <EditText
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:ems="10"
+            android:id="@+id/morningRatio"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="200dp" />
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Hádegis hlutfall"
+            android:id="@+id/noonText"
+            android:textSize="20dp"
+            android:textColor="#ff65706a"
+            android:layout_gravity="center_vertical|left"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="10dp" />
+
+
+        <EditText
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:ems="10"
+            android:id="@+id/noonRatio"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="200dp"
+            android:layout_gravity="center_horizontal" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Hádegis hlutfall"
+            android:id="@+id/eveningText"
+            android:textSize="20dp"
+            android:textColor="#ff65706a"
+            android:layout_gravity="center_vertical|left"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="10dp" />
+
+        <EditText
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:ems="10"
+            android:id="@+id/eveningRatio"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="200dp"
+            android:layout_gravity="center_horizontal" />
+
+    </RelativeLayout>
+
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Vista"
+        android:id="@+id/saveButton"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="2dp" />
+</LinearLayout>    </ScrollView>

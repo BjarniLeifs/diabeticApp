@@ -17,7 +17,6 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.google.gson.Gson;
 import com.jberry.dto.Food;
 import com.jberry.dto.FoodTO;
 import com.jberry.dto.Meal;
@@ -29,13 +28,7 @@ import com.jberry.services.meal.MealService;
 import com.jberry.services.meal.MealServiceFactory;
 
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.HashMap;
-import java.util.Map;
 import jBerry.MySugar.R;
 import ru.Events.Events;
 import ru.calendar.CalendarActivity;
@@ -48,7 +41,6 @@ public class CheckinActivity extends ActionBarActivity {
 
     CheckBox Exercise;
     ArrayList<FoodTO> mealList = new ArrayList<FoodTO>();
-    FragmentManager fManager;
     EditText bloodSugar, item1, gram1;
     Button checkInBtn, toCalendarBtn;
     String mealName;
@@ -58,18 +50,7 @@ public class CheckinActivity extends ActionBarActivity {
     boolean exercise = false; // Fra checkin
     long timestamp;
 
-    public CheckinActivity() {
 
-    }
-
-    public CheckinActivity(long timestamp, ArrayList<FoodTO> mealList, double BL, boolean exercise) {
-        this.timestamp = timestamp;
-        this.mealList = mealList;
-        this.BL = BL;
-        this.exercise = exercise;
-
-
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,9 +62,9 @@ public class CheckinActivity extends ActionBarActivity {
         Bundle bundle = intent.getExtras();
         if (bundle != null) {
             mealName = bundle.getString("mealName");
+            new getIngredients().execute(mealName);
         }
 
-        new getIngredients().execute(mealName);
 
         checkInBtn = (Button) findViewById(R.id.checkInButton);
         toCalendarBtn = (Button) findViewById(R.id.toCalanderBtn);
@@ -134,7 +115,7 @@ public class CheckinActivity extends ActionBarActivity {
                 new MatisConnection().execute(s5);
 
                 //if the username or password is missing the log in button is not clickable
-                checkInBtn.setEnabled((actv.getText().toString().length() > 0)
+                checkInBtn.setEnabled((item1.getText().toString().length() > 0)
                         && gram1.getText().toString().length() > 0
                         && bloodSugar.getText().toString().length() > 0);
 
@@ -231,7 +212,7 @@ public class CheckinActivity extends ActionBarActivity {
                 e.printStackTrace();
             }
 
-            int m = (int) i;
+            int m = (int) Math.round(i);
             return m;
         }
 
@@ -240,15 +221,15 @@ public class CheckinActivity extends ActionBarActivity {
 
             if (i > 100) {
                 Toast.makeText(getBaseContext(), "Ertu eitthvað snar, þú drepur þig á þessu!", Toast.LENGTH_SHORT).show();
-
-            }
+                Intent intent = new Intent(CheckinActivity.this, MenuActivity.class);
+                startActivity(intent);
+            } else {
                 Bundle args = new Bundle();
                 args.putDouble("insulinUnits", i);
                 checkinDialog dialog = new checkinDialog();
                 dialog.setArguments(args);
                 dialog.show(getFragmentManager(), "abc");
-
-
+            }
         }
     }
 
