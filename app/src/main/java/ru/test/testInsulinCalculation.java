@@ -3,7 +3,6 @@ package ru.test;
 import android.test.InstrumentationTestCase;
 
 
-
 /**
  * Created by Anna on 17.7.2014.
  */

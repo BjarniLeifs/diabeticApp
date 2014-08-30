@@ -9,32 +9,33 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ListAdapter;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.jberry.dto.CalanderMeal;
-import com.jberry.dto.Food;
 import com.jberry.dto.Meal;
 import com.jberry.services.calendar.CalendarService;
 import com.jberry.services.calendar.CalendarServiceFactory;
-import com.jberry.services.food.FoodService;
-import com.jberry.services.food.FoodServiceFactory;
 import com.jberry.services.meal.MealService;
 import com.jberry.services.meal.MealServiceFactory;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import jBerry.MySugar.R;
 import ru.checkin.CheckinActivity;
 
+/*
+    A dialog that gives user the options to choose what he want to do with the row he clicked on in CalendarList.
+    He has the option to choose:
+        * See nutrition for the meal
+        * Chance the meal
+        * Delete the meal
+        * Checkin the meal
+ */
 public class dialogFragment extends DialogFragment {
     private Button nutritionView, editView, deleteView, toCheckInBtn;
     private View rootView;
 
-    public  dialogFragment (){
+    public dialogFragment() {
 
     }
 
@@ -45,11 +46,6 @@ public class dialogFragment extends DialogFragment {
                 false);
         final String mealName = getArguments().getString("mealName");
         final long timeOfMeal = getArguments().getLong("timeOfMeal");
-
-
-        new getFoodInformation().execute(mealName);
-
-
         getDialog().setTitle("Og hvað svo?");
 
         nutritionView = (Button) rootView.findViewById(R.id.nutrition2);
@@ -57,9 +53,12 @@ public class dialogFragment extends DialogFragment {
         deleteView = (Button) rootView.findViewById(R.id.delete2);
         toCheckInBtn = (Button) rootView.findViewById(R.id.toCheckInBtn);
 
+        new getFoodInformation().execute(mealName);
+
         nutritionView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent intent = new Intent(getActivity(), NutritionPerMealActivity.class);
                 intent.putExtra("foodName", mealName);
                 startActivity(intent);
@@ -81,7 +80,6 @@ public class dialogFragment extends DialogFragment {
             public void onClick(View v) {
 
                 new DeleteMeal().execute(timeOfMeal);
-
                 Intent intent = new Intent(getActivity(), CalendarActivity.class);
                 startActivity(intent);
             }
@@ -100,8 +98,8 @@ public class dialogFragment extends DialogFragment {
     }
 
     private class DeleteMeal extends AsyncTask<Long, Boolean, Boolean> {
-
         protected Boolean doInBackground(Long... params) {
+
             CalendarService service = CalendarServiceFactory.getCalanderService();
 
             try {
@@ -114,17 +112,16 @@ public class dialogFragment extends DialogFragment {
         }
 
         @Override
-        protected void onPostExecute(Boolean result){
+        protected void onPostExecute(Boolean result) {
 
-
-                Toast.makeText(getActivity(), "Þessu hefur verið hent!", Toast.LENGTH_SHORT).show();
-
+            Toast.makeText(getActivity(), "Máltíð hefur verið eytt!", Toast.LENGTH_SHORT).show();
         }
     }
 
     private class getFoodInformation extends AsyncTask<String, Meal, Meal> {
 
         Meal meal;
+
         @Override
         protected Meal doInBackground(String... params) {
 
@@ -140,7 +137,7 @@ public class dialogFragment extends DialogFragment {
         }
 
         @Override
-        protected void onPostExecute(Meal result){
+        protected void onPostExecute(Meal result) {
 
             String pro = Double.toString(Math.round(result.getTotalProtien()));
             String kol = Double.toString(Math.round(result.getTotalFiber()));

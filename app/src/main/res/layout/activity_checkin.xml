@@ -1,79 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:id="@+id/checkin"
-    android:orientation="vertical"
-    android:weightSum="1">
+    android:layout_height="match_parent">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/checkin"
+        android:orientation="vertical"
+        android:weightSum="1">
 
 
-    <include
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        layout="@layout/item_gram_layout" />
-
-
-    <RelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.09">
-        <TextView
-            android:layout_width="wrap_content"
+        <include
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Blóðsykur"
-            android:id="@+id/bloodSugarText"
-            android:textSize="20dp"
-            android:textColor="#ff65706a"
-            android:layout_gravity="center_vertical|left"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="20dp" />
-        <EditText
-            android:layout_width="70dp"
+            layout="@layout/item_gram_layout" />
+
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:inputType="numberDecimal"
-            android:ems="10"
-            android:id="@+id/bloodSugarItem"
-            android:layout_marginLeft="150dp"
-            android:textSize="20dp"
-            android:layout_alignBottom="@+id/bloodSugarText"
-            android:layout_marginTop="10dp" />
+            android:layout_weight="0.09">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Blóðsykur"
+                android:id="@+id/bloodSugarText"
+                android:textSize="20dp"
+                android:textColor="#ff65706a"
+                android:layout_gravity="center_vertical|left"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="20dp" />
+            <EditText
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:ems="10"
+                android:id="@+id/bloodSugarItem"
+                android:layout_marginLeft="150dp"
+                android:textSize="20dp"
+                android:layout_alignBottom="@+id/bloodSugarText"
+                android:layout_marginTop="10dp" />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Dagatal"
+                android:id="@+id/toCalanderBtn"
+                android:textSize="15dp"
+                android:layout_gravity="center_vertical|left"
+                android:layout_marginLeft="230dp"
+                android:singleLine="true" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.23">
+
+            <CheckBox
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="Hefuru stundað íþróttir frá seinustu máltíð?"
+            android:id="@+id/checkBoxItem"
+            android:layout_marginLeft="20dp"
+            android:singleLine="false"
+            android:layout_marginTop="10dp"
+            android:clickable="true"
+            android:checked="false"
+            android:layout_marginBottom="10dp" />
+
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Dagatal"
-            android:id="@+id/toCalanderBtn"
-            android:textSize="15dp"
-            android:layout_gravity="center_vertical|left"
-            android:layout_marginLeft="230dp"
-            android:singleLine="true" />
+            android:text="Skrá inn"
+            android:id="@+id/checkInButton"
+            android:layout_gravity="right"
+            android:enabled="false"
+            android:layout_alignBottom="@+id/checkBoxItem"
+            android:layout_toRightOf="@+id/checkBoxItem" />
     </RelativeLayout>
-    <RelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.23">
-
-        <CheckBox
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:text="Hefuru stundað íþróttir frá seinustu máltíð?"
-        android:id="@+id/checkBoxItem"
-        android:layout_marginLeft="20dp"
-        android:singleLine="false"
-        android:layout_marginTop="10dp"
-        android:clickable="true"
-        android:checked="false"
-        android:layout_marginBottom="10dp" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Skrá inn"
-        android:id="@+id/checkInButton"
-        android:layout_gravity="right"
-        android:enabled="false"
-        android:layout_alignBottom="@+id/checkBoxItem"
-        android:layout_toRightOf="@+id/checkBoxItem" />
-</RelativeLayout>
-</LinearLayout>
+    </LinearLayout>
+</ScrollView>

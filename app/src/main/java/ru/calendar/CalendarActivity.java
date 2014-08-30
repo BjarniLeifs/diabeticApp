@@ -12,33 +12,23 @@ import android.widget.CalendarView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
-import com.jberry.dto.*;
+import com.jberry.dto.CalanderMeal;
 import com.jberry.services.calendar.CalendarService;
 import com.jberry.services.calendar.CalendarServiceFactory;
-import com.jberry.services.meal.MealService;
-import com.jberry.services.meal.MealServiceFactory;
 
 import java.io.IOException;
-import java.lang.reflect.Array;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.GregorianCalendar;
-import java.util.Locale;
-import java.util.TimeZone;
 
 import jBerry.MySugar.R;
 
-
+/*
+    Class that holds the calendarView and a list of items for specific day choose by user.
+ */
 public class CalendarActivity extends ActionBarActivity {
 
     ArrayList<CalanderMeal> mealsList = new ArrayList<CalanderMeal>();
-    ArrayList<Meal> meal = new ArrayList<Meal>();
 
-    SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd", Locale.US);
-    GregorianCalendar cal = new GregorianCalendar(TimeZone.getTimeZone("US/Central"));
-
-    public CalendarActivity(){
-
+    public CalendarActivity() {
     }
 
     @Override
@@ -46,22 +36,10 @@ public class CalendarActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar2);
 
-
         final CalendarView calendarView = (CalendarView) findViewById(R.id.calendarView1);
         final Button addBtn = (Button) findViewById(R.id.saveAddBtn2);
-
-        addBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(CalendarActivity.this, AddMealToActivity.class);
-                startActivity(intent);
-            }
-        });
-
-
         long unixTime = calendarView.getDate() / 1000L;
 
-        // Þetta kall virkar en skilar tómum lista
         new GetMealsByDayConnection().execute(unixTime);
 
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
@@ -72,7 +50,13 @@ public class CalendarActivity extends ActionBarActivity {
             }
         });
 
-
+        addBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CalendarActivity.this, AddMealToActivity.class);
+                startActivity(intent);
+            }
+        });
 
         ListAdapter adapter = new CalendarAdapter(getApplicationContext(), R.layout.notification_list_item, mealsList);
         final ListView listview = (ListView) findViewById(R.id.eventList);
@@ -81,8 +65,6 @@ public class CalendarActivity extends ActionBarActivity {
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-
 
                 String foodName = mealsList.get(position).getMealName();
                 long timeOfMeal = mealsList.get(position).getTimeOfMeal();
@@ -98,108 +80,30 @@ public class CalendarActivity extends ActionBarActivity {
             }
         });
     }
-    private class GetMealsByDayConnection extends AsyncTask<Long, ArrayList<CalanderMeal>, ArrayList<CalanderMeal>> {
 
+    private class GetMealsByDayConnection extends AsyncTask<Long, ArrayList<CalanderMeal>, ArrayList<CalanderMeal>> {
         protected ArrayList<CalanderMeal> doInBackground(Long... params) {
 
             CalendarService service = CalendarServiceFactory.getCalanderService();
 
             try {
-                mealsList =  service.getMealsByDay(params[0]);
+                mealsList = service.getMealsByDay(params[0]);
             } catch (IOException e) {
                 e.printStackTrace();
-            } catch (NullPointerException e){
+            } catch (NullPointerException e) {
                 e.getMessage();
             }
             return mealsList;
         }
 
         @Override
-        protected void onPostExecute(ArrayList<CalanderMeal> result){
-
+        protected void onPostExecute(ArrayList<CalanderMeal> result) {
 
             ListAdapter adapter = new CalendarAdapter(getApplicationContext(), R.layout.notification_list_item, result/*, list*/);
             ListView listview = (ListView) findViewById(R.id.eventList);
             listview.setAdapter(adapter);
-            /*
-            Meal meal = null;
-
-            MyTaskParams params = new MyTaskParams(result, meal);
-            params.arrayList = result;
-            GetMealsByDayNutritionConnection calculate = new GetMealsByDayNutritionConnection();
-            calculate.execute(params);
-
-*/
-
         }
     }
-
-
-    private class GetMealsByDayNutritionConnection extends AsyncTask<MyTaskParams, Meal, test> {
-
-        protected test doInBackground(MyTaskParams... params) {
-
-            MealService service = MealServiceFactory.getMealService();
-            ArrayList<Meal> newMeal = new ArrayList<Meal>();
-
-            Meal meal = null;
-            try {
-                for(int i = 0; i < params[0].arrayList.size(); i++){
-                    String mealName = params[0].arrayList.get(i).getMealName();
-
-                    meal =  service.getMealByName(mealName);
-                    newMeal.add(meal);
-
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            } catch (NullPointerException e){
-                e.getMessage();
-            }
-
-            test t = new test();
-            t.arrayList = params[0].arrayList;
-            t.meal = newMeal;
-            return t;
-        }
-
-        @Override
-        protected void onPostExecute(test t){
-
-
-               // ArrayList<CalanderMeal> mealName = t.arrayList;
-               // ArrayList<Meal> list = t.meal;
-
-
-
-
-
-
-
-        }
-    }
-    private static class MyTaskParams {
-
-        ArrayList<CalanderMeal> arrayList;
-        Meal meal;
-
-        MyTaskParams(ArrayList<CalanderMeal> arrayList, Meal meal) {
-
-            this.arrayList = arrayList;
-            this.meal = meal;
-
-        }
-
-
-    }
-    public class test{
-        ArrayList<Meal> meal;
-
-        ArrayList<CalanderMeal> arrayList;
-
-
-    }
-
 }
 
 

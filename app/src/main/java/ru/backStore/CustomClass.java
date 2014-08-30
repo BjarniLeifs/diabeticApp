@@ -6,39 +6,31 @@ package ru.backStore;
 
 import android.graphics.Bitmap;
 
-public class CustomClass
-{
+public class CustomClass {
     Bitmap bitmap;
     String text;
 
-    public CustomClass(Bitmap bitmap, String text)
-    {
+    public CustomClass(Bitmap bitmap, String text) {
         super();
         this.bitmap = bitmap;
         this.text = text;
     }
 
-    public Bitmap getBitmap()
-    {
+    public Bitmap getBitmap() {
         return bitmap;
     }
 
-    public void setBitmap(Bitmap bitmap)
-    {
+    public void setBitmap(Bitmap bitmap) {
         this.bitmap = bitmap;
     }
 
-    public String getText()
-    {
+    public String getText() {
         return text;
     }
 
-    public void setText(String text)
-    {
+    public void setText(String text) {
         this.text = text;
     }
-
-
 
 
 }

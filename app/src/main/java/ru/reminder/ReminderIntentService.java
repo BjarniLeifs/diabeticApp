@@ -10,12 +10,12 @@ import android.os.Bundle;
 
 import jBerry.MySugar.R;
 import ru.checkin.CheckinActivity;
-//import ru.checkin.CheckinActivity;
+
 
 /*
- * Created by Anna on 7.8.2014.
+ * This class was taken from: https://chromium.googlesource.com/android_tools/+/ce24ca647c8086cf677b93d0c97c682b9137650b/sdk/extras/google/gcm/samples/gcm-demo-client/src/com/google/android/gcm/demo/app/GCMIntentService.java
  */
-public  class ReminderIntentService extends IntentService {
+public class ReminderIntentService extends IntentService {
     String message = "Ekki gleyma að mæla þig";
     Object value;
 
@@ -35,14 +35,14 @@ public  class ReminderIntentService extends IntentService {
             synchronized (this) {
                 try {
                     wait(alertTimeInHours - System.currentTimeMillis());
-                }
-                catch (Exception e) {
+                } catch (Exception e) {
                 }
             }
         }
         Notification(getBaseContext(), message);
 
     }
+
     private void Notification(Context context, String message) {
         int icon = R.drawable.diabetes;
         long timeNow = System.currentTimeMillis();

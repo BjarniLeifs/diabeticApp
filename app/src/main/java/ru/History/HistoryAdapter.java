@@ -1,19 +1,5 @@
 package ru.History;
 
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.TextView;
-
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.TimeZone;
-
-import jBerry.MySugar.R;
-
 /**
  * Created by Sindri on 12/08/14.
  */

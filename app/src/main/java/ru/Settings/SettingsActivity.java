@@ -9,7 +9,6 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jberry.dto.Diabetic;
@@ -24,15 +23,13 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import jBerry.MySugar.R;
 import ru.menu.MenuActivity;
 
-/**
- * Created by Anna on 16.7.2014.
+/*
+ * Settings class is a profile. User can implement hes height, weight, ration and more.
  */
 public class SettingsActivity extends ActionBarActivity {
     EditText height, weight, date, mRatio, nRatio, eRatio;
@@ -115,6 +112,24 @@ public class SettingsActivity extends ActionBarActivity {
     }
 
     /*
+    The sendDate function formats birthday into a unix timestamp
+     */
+    public long sendDate(String birthday) {
+        DateFormat formatter;
+        Date date;
+        long mDate = 0;
+        formatter = new SimpleDateFormat("dd-MM-yyyy");
+        try {
+            date = formatter.parse(birthday);
+            mDate = date.getTime();
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return mDate;
+    }
+
+    /*
     Contructor for profile task, makes it easier to use Async with multiple parameters
      */
     private static class ProfileParams {
@@ -128,6 +143,21 @@ public class SettingsActivity extends ActionBarActivity {
             this.kg = kg;
             this.mBirthday = mBirthday;
             this.gender = gender;
+        }
+    }
+
+    /*
+    constructor for diabetic task
+     */
+    private static class DiabeticParams {
+        double mRat, nRat, eRat;
+
+
+        DiabeticParams(double mRat, double nRat, double eRat) {
+
+            this.mRat = mRat;
+            this.nRat = nRat;
+            this.eRat = eRat;
         }
     }
 
@@ -161,35 +191,21 @@ public class SettingsActivity extends ActionBarActivity {
 
             return null;
         }
+
         protected void onPostExecute(Boolean result) {
 
             Intent intent = new Intent(SettingsActivity.this, MenuActivity.class);
             startActivity(intent);
 
-            if(result == true) {
+            if (result == true) {
                 Toast.makeText(getBaseContext(), "Update completed", Toast.LENGTH_SHORT).show();
-            }
-            else{
+            } else {
                 Toast.makeText(getBaseContext(), "Update failed", Toast.LENGTH_SHORT).show();
             }
         }
 
     }
 
-    /*
-    constructor for diabetic task
-     */
-    private static class DiabeticParams {
-        double mRat, nRat, eRat;
-
-
-        DiabeticParams(double mRat, double nRat, double eRat) {
-
-            this.mRat = mRat;
-            this.nRat = nRat;
-            this.eRat = eRat;
-        }
-    }
     /*
         The DiabeticInfoTask Async function injects all the diabetic info into the database
         That is, morning ratio, noon ratio and evening ratio.
@@ -212,11 +228,11 @@ public class SettingsActivity extends ActionBarActivity {
             }
             return null;
         }
+
         protected void onPostExecute(Boolean result) {
-            if(result == true) {
+            if (result == true) {
                 Toast.makeText(getBaseContext(), "Diabetic Update completed", Toast.LENGTH_SHORT).show();
-            }
-            else{
+            } else {
                 Toast.makeText(getBaseContext(), "Diabetic Update failed", Toast.LENGTH_SHORT).show();
             }
         }
@@ -243,8 +259,9 @@ public class SettingsActivity extends ActionBarActivity {
             }
             return diaInfo;
         }
+
         protected void onPostExecute(Diabetic result) {
-            if(result == diaInfo) {
+            if (result == diaInfo) {
                 rat1 = diaInfo.getMorningRatio();
                 rat2 = diaInfo.getNoonRatio();
                 rat3 = diaInfo.getEveningRatio();
@@ -254,8 +271,7 @@ public class SettingsActivity extends ActionBarActivity {
                 nRatio.setText(r2);
                 String r3 = Double.toString(rat3);
                 eRatio.setText(r3);
-            }
-            else{
+            } else {
                 Toast.makeText(getBaseContext(), "Getting diabetes info failed", Toast.LENGTH_SHORT).show();
             }
         }
@@ -281,8 +297,9 @@ public class SettingsActivity extends ActionBarActivity {
             }
             return proInfo;
         }
+
         protected void onPostExecute(Profile result) {
-            if(result == proInfo) {
+            if (result == proInfo) {
                 set1 = proInfo.getHeight();
                 set2 = proInfo.getWeight();
                 set3 = proInfo.getSex();
@@ -292,37 +309,18 @@ public class SettingsActivity extends ActionBarActivity {
                 String s2 = Double.toString(set2);
                 weight.setText(s2);
                 String s3 = set3;
-                if(s3.equals("KK")){
+                if (s3.equals("KK")) {
                     isMale.setChecked(true);
-                }
-                else if(s3.equals("KVK")){
+                } else if (s3.equals("KVK")) {
                     isFemale.setChecked(true);
                 }
                 //Formats the unix timestamp into a date form
                 DateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
                 String s4 = formatter.format(set4);
                 date.setText(s4);
-            }
-            else{
+            } else {
                 Toast.makeText(getBaseContext(), "Getting profile info failed", Toast.LENGTH_SHORT).show();
             }
         }
-    }
-    /*
-    The sendDate function formats birthday into a unix timestamp
-     */
-    public long sendDate(String birthday) {
-        DateFormat formatter;
-        Date date;
-        long mDate = 0;
-        formatter = new SimpleDateFormat("dd-MM-yyyy");
-        try {
-            date = formatter.parse(birthday);
-            mDate = date.getTime();
-
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        return mDate;
     }
 }

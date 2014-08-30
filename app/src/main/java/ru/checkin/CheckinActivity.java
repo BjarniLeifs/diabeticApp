@@ -1,7 +1,6 @@
 package ru.checkin;
 
 
-import android.app.FragmentManager;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -29,13 +28,15 @@ import com.jberry.services.meal.MealServiceFactory;
 
 import java.io.IOException;
 import java.util.ArrayList;
+
 import jBerry.MySugar.R;
 import ru.Events.Events;
 import ru.calendar.CalendarActivity;
 import ru.menu.MenuActivity;
 
 /*
- * Created by Anna on 26.6.2014.
+    This class has the function to give user what he shot use of insulin by taking into account
+    hes weight, ration, food and exercise.
  */
 public class CheckinActivity extends ActionBarActivity {
 
@@ -45,11 +46,9 @@ public class CheckinActivity extends ActionBarActivity {
     Button checkInBtn, toCalendarBtn;
     String mealName;
 
-    //Fra notanda
-    double BL = 0; //Frá checkin
-    boolean exercise = false; // Fra checkin
+    double BL = 0;
+    boolean exercise = false;
     long timestamp;
-
 
 
     @Override
@@ -57,14 +56,12 @@ public class CheckinActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_checkin);
 
-
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         if (bundle != null) {
             mealName = bundle.getString("mealName");
             new getIngredients().execute(mealName);
         }
-
 
         checkInBtn = (Button) findViewById(R.id.checkInButton);
         toCalendarBtn = (Button) findViewById(R.id.toCalanderBtn);
@@ -82,8 +79,6 @@ public class CheckinActivity extends ActionBarActivity {
             }
         });
 
-
-
         final EditText item1 = (EditText) findViewById(Events.idItems[0]);
         EditText item2 = (EditText) findViewById(Events.idItems[1]);
         EditText item3 = (EditText) findViewById(Events.idItems[2]);
@@ -94,23 +89,23 @@ public class CheckinActivity extends ActionBarActivity {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
 
-                AutoCompleteTextView actv = (AutoCompleteTextView)findViewById(R.id.item1);
+                AutoCompleteTextView actv = (AutoCompleteTextView) findViewById(R.id.item1);
                 String s = actv.getText().toString();
                 new MatisConnection().execute(s);
 
-                AutoCompleteTextView actv2 = (AutoCompleteTextView)findViewById(R.id.item2);
+                AutoCompleteTextView actv2 = (AutoCompleteTextView) findViewById(R.id.item2);
                 String s2 = actv2.getText().toString();
                 new MatisConnection().execute(s2);
 
-                AutoCompleteTextView actv3 = (AutoCompleteTextView)findViewById(R.id.item3);
+                AutoCompleteTextView actv3 = (AutoCompleteTextView) findViewById(R.id.item3);
                 String s3 = actv3.getText().toString();
                 new MatisConnection().execute(s3);
 
-                AutoCompleteTextView actv4 = (AutoCompleteTextView)findViewById(R.id.item4);
+                AutoCompleteTextView actv4 = (AutoCompleteTextView) findViewById(R.id.item4);
                 String s4 = actv4.getText().toString();
                 new MatisConnection().execute(s4);
 
-                AutoCompleteTextView actv5 = (AutoCompleteTextView)findViewById(R.id.item5);
+                AutoCompleteTextView actv5 = (AutoCompleteTextView) findViewById(R.id.item5);
                 String s5 = actv5.getText().toString();
                 new MatisConnection().execute(s5);
 
@@ -118,19 +113,15 @@ public class CheckinActivity extends ActionBarActivity {
                 checkInBtn.setEnabled((item1.getText().toString().length() > 0)
                         && gram1.getText().toString().length() > 0
                         && bloodSugar.getText().toString().length() > 0);
-
             }
 
             @Override
             public void afterTextChanged(Editable editable) {
-
             }
 
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {
-
             }
-
         };
         item1.addTextChangedListener(tw);
         gram1.addTextChangedListener(tw);
@@ -154,15 +145,12 @@ public class CheckinActivity extends ActionBarActivity {
                     }
                 }
 
-
                 BL = Double.parseDouble(bloodSugar.getText().toString());
                 timestamp = System.currentTimeMillis() / 1000L;
 
                 MyTaskParams params = new MyTaskParams(mealList, timestamp, BL, exercise);
                 CalculateInsulin calculate = new CalculateInsulin();
                 calculate.execute(params);
-
-
             }
         });
 
@@ -180,9 +168,7 @@ public class CheckinActivity extends ActionBarActivity {
         double BloodSugar;
         boolean exercise;
 
-
         MyTaskParams(ArrayList<FoodTO> mealList, long timestamp, double BloodSugar, boolean exercise) {
-
 
             this.timestamp = timestamp;
             this.mealList = mealList;
@@ -212,8 +198,7 @@ public class CheckinActivity extends ActionBarActivity {
                 e.printStackTrace();
             }
 
-            int m = (int) Math.round(i);
-            return m;
+            return (int) Math.round(i);
         }
 
 
@@ -234,14 +219,12 @@ public class CheckinActivity extends ActionBarActivity {
     }
 
     private class MatisConnection extends AsyncTask<String, ArrayList<Food>, ArrayList<Food>> {
-
         protected ArrayList<Food> doInBackground(String... params) {
 
-
             ArrayList<Food> food = new ArrayList<Food>();
-            if(params[0].equals("")){
+            if (params[0].equals("")) {
                 return food;
-            }else{
+            } else {
                 try {
                     food = matisCaller(params[0]);
                 } catch (Exception e) {
@@ -249,15 +232,13 @@ public class CheckinActivity extends ActionBarActivity {
                 }
             }
 
-
-
             return food;
         }
 
         @Override
         protected void onPostExecute(ArrayList<Food> result) {
 
-            if(result.size() > 0) {
+            if (result.size() > 0) {
                 String[] strings = new String[10];
                 for (int i = 0; i < strings.length; i++) {
                     strings[i] = result.get(0).getNameEng();
@@ -310,30 +291,22 @@ public class CheckinActivity extends ActionBarActivity {
             }
             return meal;
         }
-        @Override
-        protected void onPostExecute(Meal result){
 
+        @Override
+        protected void onPostExecute(Meal result) {
 
             ArrayList<FoodTO> ingrdients = new ArrayList<FoodTO>(result.getIngredients());
 
-            //final ArrayAdapter<FoodTO> adapter = new ArrayAdapter<FoodTO>(this, android.R.layout.select_dialog_item, ingrdients);
-
-            for(int i = 0; i < ingrdients.size(); i++){
+            for (int i = 0; i < ingrdients.size(); i++) {
                 String name = ingrdients.get(i).getFoodName();
                 String gramValue = String.valueOf(ingrdients.get(i).getGrams());
 
                 AutoCompleteTextView item = (AutoCompleteTextView) findViewById(Events.idItems[i]);
                 EditText gram = (EditText) findViewById(Events.idGrams[i]);
-                //item.setThreshold(1);
-                //item.setAdapter(adapter);
 
                 item.setText("" + name);
                 gram.setText("" + gramValue);
             }
-
-
         }
-
-
     }
 }

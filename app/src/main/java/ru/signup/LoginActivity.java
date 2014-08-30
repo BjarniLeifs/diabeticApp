@@ -17,8 +17,8 @@ import com.jberry.services.user.UserServiceFactory;
 import jBerry.MySugar.R;
 import ru.menu.MenuActivity;
 
-/**
- * Created by Anna on 25.6.2014.
+/*
+    Every app should have a login function. This is it for SugarApp.
  */
 public class LoginActivity extends ActionBarActivity {
 
@@ -36,23 +36,23 @@ public class LoginActivity extends ActionBarActivity {
 
         //If the username is missing the log in button is not clickable
         TextWatcher tw = new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {
-
-            }
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
                 //if the username or password is missing the log in button is not clickable
                 logIn.setEnabled((name.getText().toString().length() != 0
                         && password.getText().toString().length() != 0));
-
             }
 
             @Override
-            public void afterTextChanged(Editable editable) {
-
+            public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {
             }
+
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+            }
+
         };
         name.addTextChangedListener(tw);
         password.addTextChangedListener(tw);
@@ -65,24 +65,16 @@ public class LoginActivity extends ActionBarActivity {
                 final String u = name.getText().toString();
                 final String p = password.getText().toString();
                 try {
-
-                  new MyAsyncTask().execute(u, p);
-
-
+                    new MyAsyncTask().execute(u, p);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-
-
             }
         });
     }
 
-
-
-    private class MyAsyncTask extends AsyncTask<String, Boolean, Boolean>{
-
-        protected Boolean doInBackground(String... params){
+    private class MyAsyncTask extends AsyncTask<String, Boolean, Boolean> {
+        protected Boolean doInBackground(String... params) {
 
             try {
                 return loginCaller(params[0], params[1]);
@@ -91,18 +83,18 @@ public class LoginActivity extends ActionBarActivity {
             }
             return null;
         }
-        protected void onPostExecute(Boolean result){
-            if(result == true){
+
+        protected void onPostExecute(Boolean result) {
+            if (result == true) {
                 Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
                 startActivityForResult(intent, 1);
-            }
-            else if(result == false){
+            } else if (result == false) {
                 Toast.makeText(getBaseContext(), "wrong username or password", Toast.LENGTH_SHORT).show();
-            }
-            else{
+            } else {
                 Toast.makeText(getBaseContext(), "to fast nigger", Toast.LENGTH_SHORT).show();
             }
         }
+
         public boolean loginCaller(String u, String p) throws Exception {
             UserService service = UserServiceFactory.getUserService();
             return service.login(u, p);

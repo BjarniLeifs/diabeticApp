@@ -3,6 +3,7 @@ package ru.backStore;
 /**
  * Created by Sindri on 06/07/14.
  */
+
 import android.widget.BaseAdapter;
 
 import java.util.HashMap;

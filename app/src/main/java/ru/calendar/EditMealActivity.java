@@ -16,7 +16,6 @@ import android.widget.Toast;
 import com.jberry.dto.Food;
 import com.jberry.dto.FoodTO;
 import com.jberry.dto.Meal;
-
 import com.jberry.services.food.FoodService;
 import com.jberry.services.food.FoodServiceFactory;
 import com.jberry.services.meal.MealService;
@@ -24,7 +23,6 @@ import com.jberry.services.meal.MealServiceFactory;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.concurrent.TimeUnit;
 
 import jBerry.MySugar.R;
 import ru.Events.Events;
@@ -32,8 +30,9 @@ import ru.Events.Events;
 public class EditMealActivity extends ActionBarActivity {
 
 
-    private Button btn;
     String name;
+    private Button btn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,7 +42,7 @@ public class EditMealActivity extends ActionBarActivity {
         String mealName = null;
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
-        if(bundle!=null){
+        if (bundle != null) {
             mealName = bundle.getString("mealName");
         }
         name = mealName;
@@ -62,23 +61,23 @@ public class EditMealActivity extends ActionBarActivity {
             public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
 
 
-                AutoCompleteTextView actv = (AutoCompleteTextView)findViewById(R.id.item1);
+                AutoCompleteTextView actv = (AutoCompleteTextView) findViewById(R.id.item1);
                 String s = actv.getText().toString();
                 new MatisConnection().execute(s);
 
-                AutoCompleteTextView actv2 = (AutoCompleteTextView)findViewById(R.id.item2);
+                AutoCompleteTextView actv2 = (AutoCompleteTextView) findViewById(R.id.item2);
                 String s2 = actv2.getText().toString();
                 new MatisConnection().execute(s2);
 
-                AutoCompleteTextView actv3 = (AutoCompleteTextView)findViewById(R.id.item3);
+                AutoCompleteTextView actv3 = (AutoCompleteTextView) findViewById(R.id.item3);
                 String s3 = actv3.getText().toString();
                 new MatisConnection().execute(s3);
 
-                AutoCompleteTextView actv4 = (AutoCompleteTextView)findViewById(R.id.item4);
+                AutoCompleteTextView actv4 = (AutoCompleteTextView) findViewById(R.id.item4);
                 String s4 = actv4.getText().toString();
                 new MatisConnection().execute(s4);
 
-                AutoCompleteTextView actv5 = (AutoCompleteTextView)findViewById(R.id.item5);
+                AutoCompleteTextView actv5 = (AutoCompleteTextView) findViewById(R.id.item5);
                 String s5 = actv5.getText().toString();
                 new MatisConnection().execute(s5);
             }
@@ -88,6 +87,7 @@ public class EditMealActivity extends ActionBarActivity {
 
 
             }
+
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {
 
@@ -101,8 +101,6 @@ public class EditMealActivity extends ActionBarActivity {
         item5.addTextChangedListener(tw);
 
 
-
-
         btn = (Button) findViewById(R.id.editSaveBtn);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -112,12 +110,12 @@ public class EditMealActivity extends ActionBarActivity {
 
                 ArrayList<FoodTO> list = new ArrayList<FoodTO>();
 
-                for(int i=0; i<5; i++){
-                    AutoCompleteTextView item = (AutoCompleteTextView)findViewById(Events.idItems[i]);
+                for (int i = 0; i < 5; i++) {
+                    AutoCompleteTextView item = (AutoCompleteTextView) findViewById(Events.idItems[i]);
                     EditText gram = (EditText) findViewById(Events.idGrams[i]);
 
 
-                    if(item.getText().toString().length() > 0){
+                    if (item.getText().toString().length() > 0) {
                         String foody = item.getText().toString();
                         int grams = Integer.parseInt(gram.getText().toString());
                         list.add(new FoodTO(foody, grams));
@@ -131,8 +129,20 @@ public class EditMealActivity extends ActionBarActivity {
         });
     }
 
+    private static class MyTaskParams {
+        String mealName;
+        ArrayList<FoodTO> ingredients;
 
 
+        MyTaskParams(ArrayList<FoodTO> ingredients, String mealName) {
+
+
+            this.mealName = mealName;
+            this.ingredients = ingredients;
+
+        }
+
+    }
 
     private class getIngredients extends AsyncTask<String, String, Meal> {
 
@@ -149,15 +159,16 @@ public class EditMealActivity extends ActionBarActivity {
             }
             return meal;
         }
+
         @Override
-        protected void onPostExecute(Meal result){
+        protected void onPostExecute(Meal result) {
 
 
             ArrayList<FoodTO> ingrdients = new ArrayList<FoodTO>(result.getIngredients());
 
             //final ArrayAdapter<FoodTO> adapter = new ArrayAdapter<FoodTO>(this, android.R.layout.select_dialog_item, ingrdients);
 
-            for(int i = 0; i < ingrdients.size(); i++){
+            for (int i = 0; i < ingrdients.size(); i++) {
                 String name = ingrdients.get(i).getFoodName();
                 String gramValue = String.valueOf(ingrdients.get(i).getGrams());
 
@@ -175,24 +186,6 @@ public class EditMealActivity extends ActionBarActivity {
 
     }
 
-
-    private static class MyTaskParams {
-        String mealName;
-        ArrayList<FoodTO> ingredients;
-
-
-        MyTaskParams(ArrayList<FoodTO> ingredients, String mealName) {
-
-
-
-
-            this.mealName = mealName;
-            this.ingredients = ingredients;
-
-        }
-
-    }
-
     private class EditFood extends AsyncTask<MyTaskParams, Boolean, Boolean> {
 
         @Override
@@ -204,7 +197,7 @@ public class EditMealActivity extends ActionBarActivity {
             ArrayList<FoodTO> ingredients = params[0].ingredients;
             boolean i = false;
             try {
-                i =  service.editMeal(mealName, ingredients);
+                i = service.editMeal(mealName, ingredients);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -214,10 +207,9 @@ public class EditMealActivity extends ActionBarActivity {
         }
 
         //  @Override
-        protected void onPostExecute(Boolean result){
+        protected void onPostExecute(Boolean result) {
 
             Toast.makeText(getBaseContext(), "Máltíð hefur verið breytt", Toast.LENGTH_SHORT).show();
-
 
 
             Intent intent = new Intent(EditMealActivity.this, CalendarActivity.class);
@@ -234,9 +226,9 @@ public class EditMealActivity extends ActionBarActivity {
         protected ArrayList<com.jberry.dto.Food> doInBackground(String... params) {
 
             ArrayList<Food> food = new ArrayList<Food>();
-            if(params[0].equals("")){
+            if (params[0].equals("")) {
                 return food;
-            }else{
+            } else {
                 try {
                     food = matisCaller(params[0]);
                 } catch (Exception e) {
@@ -245,38 +237,37 @@ public class EditMealActivity extends ActionBarActivity {
             }
 
 
-
             return food;
         }
 
         @Override
-        protected void onPostExecute(ArrayList<com.jberry.dto.Food> result){
+        protected void onPostExecute(ArrayList<com.jberry.dto.Food> result) {
 
-            if(result.size() > 0){
+            if (result.size() > 0) {
                 String[] strings = new String[10];
-                for(int i = 0 ; i < strings.length; i++){
+                for (int i = 0; i < strings.length; i++) {
                     strings[i] = result.get(0).getNameEng();
                 }
 
                 ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.select_dialog_item, strings);
 
-                AutoCompleteTextView actv1 = (AutoCompleteTextView)findViewById(R.id.item1);
+                AutoCompleteTextView actv1 = (AutoCompleteTextView) findViewById(R.id.item1);
                 actv1.setThreshold(4);
                 actv1.setAdapter(adapter);
 
-                AutoCompleteTextView actv2 = (AutoCompleteTextView)findViewById(R.id.item2);
+                AutoCompleteTextView actv2 = (AutoCompleteTextView) findViewById(R.id.item2);
                 actv2.setThreshold(4);
                 actv2.setAdapter(adapter);
 
-                AutoCompleteTextView actv3 = (AutoCompleteTextView)findViewById(R.id.item3);
+                AutoCompleteTextView actv3 = (AutoCompleteTextView) findViewById(R.id.item3);
                 actv3.setThreshold(4);
                 actv3.setAdapter(adapter);
 
-                AutoCompleteTextView actv4 = (AutoCompleteTextView)findViewById(R.id.item4);
+                AutoCompleteTextView actv4 = (AutoCompleteTextView) findViewById(R.id.item4);
                 actv4.setThreshold(4);
                 actv4.setAdapter(adapter);
 
-                AutoCompleteTextView actv5 = (AutoCompleteTextView)findViewById(R.id.item5);
+                AutoCompleteTextView actv5 = (AutoCompleteTextView) findViewById(R.id.item5);
                 actv5.setThreshold(4);
                 actv5.setAdapter(adapter);
 
